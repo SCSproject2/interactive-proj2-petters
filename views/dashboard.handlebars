@@ -1,0 +1,66 @@
+<div class='addPost-container'>
+  <h1>Add Post</h1>
+  <form id='addPost-form'>
+    <input
+      type='text'
+      id='add-post-title'
+      placeholder='Post Title  *required'
+    />
+    <textarea
+      type='text'
+      id='add-post-desc'
+      placeholder='Post description  *required'
+    ></textarea>
+
+    <h1 id='addpost-status'>Fill in all required inputs with character count
+      above 4</h1>
+    <button id='add-post' type='submit'>Post</button>
+  </form>
+</div>
+<hr id='dashboardHr' />
+<h1 id='your-posts'>Your posts</h1>
+<div id='dashboard-posts'>
+  {{#if posts}}{{else}}
+    <p id='no-posts'>You have not uploaded any posts</p>
+  {{/if}}
+
+  {{#each posts as |post|}}
+    <div id='single-post'>
+      <div id='post-header'>
+        <h1 id='post-title'>{{post.title}}</h1>
+        <p id='post-date'>{{format_date post.date}}</p>
+      </div>
+      <p id='post-body'>
+        {{post.description}}
+      </p>
+      <div id='post-controls'>
+        <button
+          data-post-id={{post.postId}}
+          class='edit-post-id'
+          id='edit-post-{{post.postId}}'
+        >Edit post</button>
+        <button
+          data-post-id={{post.postId}}
+          class='delete-post-id'
+          id='delete-post-{{post.postId}}'
+        >Delete post</button>
+        <button
+          data-post-id={{post.postId}}
+          id='view-comments-{{post.postId}}'
+          class='view-comments'
+        >View comments</button>
+        <button
+          data-post-id={{post.postId}}
+          class='confirm-post'
+          id='confirm-post-{{post.postId}}'
+        >Confirm</button>
+        <p id='edit-post-status'>Make sure the new post title and body are
+          greater than 4 characters</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<script src='/javascript/add-post.js'></script>
+<script src='/javascript/edit-post.js'></script>
+<script src='/javascript/delete-post.js'></script>
+<script src='/javascript/view-comments.js'></script>

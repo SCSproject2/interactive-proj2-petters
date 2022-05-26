@@ -1,0 +1,24 @@
+<div id='homepage-posts'>
+  {{! posts.forEach(post) }}
+  {{#each posts as |post|}}
+    <a id='single-post' href='/post/{{post.id}}'>
+      <div id='post-header'>
+        <p id='post-title'>{{post.title}}</p>
+        <p id='post-date'>Posted by
+          {{post.user.username}}
+          <br />
+          on
+          {{format_date post.created_at}}</p>
+      </div>
+      <div id='chat-icon-wrapper'>
+        <img id='chat-icon' src='./images/comment.png' alt='' />
+        {{! commentLengths is a helper function we created in utils/helpers
+        It returns the length values (comment amounts) from the comments array  }}
+        {{commentLengths post.comments}}
+      </div>
+      <p id='post-body'>
+        {{post.description}}
+      </p>
+    </a>
+  {{/each}}
+</div>
