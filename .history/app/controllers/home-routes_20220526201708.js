@@ -6,6 +6,8 @@ router.get('/', (req, res) => {
 });
 
 // Renders a single post with more detail
-router.get('/post/:id', (req, res) => {});
+router.get('/post/:id', (req, res) => {
+  res.render('single-post');
+});
 
 module.exports = router;
