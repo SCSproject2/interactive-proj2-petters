@@ -1,5 +1,5 @@
 {
-  "name": "fullstack-mvc-tech-blog",
+  "name": "petters_social",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -8,17 +8,9 @@
     "dev": "nodemon server.js",
     "seeds": "node app/seeds/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/csabbah/fullstack-mvc-tech-blog.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/csabbah/fullstack-mvc-tech-blog/issues"
-  },
-  "homepage": "https://github.com/csabbah/fullstack-mvc-tech-blog#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.3",
