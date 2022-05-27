@@ -1,26 +1,27 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Like extends Model {}
+class Category extends Model{}
 
-Like.init(
+Category.init(
     {
         id: {
             type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'user',
-                key: 'id'
+        category_name: {
+            type: DataTypes.STRING(),
+            allowNull: false,
+            validation: {
+                len: [1]
             }
         },
-        post_id: {
+        pet_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'post',
+                model: 'pet',
                 key: 'id'
             }
         }
@@ -30,8 +31,6 @@ Like.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'like'
+        modelName: 'category'
     }
-);
-
-module.exports = Like;
+)
