@@ -10,7 +10,7 @@ User.hasMany(Post, {
   foreignKey: 'user_id',
 });
 
-User.hasMany(Vote, {
+User.hasMany(Like, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL',
 });
@@ -26,8 +26,8 @@ Post.belongsTo(User, {
   onDelete: 'SET NULL',
 });
 
-Post.hasMany(Vote, {
-  foreignKey: 'post_id',
+Post.hasMany(Like, {
+  foreignKey: 'id',
   onDelete: 'SET NULL',
 });
 
@@ -40,7 +40,7 @@ Post.hasMany(Category, {
   foreignKey: 'id',
 });
 
-// ------- ------- Vote
+// ------- ------- Like
 Like.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL',
