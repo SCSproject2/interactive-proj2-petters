@@ -17,13 +17,6 @@ Category.init(
             validation: {
                 len: [1]
             }
-        },
-        pet_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'pet',
-                key: 'id'
-            }
         }
     },
     {
@@ -34,3 +27,5 @@ Category.init(
         modelName: 'category'
     }
 )
+
+module.exports = Category;
