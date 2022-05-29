@@ -64,7 +64,7 @@ Comment.belongsTo(Post, {
 
 // ------- ------- Category
 Category.belongsTo(Post, {
-  foreignKey: 'post_ud',
+  foreignKey: 'post_id',
 });
 
 module.exports = { User, Post, Comment, Like, Category };
