@@ -55,8 +55,6 @@ app.post('/upload', upload.single('image'), (req, res) => {
   res.send('image uploaded');
 });
 
-// ====================================
-
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
