@@ -2,7 +2,19 @@ const path = require('path');
 const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+const multer = require('multer');
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images')
+  },
+  filename: (req, file, cb) => {
+    console.log(file)
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+});
+
+const upload = multer({storage: storage});
 const app = express();
 const PORT = process.env.PORT || 3001;
 const sequelize = require('./app/config/connection');
@@ -31,6 +43,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./app/controllers'));
+
+
+// ====================================
+app.get('/upload', (req, res) => {
+  res.render('main.handlebars');
+});
+
+app.post('/upload', upload.single('image'), (req, res) => {
+  res.send('image uploaded');
+});
+
+// ====================================
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
