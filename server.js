@@ -4,17 +4,19 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const multer = require('multer');
 
+// This 'should' be moved into controllers/api/post-routes ====================================
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'images')
+    cb(null, 'images');
   },
   filename: (req, file, cb) => {
-    console.log(file)
-    cb(null, Date.now() + path.extname(file.originalname))
-  }
+    console.log(file);
+    // Access the req.body upon uploading a post to dynamically label the file name
+    cb(null, `Post_1_User_1` + path.extname(file.originalname));
+  },
 });
 
-const upload = multer({storage: storage});
+const upload = multer({ storage: storage });
 const app = express();
 const PORT = process.env.PORT || 3001;
 const sequelize = require('./app/config/connection');
@@ -44,8 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('./app/controllers'));
 
-
-// ====================================
+// This would need to be moved into controllers/api/post-routes ====================================
 app.get('/upload', (req, res) => {
   res.render('main.handlebars');
 });
