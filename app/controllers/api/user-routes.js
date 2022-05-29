@@ -61,10 +61,10 @@ router.get('/:id', (req, res) => {
 
 // Create a new user
 router.post('/', (req, res) => {
-    User.Create({
-        username: req.params.username,
-        email: req.params.email,
-        password: req.params.password
+    User.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
     })
     .then(dbUserData=>{
         req.session.save(()=>{
