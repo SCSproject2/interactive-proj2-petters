@@ -1,27 +1,30 @@
 const router = require('express').Router();
-const { Post, User, Category, Comment } = require('../../models');
+const { Post, User, Category, Comment, Like } = require('../../models');
 
 // Get all posts
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id', 'title', 'body', 'category_id'],
-    order: [['created_at', 'DESC']],
+    attributes: ['id', 'title', 'body'],
     include: [
-      //   {
-      //     model: Comment,
-      //     attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
-      //     include: {
-      //       model: User,
-      //       attributes: ['username'],
-      //     },
-      //   },
+      {
+        model: Category,
+        attributes: ['category_name'],
+      },
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username'],
+        },
+      },
       {
         model: User,
         attributes: ['username'],
       },
       {
-        model: Category,
-        attributes: ['category_name'],
+        model: Like,
+        attributes: ['user_id'],
       },
     ],
   })
@@ -79,11 +82,11 @@ router.post('/', (req, res) => {
     body: req.body.body,
     // user_id: req.session.user_id,
     user_id: req.body.user_id,
-    category_id: req.body.category_id
+    category_id: req.body.category_id,
     // image_url: req.body.image_url
-})
-.then(dbPostData=> res.json(dbPostData))
-.catch(err=> res.status(500).json(err));
+  })
+    .then((dbPostData) => res.json(dbPostData))
+    .catch((err) => res.status(500).json(err));
 });
 
 // Update a post

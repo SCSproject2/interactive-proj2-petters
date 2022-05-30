@@ -27,7 +27,7 @@ Post.belongsTo(User, {
 });
 
 Post.hasMany(Like, {
-  foreignKey: 'id',
+  foreignKey: 'post_id',
   onDelete: 'SET NULL',
 });
 
@@ -37,7 +37,8 @@ Post.hasMany(Comment, {
 });
 
 Post.hasMany(Category, {
-  foreignKey: 'id',
+  foreignKey: 'post_id',
+  onDelete: 'SET NULL',
 });
 
 // ------- ------- Like
