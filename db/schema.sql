@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS petters_socals;
+DROP DATABASE IF EXISTS petters_socials;
 
-CREATE DATABASE petters_socals;
+CREATE DATABASE petters_socials;

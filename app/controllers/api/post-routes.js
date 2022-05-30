@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User, Category } = require('../../models');
+const { Post, User, Category, Comment } = require('../../models');
 
 //Get all posts
 router.get('/', (req, res)=>{
@@ -85,8 +85,8 @@ Post.create({
     body: req.body.body,
     // user_id: req.session.user_id,
     user_id: req.body.user_id,
-    category_id: req.body.category_id,
-    image_url: req.body.image_url
+    category_id: req.body.category_id
+    // image_url: req.body.image_url
 })
 .then(dbPostData=> res.json(dbPostData))
 .catch(err=> res.status(500).json(err));

@@ -15,8 +15,7 @@ router.get('/', (req,res)=>{
 });
 
 // Upload a new comment
-router.post('/:id', (req, res) => {
-    if(req.session){
+router.post('/', (req, res) => {
     Comment.create({
         comment_text: req.body.comment_text,
         post_id: req.body.post_id,
@@ -25,7 +24,6 @@ router.post('/:id', (req, res) => {
     })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err=> res.status(500).json(err));
-}
 });
 
 // Delete a comment

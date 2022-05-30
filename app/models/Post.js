@@ -33,9 +33,9 @@ Post.init(
                 key: 'id'
             }
         },
-        // image_url: {
+        //  image_url: {
 
-       // }
+        // }
     },
     {
         sequelize,

@@ -5,10 +5,9 @@ const loginRoutes = require('./login-routes.js');
 const dashboardRoutes = require('./dashboard.js');
 const featuredRoutes = require('./featured-routes.js');
 const searchRoutes = require('./search-routes.js');
+const apiRoutes = require('./api');
 
-// const apiRoutes = require('./api');
-// router.use('/api', apiRoutes);
-
+router.use('/api', apiRoutes);
 router.use('/', homeRoutes);
 router.use('/login', loginRoutes);
 router.use('/dashboard', dashboardRoutes);
