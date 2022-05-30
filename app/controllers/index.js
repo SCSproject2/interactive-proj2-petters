@@ -7,8 +7,6 @@ const featuredRoutes = require('./featured-routes.js');
 const searchRoutes = require('./search-routes.js');
 const apiRoutes = require('./api');
 
-const apiRoutes = require('./api');
-
 router.use('/', homeRoutes);
 router.use('/login', loginRoutes);
 router.use('/dashboard', dashboardRoutes);
