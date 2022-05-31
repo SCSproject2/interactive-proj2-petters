@@ -1,10 +1,97 @@
-<h1>Dashboard</H1>
-<body>
-    <h2>Your posts</h2>
-    <button>Like</button>
-    <button>View</button>
-    <button>Delete</button>
-    <button>Add new post</button>
-    <button>Edit post</button>
-</body>
-</html>
+<div class='addPost-container'>
+  <h1>Add Post</h1>
+  <form id='addPost-form'>
+    <input
+      type='text'
+      id='add-post-title'
+      placeholder='Post Title  *required'
+    />
+    <textarea
+      type='text'
+      id='add-post-desc'
+      placeholder='Post description  *required'
+    ></textarea>
+    <h1 id='addpost-status'>Fill in all required inputs with character count
+      above 4</h1>
+    <button id='add-post' type='submit'>Post</button>
+  </form>
+</div>
+{{! Image Filters }}
+<div style='margin-top:50px'>
+  <h1>Image filter test</h1>
+  <img
+    id='image-test'
+    style='width: 300px;'
+    src='./images/test-image.PNG'
+    alt=''
+  />
+  <div style='margin-bottom: 100px' id='filter-options'>
+    <button data-filter='sepia' class='filterBtn'>Sepia</button>
+    <button data-filter='invert' class='filterBtn'>Invert</button>
+    <button data-filter='grayscale' class='filterBtn'>Grayscale</button>
+    <button data-filter='red-tint' class='filterBtn'>Red tint</button>
+    <button data-filter='blue-tint' class='filterBtn'>Blue tint</button>
+    <button data-filter='purple-tint' class='filterBtn'>Purple tint</button>
+    <button data-filter='orange-tint' class='filterBtn'>Orange tint</button>
+
+  </div>
+</div>
+{{! Image Filters }}
+<hr id='dashboardHr' />
+<h1 id='your-posts'>Your posts</h1>
+<div id='dashboard-posts'>
+  {{! posts.forEach(post) }}
+  {{#if posts}}{{else}}
+    <p id='no-posts'>You have not uploaded any posts</p>
+  {{/if}}
+
+  {{#each posts as |post|}}
+    <div id='single-post'>
+      <div id='post-header' class='Category_name_here'>
+        <p id='post-title'>{{post.title}}</p>
+        <p id='post-date'>Posted by
+          {{post.user.username}}
+          on
+          {{format_date post.created_at}}</p>
+      </div>
+      <div id='post-icon-wrapper'>
+        <div id='chat-icon-wrapper'>
+          <img id='chat-icon' src='./images/comment.png' alt='' />
+          <p>{{checkCounter post.comments}}</p>
+        </div>
+        <div id='like-icon-wrapper'>
+          <img id='like-icon' src='./images/like.png' alt='' />
+          <p>{{checkCounter post.likes}}</p>
+        </div>
+      </div>
+      <p id='post-body'>
+        {{post.body}}
+      </p>
+      <div id='post-controls'>
+        <button
+          data-post-id='{{post.id}}'
+          class='edit-post-id'
+          id='edit-post-{{post.id}}'
+        >Edit post</button>
+        <button
+          data-post-id='{{post.id}}'
+          class='delete-post-{{post.id}}'
+          id='delete-post-1'
+        >Delete post</button>
+        <button
+          data-post-id='{{post.id}}'
+          id='view-comments-{{post.id}}'
+          class='view-comments'
+        >View comments</button>
+        <button
+          data-post-id='{{post.id}}'
+          class='confirm-post'
+          id='confirm-post-{{post.id}}'
+        >Confirm</button>
+        <p id='edit-post-status'>Make sure the new post title and body are
+          greater than 4 characters</p>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<script src='./javascript/filters.js'></script>
