@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-
 // Get all posts
 router.get('/', (req, res) => {
   Post.findAll({
@@ -90,10 +89,10 @@ router.get('/:id', (req, res) => {
     });
 });
 
-app.get('/upload', (req, res) => {
-    res.render('main');
-  });
-  
+router.get('/upload', (req, res) => {
+  res.render('main');
+});
+
 // Create a new post
 router.post('/', (req, res) => {
   Post.create({
@@ -108,10 +107,9 @@ router.post('/', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-app.post('/upload', upload.single('image'), (req, res) => {
-    res.send('image uploaded');
+router.post('/upload', upload.single('image'), (req, res) => {
+  res.send('image uploaded');
 });
-
 
 // Update a post
 router.put('/:id', (req, res) => {
