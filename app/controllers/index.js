@@ -12,7 +12,6 @@ router.use('/login', loginRoutes);
 router.use('/dashboard', dashboardRoutes);
 router.use('/featured', featuredRoutes);
 router.use('/search', searchRoutes);
-
 router.use('/api', apiRoutes);
 
 module.exports = router;
