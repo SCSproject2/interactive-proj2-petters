@@ -1,5 +1,19 @@
 const router = require('express').Router();
 const { Post, User, Category } = require('../../models');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images');
+  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    // Access the req.body upon uploading a post to dynamically label the file name
+    cb(null, `Post_1_User_1` + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({ storage: storage });
 
 //Get all posts
 router.get('/', (req, res)=>{
@@ -78,6 +92,10 @@ router.get('/:id', (req,res)=>{
     });
 });
 
+app.get('/upload', (req, res) => {
+    res.render('main');
+  });
+  
 // Create a new post
 router.post('/', (req, res) => {
 Post.create({
@@ -91,6 +109,11 @@ Post.create({
 .then(dbPostData=> res.json(dbPostData))
 .catch(err=> res.status(500).json(err));
 });
+
+app.post('/upload', upload.single('image'), (req, res) => {
+    res.send('image uploaded');
+});
+
 
 // Update a post
 router.put('/:id', (req, res) => {
