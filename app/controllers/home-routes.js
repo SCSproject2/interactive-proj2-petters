@@ -4,7 +4,7 @@ const { Post, User, Comment, Like, Category } = require('../models');
 
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id', 'title', 'body', 'created_at', 'user_id'],
+    attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url'],
     include: [
       {
         model: Category,
@@ -30,6 +30,8 @@ router.get('/', (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(posts);
+      posts.reverse();
 
       // Returns the categories and their names
       // posts.forEach((item) => {

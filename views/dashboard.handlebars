@@ -1,18 +1,18 @@
 <div class='addPost-container'>
   <h1>Add Post</h1>
-  <form id='addPost-form'>
-    <input
-      type='text'
-      id='add-post-title'
-      placeholder='Post Title  *required'
-    />
+  <form
+    id='addPost-form'
+    method='POST'
+    action='/api/posts'
+    enctype='multipart/form-data'
+  >
+    <input type='text' name='title' placeholder='Title  *required' />
     <textarea
       type='text'
-      id='add-post-desc'
-      placeholder='Post description  *required'
+      name='desc'
+      placeholder='Description  *required'
     ></textarea>
-    <h1 id='addpost-status'>Fill in all required inputs with character count
-      above 4</h1>
+    <input id='add-post-image' type='file' name='image' />
     <button id='add-post' type='submit'>Post</button>
   </form>
 </div>
@@ -64,6 +64,7 @@
           <p>{{checkCounter post.likes}}</p>
         </div>
       </div>
+      <img id='post-image' src='{{post.image_url}}' alt='{{post.title}}' />
       <p id='post-body'>
         {{post.body}}
       </p>
