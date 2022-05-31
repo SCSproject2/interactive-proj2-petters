@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Category, Comment, Like } = require('../../models');
+const path = require('path');
+
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -15,6 +17,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
+router.get('/upload', (req, res) => {
+  res.json('hi');
+});
+
+router.post('/upload', upload.single('image'), (req, res) => {
+  res.send('image uploaded');
+});
 
 // Get all posts
 router.get('/', (req, res) => {
@@ -90,10 +99,6 @@ router.get('/:id', (req, res) => {
     });
 });
 
-app.get('/upload', (req, res) => {
-    res.render('main');
-  });
-  
 // Create a new post
 router.post('/', (req, res) => {
   Post.create({
@@ -107,11 +112,6 @@ router.post('/', (req, res) => {
     .then((dbPostData) => res.json(dbPostData))
     .catch((err) => res.status(500).json(err));
 });
-
-app.post('/upload', upload.single('image'), (req, res) => {
-    res.send('image uploaded');
-});
-
 
 // Update a post
 router.put('/:id', (req, res) => {
@@ -161,19 +161,3 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
-
-// //const { Post, User, Category } = require('../../models');
-// const multer = require('multer');
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'images');
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file);
-//     // Access the req.body upon uploading a post to dynamically label the file name
-//     cb(null, `Post_1_User_1` + path.extname(file.originalname));
-//   },
-// });
-
-// const upload = multer({ storage: storage });
