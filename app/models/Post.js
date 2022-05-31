@@ -26,9 +26,10 @@ Post.init(
         key: 'id',
       },
     },
-    // image_url: {
-
-    // }
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,

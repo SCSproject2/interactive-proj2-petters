@@ -1,28 +1,33 @@
 const router = require('express').Router();
 const { Post, User, Category, Comment, Like } = require('../../models');
+
 const path = require('path');
-
 const multer = require('multer');
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'images');
+    cb(null, 'public/images');
   },
   filename: (req, file, cb) => {
-    console.log(file);
     // Access the req.body upon uploading a post to dynamically label the file name
-    cb(null, `Post_1_User_1` + path.extname(file.originalname));
+    cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-
 const upload = multer({ storage: storage });
 
-router.get('/upload', (req, res) => {
-  res.json('hi');
-});
-
-router.post('/upload', upload.single('image'), (req, res) => {
-  res.send('image uploaded');
+router.post('/', upload.single('image'), (req, res) => {
+  const imagePath = req.file.path;
+  const finalPath = imagePath.replace('public/', '');
+  console.log(finalPath);
+  Post.create({
+    title: req.body.title,
+    body: req.body.desc,
+    // user_id: req.session.user_id,
+    user_id: 6,
+    category_id: 2,
+    image_url: finalPath,
+  })
+    .then((dbPostData) => res.json(dbPostData))
+    .catch((err) => res.status(500).json(err));
 });
 
 // Get all posts
@@ -97,20 +102,6 @@ router.get('/:id', (req, res) => {
     .catch((err) => {
       res.status(500).json(err);
     });
-});
-
-// Create a new post
-router.post('/', (req, res) => {
-  Post.create({
-    title: req.body.title,
-    body: req.body.body,
-    // user_id: req.session.user_id,
-    user_id: req.body.user_id,
-    category_id: req.body.category_id,
-    // image_url: req.body.image_url
-  })
-    .then((dbPostData) => res.json(dbPostData))
-    .catch((err) => res.status(500).json(err));
 });
 
 // Update a post

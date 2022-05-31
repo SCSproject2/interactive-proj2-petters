@@ -8,3 +8,102 @@
 h1 {
   color: black;
 }
+
+header {
+  margin-bottom: 25px;
+}
+
+body {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+nav a {
+  margin: 0 5px;
+}
+
+nav a:first-child {
+  margin: 0;
+}
+
+/* -------- --------- --------- Main page CSS (main.handlebars) */
+
+#header-logo {
+  user-select: none;
+}
+/* -------- --------- --------- Single posts universal selectors and properties */
+#homepage-posts,
+#dashboard-posts {
+  width: 70%;
+}
+
+/* -------- --------- --------- Home page */
+#homepage-posts a {
+  margin-bottom: 100px;
+}
+#single-post {
+  position: relative;
+  text-decoration: none;
+  color: black;
+}
+
+#post-image {
+  width: 200px;
+}
+
+#post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: aquamarine;
+  height: 40px;
+}
+
+#post-header p {
+  margin: 0 10px;
+}
+
+#post-body {
+  height: 100px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: aliceblue;
+  margin-bottom: 25px;
+}
+#single-post:last-child #post-body {
+  margin-bottom: 0;
+}
+
+#post-icon-wrapper {
+  position: absolute;
+  color: black;
+  display: flex;
+  align-items: center;
+  right: 10px;
+  bottom: 10px;
+}
+
+#chat-icon-wrapper,
+#like-icon-wrapper {
+  display: flex;
+}
+
+#like-icon {
+  margin-left: 15px;
+}
+#chat-icon {
+  margin-right: 3px;
+
+  width: 22.5px;
+}
+
+#like-icon {
+  margin-right: 3px;
+  width: 20px;
+}
+
+/* -------- --------- --------- Dashboard */
+
+#dashboardHr {
+  margin: 25px 0;
+}
