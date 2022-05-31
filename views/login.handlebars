@@ -3,13 +3,13 @@
     <class="container h-screen m-auto flex justify-center">
         <form id="login" class="form">
             <h1 class="form-title text-m">Login</h1>
-            <div class="form_message">Email or Username</div>
+            <div class="form_message">Username</div>
             <div class="form__input-group">
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Email or Username">
+                <input type="text" id="username-login" class="form__input px-8 py-4" autofocus placeholder="Username">
             </div>
             <div class="form-input-group">
                 <div class="form_message">Password</div>
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Password">
+                <input type="text" id="pass-login" class="form__input px-8 py-4" autofocus placeholder="Password">
             </div>
             <button>Submit</button>
         </form>
@@ -19,17 +19,22 @@
 
         <form id="signup" class="sign-up-form">
             <h1 class="form-title text-m">Sign Up</h1>
-            <div class="form_message">Email or Username</div>
+            <div class="form_message">Username</div>
             <div class="form__input-group">
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Email or Username">
+                <input type="text" id="signup-username" class="form__input px-8 py-4" autofocus placeholder="Username">
+            </div>
+            <div class="form_message">Email</div>
+            <div class="form__input-group">
+                <input type="text" id="signup-email" class="form__input px-8 py-4" autofocus placeholder="Email">
             </div>
             <div class="form-input-group">
                 <div class="form_message">Enter Password</div>
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Password">
+                <input type="text" id="signup-pass" class="form__input px-8 py-4" autofocus placeholder="Password">
                 <div class="form__input-group"></div>
             </div>
             <button>Submit</button>
         </form>
     </div>
 </body>
-</html>
+
+<script src="/javascript/login.js"></script>
