@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const { Post, Comment, User, Like, Category } = require('../../models');
+const sequelize = require('../../config/connection');
 
 router.get('/', (req, res) => {
     Post.findAll({
-      attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url'],
+      attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url',
+      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']],
       include: [
         {
           model: Category,
@@ -25,7 +27,7 @@ router.get('/', (req, res) => {
           model: Like,
           attributes: ['user_id'],
         },
-      ],
+      ]
     })
       .then((dbPostData) => {
           // let largestNum = dbPostData.reduce(
@@ -34,14 +36,20 @@ router.get('/', (req, res) => {
           // 0);
           // console.log(largestNum);
 
-        const posts = dbPostData.map((post) => post.get({ plain: true }));
-        console.log(posts);
-        posts.reverse();
+
+        const posts1 = dbPostData.map((post) => post.get({ plain: true }));
+
+        posts1.sort(function(a,b){
+          return a.like_count - b.like_count;
+        });
+
+        posts1.reverse();
   
         // Returns the categories and their names
-        posts.forEach((item) => {
+        posts1.forEach((item) => {
           console.log(item.categories);
         });
+        const posts = posts1.slice(0, 5);
   
         res.render('featured', { posts });
       })
