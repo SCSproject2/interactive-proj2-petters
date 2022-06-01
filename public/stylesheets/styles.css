@@ -26,6 +26,13 @@ nav a:first-child {
   margin: 0;
 }
 
+.navItem {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
 /* -------- --------- --------- Main page CSS (main.handlebars) */
 
 #header-logo {
@@ -37,9 +44,29 @@ nav a:first-child {
   width: 70%;
 }
 
+/* -------- --------- --------- Dashboard */
+select {
+  cursor: pointer;
+  font-size: 18px;
+  color: #444;
+  padding: 12px;
+  width: 170px;
+  text-align: center;
+  border: 2px solid grey;
+  border-radius: 12px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: rgb(248, 247, 247);
+}
+
 /* -------- --------- --------- Home page */
 #homepage-posts a {
   margin-bottom: 100px;
+}
+
+#single-post-wrapper {
+  position: relative;
 }
 #single-post {
   position: relative;
@@ -88,16 +115,15 @@ nav a:first-child {
   display: flex;
 }
 
-#like-icon {
-  margin-left: 15px;
-}
 #chat-icon {
+  pointer-events: none;
   margin-right: 3px;
-
   width: 22.5px;
 }
 
-#like-icon {
+.like-icon {
+  cursor: pointer;
+  margin-left: 15px;
   margin-right: 3px;
   width: 20px;
 }

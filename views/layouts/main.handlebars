@@ -12,11 +12,15 @@
           <h1 id='header-logo'>Petters</h1>
         </div>
         <nav>
-          <a href='/'>Home</a>
-          <a href='/dashboard'>Dashboard</a>
-          <a href='/login'>Login</a>
-          <a href='api/featured'>Featured</a>
-          <a href='/search'>Search</a>
+          <a class='navItem' href='/'>Home</a>
+          <a class='navItem' href='/dashboard'>Dashboard</a>
+          {{#if loggedIn}}
+            <a class='navItem' id='logout'>Logout</a>
+          {{else}}
+            <a class='navItem' href='/login'>Login</a>
+          {{/if}}
+          <a class='navItem' href='api/featured'>Featured</a>
+          <a class='navItem' href='/search'>Search</a>
         </nav>
       </header>
       <main>
@@ -25,3 +29,6 @@
     </div>
   </body>
 </html>
+{{#if loggedIn}}
+  <script src='/javascript/logout.js'></script>
+{{/if}}
