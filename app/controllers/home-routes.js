@@ -4,14 +4,20 @@ const { Post, User, Comment, Like, Category } = require('../models');
 
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id',
-    'title',
-    'body',
-    'created_at',
-    'user_id',
-    'image_url',
-    [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
-  ],
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'created_at',
+      'user_id',
+      'image_url',
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
     include: [
       {
         model: Category,
@@ -44,7 +50,11 @@ router.get('/', (req, res) => {
       //   console.log(item.categories);
       // });
 
-      res.render('homepage', { posts });
+      res.render('homepage', {
+        posts,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+      });
     })
     .catch((err) => {
       res.status(500).json(err);
@@ -64,7 +74,12 @@ router.get('/post/:id', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
-      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
     ],
     include: [
       {
@@ -104,7 +119,7 @@ router.get('/post/:id', (req, res) => {
         description,
         comments: [],
         image,
-        likes
+        likes,
       };
 
       // For each comment, push it to the array inside our object
@@ -126,7 +141,11 @@ router.get('/post/:id', (req, res) => {
           usersComment: username == req.session.username,
         });
       }
-      res.render('single-post', { post });
+      res.render('single-post', {
+        post,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+      });
     })
     .catch((err) => {
       console.log(err);

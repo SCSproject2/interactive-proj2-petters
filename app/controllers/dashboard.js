@@ -41,6 +41,8 @@ router.get('/', (req, res) => {
       posts.reverse();
       res.render('dashboard', {
         posts,
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
       });
     })
     .catch((err) => {

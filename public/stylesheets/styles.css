@@ -26,6 +26,13 @@ nav a:first-child {
   margin: 0;
 }
 
+.navItem {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
 /* -------- --------- --------- Main page CSS (main.handlebars) */
 
 #header-logo {
