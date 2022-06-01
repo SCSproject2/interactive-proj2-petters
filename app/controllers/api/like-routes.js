@@ -21,10 +21,10 @@ router.get('/', (req, res) => {
 });
 
 //Add new like
-router.post('/', (req, res) => {
+router.post('/:id', (req, res) => {
   Like.create({
     user_id: req.session.user_id,
-    post_id: req.body.post_id,
+    post_id: req.params.id,
   })
     .then((dbLikeData) => res.json(dbLikeData))
     .catch((err) => res.status(500).json(err));
