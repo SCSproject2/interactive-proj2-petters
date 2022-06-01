@@ -15,8 +15,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/', upload.single('image'), (req, res) => {
+  // Extract the raw path
   const imagePath = req.file.path;
-  const finalPath = imagePath.replace('public/', '');
+  var finalPath = '';
+  // Convert to valid a link if on windows
+  if (imagePath.includes('public\\')) {
+    const updatedPath = imagePath.replace('public\\', '');
+    finalPath = updatedPath.replace('images\\', 'images/');
+    // Else, if on mac, run this conversion
+  } else {
+    finalPath = imagePath.replace('public/', '');
+  }
+
   console.log(finalPath);
   Post.create({
     title: req.body.title,
