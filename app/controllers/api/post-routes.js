@@ -33,7 +33,7 @@ router.post('/', upload.single('image'), (req, res) => {
 // Get all posts
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id', 'title', 'body'],
+    attributes: ['id', 'title', 'body', 'image_url'],
     include: [
       {
         model: Category,
