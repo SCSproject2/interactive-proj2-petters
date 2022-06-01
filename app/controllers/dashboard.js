@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 
 // Return all posts associated with the user
 // router.get('/', withAuth, (req, res) => {
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
   // Add a new route here that returns all posts associated with user, you can easily extract this via 'req.session.user_id'
   // Return all users active posts in the data base
   Post.findAll({
@@ -39,6 +39,7 @@ router.get('/', (req, res) => {
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       posts.reverse();
+      console.log(posts);
       res.render('dashboard', {
         posts,
         loggedIn: req.session.loggedIn,
