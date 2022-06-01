@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
   // Return all users active posts in the data base
   Post.findAll({
     where: {
-      user_id: 3,
+      user_id: req.session.user_id,
     },
     attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url'],
     include: [

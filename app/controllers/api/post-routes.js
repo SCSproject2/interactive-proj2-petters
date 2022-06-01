@@ -28,12 +28,10 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
-  console.log(finalPath);
   Post.create({
     title: req.body.title,
     body: req.body.desc,
-    // user_id: req.session.user_id,
-    user_id: 6,
+    user_id: req.session.user_id,
     category_id: 2,
     image_url: finalPath,
   })
@@ -49,7 +47,13 @@ router.get('/', (req, res) => {
       'title',
       'body',
       'image_url',
-      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
     include: [
       {
         model: Category,
@@ -66,7 +70,7 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['username'],
-      }
+      },
       // {
       //   model: Like,
       //   attributes: ['user_id'],
@@ -98,7 +102,12 @@ router.get('/:id', (req, res) => {
           'user_id',
           'post_id',
           'created_at',
-          [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
+          [
+            sequelize.literal(
+              '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+            ),
+            'like_count',
+          ],
         ],
         include: {
           model: User,
