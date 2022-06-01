@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     where: {
       user_id: 3,
     },
-    attributes: ['id', 'title', 'body', 'created_at', 'user_id'],
+    attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url'],
     include: [
       {
         model: Category,
