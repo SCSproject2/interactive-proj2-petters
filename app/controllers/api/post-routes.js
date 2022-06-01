@@ -28,24 +28,17 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
-  var chosenCategory = '';
-  // If they choose an existing category, then use it
-  if (req.body.existing_categories) {
-    chosenCategory = req.body.existing_categories;
-  } else {
-    // else, use the new category
-    chosenCategory = req.body.new_category;
-  }
+  // Return the chosen category from the dropdown
+  console.log(true, req.body.existing_categories);
 
-  console.log(true, chosenCategory);
   Post.create({
     title: req.body.title,
     body: req.body.desc,
     user_id: req.session.user_id,
-    category_id: 2,
+    category_id: req.body.existing_categories,
     image_url: finalPath,
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbPostData) => res.redirect('/dashboard'))
     .catch((err) => res.status(500).json(err));
 });
 
@@ -56,7 +49,15 @@ router.get('/', (req, res) => {
       'id',
       'title',
       'body',
+      'created_at',
+      'user_id',
       'image_url',
+      [
+        sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
       [
         sequelize.literal(
           '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
@@ -81,14 +82,13 @@ router.get('/', (req, res) => {
         model: User,
         attributes: ['username'],
       },
-      // {
-      //   model: Like,
-      //   attributes: ['user_id'],
-      // },
+      {
+        model: Like,
+        attributes: ['user_id'],
+      },
     ],
   })
     .then((dbPostData) => {
-      console.log(dbPostData);
       res.json(dbPostData);
     })
     .catch((err) => {

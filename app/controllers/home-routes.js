@@ -44,11 +44,7 @@ router.get('/', (req, res) => {
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
       posts.reverse();
-
-      // Returns the categories and their names
-      // posts.forEach((item) => {
-      //   console.log(item.categories);
-      // });
+      console.log(posts);
 
       res.render('homepage', {
         posts,

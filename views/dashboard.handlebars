@@ -15,13 +15,20 @@
     <input id='add-post-image' type='file' name='image' />
     <select name='existing_categories'>
       <option value='' disabled selected>Pick a category</option>
-      <option value='Dog'>Dog</option>
-      <option value='Cat'>Cat</option>
-      <option value='Bird'>Bird</option>
+      {{#each categories as |category|}}
+        <option
+          data-category-id={{category.id}}
+          value='{{category.id}}'
+        >{{category.category_name}}</option>
+      {{/each}}
+
     </select>
-    or
-    <input name='new_category' type='text' placeholder='Enter new category' />
     <button id='add-post' type='submit'>Post</button>
+  </form>
+  <h1>Add new Category</h1>
+  <form id='addCategory-form' method='POST' action='/api/category'>
+    <input name='category_name' type='text' placeholder='Enter new category' />
+    <button id='add-category' type='submit'>Post</button>
   </form>
 </div>
 {{! // }}
