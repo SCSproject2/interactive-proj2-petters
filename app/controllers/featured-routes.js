@@ -47,16 +47,49 @@ router.get('/', (req, res) => {
   
         // Returns the categories and their names
         posts1.forEach((item) => {
-          console.log(item.categories);
+          // console.log(item.categories);
         });
-        const posts = posts1.slice(0, 5);
-        console.log(posts);
+        const posts = posts1.slice(0, 3);
   
         res.render('featured', { posts });
       })
+      .then(router.get('/', (req, res) => {
+        Post.findAll({
+          attributes: [
+            'id',
+            'title',
+            'body',
+            'image_url',
+            [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']],
+          include: [
+            {
+              model: Category,
+              attributes: ['category_name'],
+            },
+            {
+              model: Comment,
+              attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+              include: {
+                model: User,
+                attributes: ['username'],
+              },
+            },
+            {
+              model: User,
+              attributes: ['username'],
+            }
+        ]})
+        .then(dbPostData => {
+          console.log('===============================');
+          console.log(dbPostData);
+        })
+      }))
       .catch((err) => {
         res.status(500).json(err);
-      });
-  });
+      })
+      
+});
 
-  module.exports = router;
+
+
+module.exports = router;
