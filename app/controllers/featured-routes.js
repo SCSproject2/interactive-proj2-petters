@@ -41,6 +41,7 @@ router.get('/', (req, res) => {
       },
     ],
   })
+    
     .then((dbPostData) => {
       // let largestNum = dbPostData.reduce(
       //   (num1, num2) =>
@@ -49,6 +50,7 @@ router.get('/', (req, res) => {
       // console.log(largestNum);
 
       const posts1 = dbPostData.map((post) => post.get({ plain: true }));
+      
 
       posts1.sort(function (a, b) {
         return a.like_count - b.like_count;
@@ -67,8 +69,8 @@ router.get('/', (req, res) => {
         posts,
         loggedIn: req.session.loggedIn,
         username: req.session.username,
-      });
-    })
+      })
+    })  
     .catch((err) => {
       res.status(500).json(err);
     });
