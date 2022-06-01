@@ -15,7 +15,12 @@
           <p>{{checkCounter post.comments}}</p>
         </div>
         <div id='like-icon-wrapper'>
-          <img id='like-icon' src='./images/like.png' alt='' />
+          <img
+            data-post-id='{{post.id}}'
+            id='like-icon'
+            src='./images/like.png'
+            alt=''
+          />
           <p>{{checkCounter post.likes}}</p>
         </div>
       </div>
