@@ -13,9 +13,25 @@
       placeholder='Description  *required'
     ></textarea>
     <input id='add-post-image' type='file' name='image' />
+    <select name='existing_categories'>
+      <option value='' disabled selected>Pick a category</option>
+      {{#each categories as |category|}}
+        <option
+          data-category-id={{category.id}}
+          value='{{category.id}}'
+        >{{category.category_name}}</option>
+      {{/each}}
+
+    </select>
     <button id='add-post' type='submit'>Post</button>
   </form>
+  <h1>Add new Category</h1>
+  <form id='addCategory-form' method='POST' action='/api/category'>
+    <input name='category_name' type='text' placeholder='Enter new category' />
+    <button id='add-category' type='submit'>Post</button>
+  </form>
 </div>
+{{! // }}
 {{! Image Filters }}
 <div style='margin-top:50px'>
   <h1>Image filter test</h1>
@@ -37,6 +53,7 @@
   </div>
 </div>
 {{! Image Filters }}
+{{! // }}
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
 <div id='dashboard-posts'>
@@ -60,7 +77,7 @@
           <p>{{checkCounter post.comments}}</p>
         </div>
         <div id='like-icon-wrapper'>
-          <img id='like-icon' src='./images/like.png' alt='' />
+          <img class='like-icon' src='./images/like.png' alt='' />
           <p>{{checkCounter post.likes}}</p>
         </div>
       </div>

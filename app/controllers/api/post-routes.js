@@ -28,16 +28,17 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
-  console.log(finalPath);
+  // Return the chosen category from the dropdown
+  console.log(true, req.body.existing_categories);
+
   Post.create({
     title: req.body.title,
     body: req.body.desc,
-    // user_id: req.session.user_id,
-    user_id: 6,
-    category_id: 2,
+    user_id: req.session.user_id,
+    category_id: req.body.existing_categories,
     image_url: finalPath,
   })
-    .then((dbPostData) => res.json(dbPostData))
+    .then((dbPostData) => res.redirect('/dashboard'))
     .catch((err) => res.status(500).json(err));
 });
 
@@ -48,8 +49,22 @@ router.get('/', (req, res) => {
       'id',
       'title',
       'body',
+      'created_at',
+      'user_id',
       'image_url',
-      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']],
+      [
+        sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
     include: [
       {
         model: Category,
@@ -66,15 +81,14 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['username'],
-      }
-      // {
-      //   model: Like,
-      //   attributes: ['user_id'],
-      // },
+      },
+      {
+        model: Like,
+        attributes: ['user_id'],
+      },
     ],
   })
     .then((dbPostData) => {
-      console.log(dbPostData);
       res.json(dbPostData);
     })
     .catch((err) => {
@@ -98,7 +112,12 @@ router.get('/:id', (req, res) => {
           'user_id',
           'post_id',
           'created_at',
-          [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
+          [
+            sequelize.literal(
+              '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+            ),
+            'like_count',
+          ],
         ],
         include: {
           model: User,
