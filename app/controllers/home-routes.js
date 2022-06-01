@@ -4,7 +4,14 @@ const { Post, User, Comment, Like, Category } = require('../models');
 
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url'],
+    attributes: ['id',
+    'title',
+    'body',
+    'created_at',
+    'user_id',
+    'image_url',
+    [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
+  ],
     include: [
       {
         model: Category,
@@ -50,7 +57,15 @@ router.get('/post/:id', (req, res) => {
     where: {
       id: req.params.id, // params == endpoint url data
     },
-    attributes: ['id', 'title', 'body', 'created_at', 'user_id', 'image_url'],
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'created_at',
+      'user_id',
+      'image_url',
+      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
+    ],
     include: [
       {
         model: Category,
@@ -80,6 +95,7 @@ router.get('/post/:id', (req, res) => {
       const date = dbPostData.dataValues.created_at;
       const description = dbPostData.dataValues.body;
       const image = dbPostData.dataValues.image_url;
+      const likes = dbPostData.dataValues.like_count;
 
       const post = {
         title,
@@ -88,6 +104,7 @@ router.get('/post/:id', (req, res) => {
         description,
         comments: [],
         image,
+        likes
       };
 
       // For each comment, push it to the array inside our object

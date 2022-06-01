@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const sequelize = require('../../config/connection');
 const { Post, User, Category, Comment, Like } = require('../../models');
 
 const path = require('path');
@@ -15,8 +16,18 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/', upload.single('image'), (req, res) => {
+  // Extract the raw path
   const imagePath = req.file.path;
-  const finalPath = imagePath.replace('public/', '');
+  var finalPath = '';
+  // Convert to valid a link if on windows
+  if (imagePath.includes('public\\')) {
+    const updatedPath = imagePath.replace('public\\', '');
+    finalPath = updatedPath.replace('images\\', 'images/');
+    // Else, if on mac, run this conversion
+  } else {
+    finalPath = imagePath.replace('public/', '');
+  }
+
   console.log(finalPath);
   Post.create({
     title: req.body.title,
@@ -33,7 +44,12 @@ router.post('/', upload.single('image'), (req, res) => {
 // Get all posts
 router.get('/', (req, res) => {
   Post.findAll({
-    attributes: ['id', 'title', 'body'],
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'image_url',
+      [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']],
     include: [
       {
         model: Category,
@@ -50,11 +66,11 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['username'],
-      },
-      {
-        model: Like,
-        attributes: ['user_id'],
-      },
+      }
+      // {
+      //   model: Like,
+      //   attributes: ['user_id'],
+      // },
     ],
   })
     .then((dbPostData) => {
@@ -76,7 +92,14 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+        attributes: [
+          'id',
+          'comment_text',
+          'user_id',
+          'post_id',
+          'created_at',
+          [sequelize.literal('(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'), 'like_count']
+        ],
         include: {
           model: User,
           attributes: ['username'],
