@@ -28,6 +28,16 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
+  var chosenCategory = '';
+  // If they choose an existing category, then use it
+  if (req.body.existing_categories) {
+    chosenCategory = req.body.existing_categories;
+  } else {
+    // else, use the new category
+    chosenCategory = req.body.new_category;
+  }
+
+  console.log(true, chosenCategory);
   Post.create({
     title: req.body.title,
     body: req.body.desc,

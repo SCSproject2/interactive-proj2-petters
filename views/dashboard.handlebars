@@ -13,7 +13,14 @@
       placeholder='Description  *required'
     ></textarea>
     <input id='add-post-image' type='file' name='image' />
-
+    <select name='existing_categories'>
+      <option value='' disabled selected>Pick a category</option>
+      <option value='Dog'>Dog</option>
+      <option value='Cat'>Cat</option>
+      <option value='Bird'>Bird</option>
+    </select>
+    or
+    <input name='new_category' type='text' placeholder='Enter new category' />
     <button id='add-post' type='submit'>Post</button>
   </form>
 </div>
