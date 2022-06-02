@@ -61,7 +61,8 @@ input {
 /* -------- --------- --------- Login / Signup (login.handlebars) */
 
 #signup-status,
-#signin-status {
+#signin-status,
+#comment-status {
   margin-top: 5px;
   font-size: 12px;
 }
