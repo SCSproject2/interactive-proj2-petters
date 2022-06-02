@@ -25,35 +25,34 @@
     </select>
     <button id='add-post' type='submit'>Post</button>
   </form>
+  {{! // }}
+  {{! Image Filters }}
+  <div>
+    <h1>Image filter test</h1>
+    <img
+      id='image-test'
+      style='width: 300px;'
+      src='./images/test-image.PNG'
+      alt=''
+    />
+    <div id='filter-options'>
+      <button data-filter='sepia' class='filterBtn'>Sepia</button>
+      <button data-filter='invert' class='filterBtn'>Invert</button>
+      <button data-filter='grayscale' class='filterBtn'>Grayscale</button>
+      <button data-filter='red-tint' class='filterBtn'>Red tint</button>
+      <button data-filter='blue-tint' class='filterBtn'>Blue tint</button>
+      <button data-filter='purple-tint' class='filterBtn'>Purple tint</button>
+      <button data-filter='orange-tint' class='filterBtn'>Orange tint</button>
+    </div>
+  </div>
+  {{! Image Filters }}
+  {{! // }}
   <h1>Add new Category</h1>
   <form id='addCategory-form' method='POST' action='/api/category'>
     <input name='category_name' type='text' placeholder='Enter new category' />
     <button id='add-category' type='submit'>Post</button>
   </form>
 </div>
-{{! // }}
-{{! Image Filters }}
-<div style='margin-top:50px'>
-  <h1>Image filter test</h1>
-  <img
-    id='image-test'
-    style='width: 300px;'
-    src='./images/test-image.PNG'
-    alt=''
-  />
-  <div style='margin-bottom: 100px' id='filter-options'>
-    <button data-filter='sepia' class='filterBtn'>Sepia</button>
-    <button data-filter='invert' class='filterBtn'>Invert</button>
-    <button data-filter='grayscale' class='filterBtn'>Grayscale</button>
-    <button data-filter='red-tint' class='filterBtn'>Red tint</button>
-    <button data-filter='blue-tint' class='filterBtn'>Blue tint</button>
-    <button data-filter='purple-tint' class='filterBtn'>Purple tint</button>
-    <button data-filter='orange-tint' class='filterBtn'>Orange tint</button>
-
-  </div>
-</div>
-{{! Image Filters }}
-{{! // }}
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
 <div id='dashboard-posts'>
