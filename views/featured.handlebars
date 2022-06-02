@@ -1,7 +1,7 @@
 <h1>Featured</h1>
-<div id='homepage-posts'>
+<div class='post-top-likes' id='featured-posts'>
   {{! posts.forEach(post) }}
-  {{#each posts as |post|}}
+  {{#each postsLikesObj as |post|}}
     <a id='single-post' href='/post/{{post.id}}'>
       <div id='post-header' class='Category_name_here'>
         <p id='post-title'>{{post.title}}</p>
@@ -27,5 +27,31 @@
     </a>
   {{/each}}
 </div>
-
-
+<div class='post-top-comments' id='featured-posts'>
+  {{! posts.forEach(post) }}
+  {{#each postsCommentsObj as |post|}}
+    <a id='single-post' href='/post/{{post.id}}'>
+      <div id='post-header' class='Category_name_here'>
+        <p id='post-title'>{{post.title}}</p>
+        <p id='post-date'>Posted by
+          {{post.user.username}}
+          on
+          {{format_date post.created_at}}</p>
+      </div>
+      <div id='post-icon-wrapper'>
+        <div id='chat-icon-wrapper'>
+          <img id='chat-icon' src='./images/comment.png' alt='' />
+          <p>{{checkCounter post.comments}}</p>
+        </div>
+        <div id='like-icon-wrapper'>
+          <img class='like-icon' src='./images/like.png' alt='' />
+          <p>{{checkCounter post.likes}}</p>
+        </div>
+      </div>
+      <img id='post-image' src='/{{post.image_url}}' alt='{{post.title}}' />
+      <p id='post-body'>
+        {{post.body}}
+      </p>
+    </a>
+  {{/each}}
+</div>

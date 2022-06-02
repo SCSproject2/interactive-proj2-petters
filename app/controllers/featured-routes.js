@@ -41,36 +41,57 @@ router.get('/', (req, res) => {
       },
     ],
   })
-    
     .then((dbPostData) => {
-      // let largestNum = dbPostData.reduce(
-      //   (num1, num2) =>
-      //   (num1 = num1 > num2.likes ? num1 : num2.likes),
-      // 0);
-      // console.log(largestNum);
+      const rawData = dbPostData.map((post) => post.get({ plain: true }));
 
-      const posts1 = dbPostData.map((post) => post.get({ plain: true }));
-      
+      // ----------- Top commented
+      // First push all the arrays inside the posts into a new object
+      var topCommentedPosts = [];
+      rawData.forEach((post) => {
+        topCommentedPosts.push({
+          post_id: post.id,
+          comments: post.comments.length,
+        });
+      });
+      // Then return the largest number
+      topCommentedPosts.sort(function (a, b) {
+        return a.comments - b.comments;
+      });
+      // Return only 5 posts
+      topCommentedPosts.reverse();
+      const postsCommentTempArr = topCommentedPosts.slice(0, 5);
 
-      posts1.sort(function (a, b) {
+      // Create a new object to hold the finals posts
+      const postsCommentsObj = [];
+      // Compare between the raw data object and the object we created above
+      rawData.forEach((post1) => {
+        postsCommentTempArr.forEach((post2) => {
+          if (post1.id == post2.post_id) {
+            // If the post id of the object matches with the raw data object, add it to the final object
+            postsCommentsObj.push(post1);
+          }
+        });
+      });
+      // The finally, sort and return the posts
+      postsCommentsObj.sort(function (a, b) {
+        return a.comments.length - b.comments.length;
+      });
+      postsCommentsObj.reverse();
+
+      // ----------- Top Liked
+      rawData.sort(function (a, b) {
         return a.like_count - b.like_count;
       });
-
-      posts1.reverse();
-
-      // Returns the categories and their names
-      posts1.forEach((item) => {
-        console.log(item.categories);
-      });
-      const posts = posts1.slice(0, 5);
-      console.log(posts);
+      rawData.reverse();
+      const postsLikesObj = rawData.slice(0, 5);
 
       res.render('featured', {
-        posts,
+        postsLikesObj,
+        postsCommentsObj,
         loggedIn: req.session.loggedIn,
         username: req.session.username,
-      })
-    })  
+      });
+    })
     .catch((err) => {
       res.status(500).json(err);
     });
