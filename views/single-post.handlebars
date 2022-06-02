@@ -1,7 +1,11 @@
 <div id='page-singlepost'>
   <div id='single-post'>
-    <div id='post-header'>
-      <p id='post-date'>{{format_date post.date}}</p>
+    <div id='post-header' class='{{post.category_name}}'>
+              <p id='post-category'>{{post.category_name}}</p>
+          <p id='post-date'>
+            {{post.user}}
+            -
+            {{format_date post.date}}</p>
     </div>
     <img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
     <div id='post-body-wrapper'>

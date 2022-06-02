@@ -3,10 +3,10 @@
   {{#each posts as |post|}}
     <div id='single-post-wrapper'>
       <a id='single-post' href='/post/{{post.id}}'>
-        <div id='post-header' class='Category_name_here'>
-          <p id='post-date'>Posted by
-            {{post.user.username}}
-            on
+        <div id='post-header' class='{{post.category_name}}'>
+          <p id='post-category'>{{post.category_name}}</p>
+          <p id='post-date'>{{post.user.username}}
+            -
             {{format_date post.created_at}}</p>
         </div>
         <img id='post-image' src='{{post.image_url}}' alt='{{post.title}}' />

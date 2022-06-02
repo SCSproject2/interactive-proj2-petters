@@ -41,9 +41,6 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
-  // Return the chosen category from the dropdown
-  console.log(true, req.body.existing_categories);
-
   Post.create({
     title: req.body.title,
     body: req.body.desc,
@@ -111,7 +108,26 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'title', 'body'],
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'created_at',
+      'user_id',
+      'image_url',
+      [
+        sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
     include: [
       {
         model: Comment,
@@ -136,10 +152,6 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['username'],
-      },
-      {
-        model: Category,
-        attributes: ['category_name'],
       },
     ],
   })

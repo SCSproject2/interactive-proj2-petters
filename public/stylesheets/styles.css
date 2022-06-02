@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h1 {
@@ -85,10 +86,35 @@ select {
 #post-header {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  background-color: aquamarine;
+  justify-content: space-between;
   font-size: 15px;
   height: 30px;
+}
+
+#post-category {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+.dogs {
+  background-color: rgb(214, 82, 59);
+}
+.cats {
+  background-color: rgb(44, 139, 255);
+}
+.small-pets {
+  background-color: orange;
+}
+.reptile {
+  background-color: green;
+}
+.wild {
+  background-color: plum;
+}
+.fish {
+  background-color: lightblue;
 }
 
 #post-header p {

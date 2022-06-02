@@ -8,7 +8,7 @@ const categoryData = [
     category_name: 'cats',
   },
   {
-    category_name: 'small pets',
+    category_name: 'small-pets',
   },
   {
     category_name: 'reptile',

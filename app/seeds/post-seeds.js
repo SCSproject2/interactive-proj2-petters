@@ -68,7 +68,7 @@ const postdata = [
     title: 'King of the Jungle',
     body: 'who can resist a sun bath?',
     user_id: 9,
-    category_id: 2,
+    category_id: 1,
     image_url: 'images/1654045706580.PNG',
   },
 ];
