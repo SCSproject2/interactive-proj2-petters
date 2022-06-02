@@ -33,6 +33,39 @@ nav a:first-child {
   border-bottom: 1px solid black;
 }
 
+button {
+  padding: 3px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: lightblue;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: scale(0.97);
+  box-shadow: 0px 0px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+input {
+  color: white;
+  padding: 3px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#search-post-wrapper {
+  margin-top: 20px;
+  width: 40%;
+}
+/* -------- --------- --------- Login / Signup (login.handlebars) */
+
+#signup-status,
+#signin-status {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
 /* -------- --------- --------- Main page CSS (main.handlebars) */
 
 #header-logo {

@@ -214,4 +214,56 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.get('/categories/:id', (req, res) => {
+  Post.findAll({
+    where: {
+      category_id: req.params.id,
+    },
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'created_at',
+      'user_id',
+      'image_url',
+      [
+        sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username'],
+        },
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      },
+      {
+        model: Like,
+        attributes: ['user_id'],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      res.json(dbPostData);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 module.exports = router;

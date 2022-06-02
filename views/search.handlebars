@@ -5,3 +5,16 @@
   placeholder='Search...'
   aria-label='Search through site content'
 />
+<hr />
+<p style='margin-bottom: 0;'>Search by existing categories</p>
+
+{{#each categoryArr as |category|}}
+  <button
+    class='category-btns'
+    data-category-id='{{category.id}}'
+  >{{category.category_name}}</button>
+{{/each}}
+<div id='search-post-wrapper'>
+
+</div>
+<script src='/javascript/handle-search.js'></script>
