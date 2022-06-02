@@ -4,7 +4,6 @@
   {{#each postsLikesObj as |post|}}
     <a id='single-post' href='/post/{{post.id}}'>
       <div id='post-header' class='Category_name_here'>
-        <p id='post-title'>{{post.title}}</p>
         <p id='post-date'>Posted by
           {{post.user.username}}
           on
@@ -21,9 +20,12 @@
         </div>
       </div>
       <img id='post-image' src='/{{post.image_url}}' alt='{{post.title}}' />
-      <p id='post-body'>
-        {{post.body}}
-      </p>
+      <div id='post-body-wrapper'>
+        <h4 id='post-title'>{{post.title}}</h4>
+        <p id='post-body'>
+          {{post.body}}
+        </p>
+      </div>
     </a>
   {{/each}}
 </div>
@@ -32,7 +34,6 @@
   {{#each postsCommentsObj as |post|}}
     <a id='single-post' href='/post/{{post.id}}'>
       <div id='post-header' class='Category_name_here'>
-        <p id='post-title'>{{post.title}}</p>
         <p id='post-date'>Posted by
           {{post.user.username}}
           on
@@ -49,9 +50,12 @@
         </div>
       </div>
       <img id='post-image' src='/{{post.image_url}}' alt='{{post.title}}' />
-      <p id='post-body'>
-        {{post.body}}
-      </p>
+      <div id='post-body-wrapper'>
+        <h4 id='post-title'>{{post.title}}</h4>
+        <p id='post-body'>
+          {{post.body}}
+        </p>
+      </div>
     </a>
   {{/each}}
 </div>

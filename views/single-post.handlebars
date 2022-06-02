@@ -1,11 +1,13 @@
-<img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
 <div id='page-singlepost'>
   <div id='single-post'>
     <div id='post-header'>
-      <p id='post-title'>{{post.title}}</p>
       <p id='post-date'>{{format_date post.date}}</p>
     </div>
-    <p id='post-body'>{{post.description}}</p>
+    <img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
+    <div id='post-body-wrapper'>
+      <h4 id='post-title'>{{post.title}}</h4>
+      <p id='post-body'>{{post.description}}</p>
+    </div>
   </div>
   <form id='comment-form'>
     {{#if loggedIn}}

@@ -40,8 +40,11 @@ nav a:first-child {
 }
 /* -------- --------- --------- Single posts universal selectors and properties */
 #homepage-posts,
-#dashboard-posts {
-  width: 70%;
+#dashboard-posts,
+.post-top-likes,
+.post-top-comments,
+#page-singlepost {
+  width: 30%;
 }
 
 /* -------- --------- --------- Dashboard */
@@ -75,27 +78,32 @@ select {
 }
 
 #post-image {
-  width: 200px;
+  /* Fit the full width of the post */
+  width: 100%;
 }
 
 #post-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   background-color: aquamarine;
-  height: 40px;
+  font-size: 15px;
+  height: 30px;
 }
 
 #post-header p {
   margin: 0 10px;
 }
 
+#post-body-wrapper {
+  background-color: aliceblue;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-bottom: 50px;
+}
+
 #post-body {
   height: 100px;
-  padding-top: 10px;
-  padding-left: 10px;
-  background-color: aliceblue;
-  margin-bottom: 25px;
 }
 #single-post:last-child #post-body {
   margin-bottom: 0;

@@ -13,20 +13,20 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-const upload = multer({ 
+const upload = multer({
   storage: storage,
   limits: { fileSize: '1000000' },
   fileFilter: (req, file, cb) => {
-    const fileTypes = /jpeg|JPEG|jpg|JPG|png|PNG/
-    const mimeType = fileTypes.test(file.mimetype)
-    const extname = fileTypes.test(path.extname(file.originalname))
+    const fileTypes = /jpeg|JPEG|jpg|JPG|png|PNG/;
+    const mimeType = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
 
-    if(mimeType && extname) {
-      return cb(null, true)
+    if (mimeType && extname) {
+      return cb(null, true);
     }
     cb('Please upload a proper file format (JPG, JPEG, or PNG)');
-  }
- });
+  },
+});
 
 router.post('/', upload.single('image'), (req, res) => {
   // Extract the raw path
@@ -79,10 +79,6 @@ router.get('/', (req, res) => {
       ],
     ],
     include: [
-      {
-        model: Category,
-        attributes: ['category_name'],
-      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],

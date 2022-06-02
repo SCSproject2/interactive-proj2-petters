@@ -4,17 +4,18 @@
     <div id='single-post-wrapper'>
       <a id='single-post' href='/post/{{post.id}}'>
         <div id='post-header' class='Category_name_here'>
-          <p id='post-title'>{{post.title}}</p>
           <p id='post-date'>Posted by
             {{post.user.username}}
             on
             {{format_date post.created_at}}</p>
         </div>
-
         <img id='post-image' src='{{post.image_url}}' alt='{{post.title}}' />
-        <p id='post-body'>
-          {{post.body}}
-        </p>
+        <div id='post-body-wrapper'>
+          <h4 id='post-title'>{{post.title}}</h4>
+          <p id='post-body'>
+            {{post.body}}
+          </p>
+        </div>
       </a>
       <div id='post-icon-wrapper'>
         <div id='chat-icon-wrapper'>
