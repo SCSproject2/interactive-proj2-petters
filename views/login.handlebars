@@ -3,12 +3,18 @@
 <div class='login-container'>
   <h1>Login</h1>
   <form id='login-form'>
-    <input
-      type='username'
-      id='username-login'
-      placeholder='Username  *required'
-    />
-    <input type='password' id='pass-login' placeholder='Password  *required' />
+    <div id='form-inputs'>
+      <input
+        type='username'
+        id='username-login'
+        placeholder='Username  *required'
+      />
+      <input
+        type='password'
+        id='pass-login'
+        placeholder='Password  *required'
+      />
+    </div>
     <h1 id='signin-status'>Fill in required values</h1>
     <button id='login-btn' type='submit'>Login</button>
   </form>
@@ -17,9 +23,19 @@
 <div class='signup-container'>
   <h1>Sign up</h1>
   <form id='signup-form'>
-    <input type='text' id='signup-username' placeholder='Username  *required' />
-    <input type='email' id='signup-email' placeholder='Email  *required' />
-    <input type='password' id='signup-pass' placeholder='Password  *required' />
+    <div id='form-inputs'>
+      <input
+        type='text'
+        id='signup-username'
+        placeholder='Username  *required'
+      />
+      <input type='email' id='signup-email' placeholder='Email  *required' />
+      <input
+        type='password'
+        id='signup-pass'
+        placeholder='Password  *required'
+      />
+    </div>
     <h1 id='signup-status'>Fill in all required inputs with character count
       above 4</h1>
     <button id='submit-btn' type='submit'>Signup</button>

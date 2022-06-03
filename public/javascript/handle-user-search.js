@@ -75,7 +75,16 @@ async function fetchText(searchTerm) {
 }
 
 submitBtn.addEventListener('click', () => {
-  fetchText(searchTerm.value);
+  if (!searchTerm.value) {
+    const newEl = document.createElement('div');
+    newEl.innerHTML += `<p style='margin-top: 10px'>Please type a valid query</p>`;
+    postWrapper.appendChild(newEl);
+    setTimeout(() => {
+      postWrapper.innerHTML = '';
+    }, 2000);
+  } else {
+    fetchText(searchTerm.value);
+  }
 });
 
 // Clear the active user results and the input field as well
