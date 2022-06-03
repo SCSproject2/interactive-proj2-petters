@@ -13,20 +13,20 @@ const storage = multer.diskStorage({
     cb(null, Date.now() + path.extname(file.originalname));
   },
 });
-const upload = multer({ 
+const upload = multer({
   storage: storage,
   limits: { fileSize: '1000000' },
   fileFilter: (req, file, cb) => {
-    const fileTypes = /jpeg|JPEG|jpg|JPG|png|PNG/
-    const mimeType = fileTypes.test(file.mimetype)
-    const extname = fileTypes.test(path.extname(file.originalname))
+    const fileTypes = /jpeg|JPEG|jpg|JPG|png|PNG/;
+    const mimeType = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
 
-    if(mimeType && extname) {
-      return cb(null, true)
+    if (mimeType && extname) {
+      return cb(null, true);
     }
     cb('Please upload a proper file format (JPG, JPEG, or PNG)');
-  }
- });
+  },
+});
 
 router.post('/', upload.single('image'), (req, res) => {
   // Extract the raw path
@@ -40,9 +40,6 @@ router.post('/', upload.single('image'), (req, res) => {
   } else {
     finalPath = imagePath.replace('public/', '');
   }
-
-  // Return the chosen category from the dropdown
-  console.log(true, req.body.existing_categories);
 
   Post.create({
     title: req.body.title,
@@ -80,10 +77,6 @@ router.get('/', (req, res) => {
     ],
     include: [
       {
-        model: Category,
-        attributes: ['category_name'],
-      },
-      {
         model: Comment,
         attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
         include: {
@@ -115,7 +108,26 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'title', 'body'],
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'created_at',
+      'user_id',
+      'image_url',
+      [
+        sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
     include: [
       {
         model: Comment,
@@ -140,10 +152,6 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['username'],
-      },
-      {
-        model: Category,
-        attributes: ['category_name'],
       },
     ],
   })
@@ -202,6 +210,58 @@ router.delete('/:id', (req, res) => {
     })
     .catch((err) => {
       console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get('/categories/:id', (req, res) => {
+  Post.findAll({
+    where: {
+      category_id: req.params.id,
+    },
+    attributes: [
+      'id',
+      'title',
+      'body',
+      'created_at',
+      'user_id',
+      'image_url',
+      [
+        sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
+          '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+        ),
+        'like_count',
+      ],
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username'],
+        },
+      },
+      {
+        model: User,
+        attributes: ['username'],
+      },
+      {
+        model: Like,
+        attributes: ['user_id'],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      res.json(dbPostData);
+    })
+    .catch((err) => {
       res.status(500).json(err);
     });
 });

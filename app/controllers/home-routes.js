@@ -13,16 +13,18 @@ router.get('/', (req, res) => {
       'image_url',
       [
         sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
           '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
         ),
         'like_count',
       ],
     ],
     include: [
-      {
-        model: Category,
-        attributes: ['category_name'],
-      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
@@ -71,16 +73,18 @@ router.get('/post/:id', (req, res) => {
       'image_url',
       [
         sequelize.literal(
+          '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+        ),
+        'category_name',
+      ],
+      [
+        sequelize.literal(
           '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
         ),
         'like_count',
       ],
     ],
     include: [
-      {
-        model: Category,
-        attributes: ['category_name'],
-      },
       {
         model: Comment,
         attributes: ['id', 'comment_text', 'user_id', 'post_id', 'created_at'],
@@ -106,12 +110,14 @@ router.get('/post/:id', (req, res) => {
       const description = dbPostData.dataValues.body;
       const image = dbPostData.dataValues.image_url;
       const likes = dbPostData.dataValues.like_count;
+      const category_name = dbPostData.dataValues.category_name;
 
       const post = {
         title,
         date,
         user,
         description,
+        category_name,
         comments: [],
         image,
         likes,
@@ -136,6 +142,7 @@ router.get('/post/:id', (req, res) => {
           usersComment: username == req.session.username,
         });
       }
+
       res.render('single-post', {
         post,
         loggedIn: req.session.loggedIn,

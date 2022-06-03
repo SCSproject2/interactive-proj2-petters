@@ -33,6 +33,39 @@ nav a:first-child {
   border-bottom: 1px solid black;
 }
 
+button {
+  padding: 3px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: lightblue;
+  box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: scale(0.97);
+  box-shadow: 0px 0px 1px 0 rgba(0, 0, 0, 0.04);
+}
+
+input {
+  color: white;
+  padding: 3px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#search-post-wrapper {
+  margin-top: 20px;
+  width: 40%;
+}
+/* -------- --------- --------- Login / Signup (login.handlebars) */
+
+#signup-status,
+#signin-status {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
 /* -------- --------- --------- Main page CSS (main.handlebars) */
 
 #header-logo {
@@ -40,8 +73,22 @@ nav a:first-child {
 }
 /* -------- --------- --------- Single posts universal selectors and properties */
 #homepage-posts,
-#dashboard-posts {
-  width: 70%;
+#dashboard-posts,
+.post-top-likes,
+.post-top-comments,
+#page-singlepost {
+  width: 30%;
+}
+
+.container {
+  padding: 0;
+}
+.post-top-likes {
+  margin-right: 20px;
+}
+.post-top-likes,
+.post-top-comments {
+  padding: 0;
 }
 
 /* -------- --------- --------- Dashboard */
@@ -75,27 +122,57 @@ select {
 }
 
 #post-image {
-  width: 200px;
+  /* Fit the full width of the post */
+  width: 100%;
 }
 
 #post-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: aquamarine;
-  height: 40px;
+  font-size: 15px;
+  height: 30px;
+}
+
+#post-category {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 20px;
+  opacity: 0.3;
+}
+
+.dogs {
+  background-color: rgb(214, 82, 59);
+}
+.cats {
+  background-color: rgb(44, 139, 255);
+}
+.small-pets {
+  background-color: orange;
+}
+.reptile {
+  background-color: green;
+}
+.wild {
+  background-color: plum;
+}
+.fish {
+  background-color: lightblue;
 }
 
 #post-header p {
   margin: 0 10px;
 }
 
+#post-body-wrapper {
+  background-color: aliceblue;
+  padding-left: 10px;
+  padding-top: 10px;
+  margin-bottom: 50px;
+}
+
 #post-body {
   height: 100px;
-  padding-top: 10px;
-  padding-left: 10px;
-  background-color: aliceblue;
-  margin-bottom: 25px;
 }
 #single-post:last-child #post-body {
   margin-bottom: 0;
@@ -115,17 +192,19 @@ select {
   display: flex;
 }
 
+#chat-icon,
+.like-icon {
+  margin-right: 3px;
+  width: 20px;
+  height: 22.5px;
+}
 #chat-icon {
   pointer-events: none;
-  margin-right: 3px;
-  width: 22.5px;
 }
 
 .like-icon {
   cursor: pointer;
   margin-left: 15px;
-  margin-right: 3px;
-  width: 20px;
 }
 
 /* -------- --------- --------- Dashboard */

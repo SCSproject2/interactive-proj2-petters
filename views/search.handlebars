@@ -1,15 +1,20 @@
-<form id="search-bar">
-  <input
-    type='search'
-    id='search'
-    name='search'
-    placeholder='Search...'
-    aria-label='Search through site content'
-  />
-  <button tpye="submit" id="dogs">Dogs</button>
-  <button tpye="submit" id="cats">Cats</button>
-  <button tpye="submit" id="small-pets">Small Pets</button>
-  <button tpye="submit" id="reptiles">Reptiles</button>
-  <button tpye="submit" id="wild">Wild</button>
-  <button tpye="submit" id="fish">Fish</button>
-</form>
+<input
+  type='search'
+  id='search'
+  name='search'
+  placeholder='Search...'
+  aria-label='Search through site content'
+/>
+<hr />
+<p style='margin-bottom: 0;'>Search by existing categories</p>
+
+{{#each categoryArr as |category|}}
+  <button
+    class='category-btns'
+    data-category-id='{{category.id}}'
+  >{{category.category_name}}</button>
+{{/each}}
+<div id='search-post-wrapper'>
+
+</div>
+<script src='/javascript/handle-search.js'></script>

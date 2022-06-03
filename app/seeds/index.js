@@ -12,13 +12,13 @@ const seedAll = async () => {
   await seedUsers();
 
   console.log('--------------');
+  await seedCategories();
+
+  console.log('--------------');
   await seedPosts();
 
   console.log('--------------');
   await seedComments();
-
-  console.log('--------------');
-  await seedCategories();
 
   console.log('--------------');
   await seedLikes();
