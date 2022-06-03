@@ -33,6 +33,10 @@ nav a:first-child {
   border-bottom: 1px solid black;
 }
 
+.navItem.active {
+  color: blue;
+}
+
 button {
   padding: 3px 15px;
   border: none;
