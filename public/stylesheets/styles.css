@@ -52,6 +52,7 @@ button:active {
 
 input,
 textarea {
+  font-size: 20px;
   resize: none;
   color: black;
   padding: 3px 15px;
@@ -68,6 +69,29 @@ textarea {
 #addPost-form {
   display: flex;
   align-items: flex-end;
+}
+/* -------- --------- --------- Featured page (featured.handlebars) */
+
+.container h2 {
+  font-size: 35px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.post-top-likes {
+  background-color: rgba(214, 110, 110, 0.1);
+}
+
+.post-top-comments {
+  background-color: rgba(214, 195, 110, 0.1);
+}
+.container {
+  padding: 0;
+}
+
+.post-top-likes,
+.post-top-comments {
+  padding: 15px;
 }
 
 /* -------- --------- --------- Login / Signup (login.handlebars) */
@@ -91,21 +115,11 @@ textarea {
 #page-singlepost,
 #single-user-wrapper,
 .user-results {
-  width: 30%;
+  width: 35%;
 }
 
 .user-results {
   margin-top: 20px;
-}
-.container {
-  padding: 0;
-}
-.post-top-likes {
-  margin-right: 20px;
-}
-.post-top-likes,
-.post-top-comments {
-  padding: 0;
 }
 
 /* -------- --------- --------- Dashboard */
@@ -135,6 +149,10 @@ textarea {
   margin-right: 10px;
 }
 
+#dashboardHr {
+  margin: 40px 0;
+}
+
 /* -------- --------- --------- Home page */
 #homepage-posts a {
   margin-bottom: 100px;
@@ -153,6 +171,8 @@ textarea {
 #post-image {
   /* Fit the full width of the post */
   width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 
 #post-header {
@@ -238,10 +258,4 @@ textarea {
 .like-icon {
   cursor: pointer;
   margin-left: 15px;
-}
-
-/* -------- --------- --------- Dashboard */
-
-#dashboardHr {
-  margin: 40px 0;
 }

@@ -7,11 +7,6 @@ headerLogoEl.addEventListener('click', () => {
 // Highlights the active nav item
 const navItems = document.querySelectorAll('.navItem');
 
-console.log(navItems);
-navItems.forEach((item, index) => {
-  console.log(item.href, index);
-});
-
 if (window.location.pathname == '/') {
   navItems[0].classList.add('active');
 }
