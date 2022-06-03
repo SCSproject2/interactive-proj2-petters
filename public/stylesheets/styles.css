@@ -216,6 +216,7 @@ textarea {
   justify-content: space-between;
   font-size: 15px;
   height: 30px;
+  background-color: rgb(214, 255, 194);
 }
 
 #post-category {
@@ -226,22 +227,22 @@ textarea {
 }
 
 .dogs {
-  background-color: rgb(214, 82, 59);
+  background-color: rgb(214, 82, 59) !important;
 }
 .cats {
-  background-color: rgb(44, 139, 255);
+  background-color: rgb(44, 139, 255) !important;
 }
 .small-pets {
-  background-color: orange;
+  background-color: orange !important;
 }
 .reptile {
-  background-color: green;
+  background-color: green !important;
 }
 .wild {
-  background-color: plum;
+  background-color: plum !important;
 }
 .fish {
-  background-color: lightblue;
+  background-color: lightblue !important;
 }
 
 #post-header p {
