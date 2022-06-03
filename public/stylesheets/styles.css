@@ -9,13 +9,36 @@ h1 {
   color: black;
 }
 
+#empty {
+  width: 200px;
+}
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  padding-left: 30px;
+  background-color: rgba(111, 22, 193, 0.7);
+  top: 0;
+  z-index: 2;
+  position: sticky;
   margin-bottom: 25px;
+  box-shadow: 5px 0 10px 0 rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
 }
 
-body {
+#header-logo {
+  color: white;
+  cursor: pointer;
+}
+
+main {
   margin-top: 30px;
   margin-left: 30px;
+}
+
+nav a:hover {
+  color: rgb(231, 231, 231);
 }
 
 nav a {
@@ -27,14 +50,14 @@ nav a:first-child {
 }
 
 .navItem {
+  font-size: 25px;
   cursor: pointer;
   text-decoration: none;
-  color: black;
-  border-bottom: 1px solid black;
+  color: white;
 }
 
 .navItem.active {
-  color: blue;
+  color: rgb(0, 0, 0);
 }
 
 button {
