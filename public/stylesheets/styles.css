@@ -73,7 +73,7 @@ textarea {
   font-size: 20px;
   resize: none;
   color: black;
-  padding: 3px 10px;
+  padding: 5px 10px;
   border: none;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -144,7 +144,7 @@ textarea {
 
 .post-top-likes,
 .post-top-comments {
-  padding: 15px;
+  padding: 50px;
 }
 
 /* -------- --------- --------- Login / Signup (login.handlebars) */
@@ -192,30 +192,49 @@ textarea {
 }
 
 /* -------- --------- --------- Dashboard */
+#addPost-form {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#add-select-wrapper {
+  display: flex;
+}
+
+#addPost-form textarea,
+#add-title {
+  width: 100%;
+}
+
+#add-post-image {
+  width: 64%;
+  margin-right: 15px;
+}
+
+#add-post-image,
+#addPost-form textarea,
+#add-title,
 select {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#add-post {
+  margin-top: 5px;
+}
+
+select {
+  width: 35%;
+  background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 18px;
   color: #444;
   padding: 5px 12px;
-  width: 170px;
-  text-align: center;
-  border: 2px solid grey;
-  border-radius: 12px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  border-radius: 5px;
+  border: none;
   appearance: none;
-  background-color: rgb(248, 247, 247);
-  margin-right: 10px;
-}
-
-textarea {
-  margin: 0 10px;
-  width: 350px;
-}
-
-#add-post-image {
-  width: 300px;
-  margin-right: 10px;
 }
 
 #dashboardHr {
@@ -258,6 +277,10 @@ textarea {
   font-weight: 800;
   font-size: 20px;
   opacity: 0.3;
+}
+
+.category-btns {
+  margin: 5px 0;
 }
 
 .dogs {

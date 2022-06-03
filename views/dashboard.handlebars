@@ -1,58 +1,64 @@
 <div class='addPost-container'>
-  <h1>Add Post</h1>
+  <h3>Add Post</h3>
   <form
     id='addPost-form'
     method='POST'
     action='/api/posts'
     enctype='multipart/form-data'
   >
-    <input type='text' name='title' placeholder='Title  *required' />
+    <input
+      id='add-title'
+      type='text'
+      name='title'
+      placeholder='Title  *required'
+    />
     <textarea
       type='text'
       name='desc'
       placeholder='Description  *required'
     ></textarea>
-    <input id='add-post-image' type='file' name='image' />
-    <select name='existing_categories'>
-      <option value='' disabled selected>Pick a category</option>
-      {{#each categories as |category|}}
-        <option
-          data-category-id={{category.id}}
-          value='{{category.id}}'
-        >{{category.category_name}}</option>
-      {{/each}}
-
-    </select>
+    <div id='add-select-wrapper'>
+      <input id='add-post-image' type='file' name='image' />
+      <select name='existing_categories'>
+        <option value='' disabled selected>Pick a category</option>
+        {{#each categories as |category|}}
+          <option
+            data-category-id={{category.id}}
+            value='{{category.id}}'
+          >{{category.category_name}}</option>
+        {{/each}}
+      </select>
+    </div>
     <button id='add-post' type='submit'>Post</button>
   </form>
-  {{! // }}
-  {{! Image Filters }}
-  <div>
-    <h1>Image filter test</h1>
-    <img
-      id='image-test'
-      style='width: 300px;'
-      src='./images/test-image.PNG'
-      alt=''
-    />
-    <div id='filter-options'>
-      <button data-filter='sepia' class='filterBtn'>Sepia</button>
-      <button data-filter='invert' class='filterBtn'>Invert</button>
-      <button data-filter='grayscale' class='filterBtn'>Grayscale</button>
-      <button data-filter='red-tint' class='filterBtn'>Red tint</button>
-      <button data-filter='blue-tint' class='filterBtn'>Blue tint</button>
-      <button data-filter='purple-tint' class='filterBtn'>Purple tint</button>
-      <button data-filter='orange-tint' class='filterBtn'>Orange tint</button>
-    </div>
-  </div>
-  {{! Image Filters }}
-  {{! // }}
-  <h1>Add new Category</h1>
+  <h3 style='margin-top: 20px'>Add new Category</h3>
   <form id='addCategory-form' method='POST' action='/api/category'>
     <input name='category_name' type='text' placeholder='Enter new category' />
     <button id='add-category' type='submit'>Post</button>
   </form>
 </div>
+{{! // }}
+{{! Image Filters }}
+<div>
+  <h3 style='margin-top: 20px'>Image filter test</h3>
+  <img
+    id='image-test'
+    style='width: 300px;'
+    src='./images/test-image.PNG'
+    alt=''
+  />
+  <div id='filter-options'>
+    <button data-filter='sepia' class='filterBtn'>Sepia</button>
+    <button data-filter='invert' class='filterBtn'>Invert</button>
+    <button data-filter='grayscale' class='filterBtn'>Grayscale</button>
+    <button data-filter='red-tint' class='filterBtn'>Red tint</button>
+    <button data-filter='blue-tint' class='filterBtn'>Blue tint</button>
+    <button data-filter='purple-tint' class='filterBtn'>Purple tint</button>
+    <button data-filter='orange-tint' class='filterBtn'>Orange tint</button>
+  </div>
+</div>
+{{! Image Filters }}
+{{! // }}
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
 <div id='dashboard-posts'>
