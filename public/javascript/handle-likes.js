@@ -10,7 +10,10 @@ async function addLike(postId) {
   if (response.ok) {
     document.location.reload();
   } else {
-    alert(response.statusText);
+    // In the likes route, we return if a user tries to like a post
+    // When they are not signed in so the response is not 'ok'
+    // In other words, redirect to login page
+    document.location.pathname = '/login';
   }
 }
 

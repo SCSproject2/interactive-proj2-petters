@@ -31,6 +31,10 @@ router.post('/:id', (req, res) => {
       .then((dbLikeData) => res.json(dbLikeData))
       .catch((err) => res.status(500).json(err));
   } else {
+    // In the plain javascript, the response would return not ok
+    // So we can execute that code
+    // See the code in handle-likes.js
+    res.error(400);
   }
 });
 

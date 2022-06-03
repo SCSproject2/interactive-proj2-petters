@@ -1,15 +1,34 @@
 <div id='page-singlepost'>
-  <div id='single-post'>
-    <div id='post-header' class='{{post.category_name}}'>
-      <p id='post-category'>{{post.category_name}}</p>
-      <p id='post-date'>{{post.user}}-{{format_date post.date}}</p>
+      <div id='single-post-wrapper'>
+      <div id='single-post'>
+        <div id='post-header' class='{{post.category_name}}'>
+          <p id='post-category'>{{post.category_name}}</p>
+      <p id='post-date'>{{post.user}} - {{format_date post.date}}</p>
+        </div>
+        <img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
+        <div id='post-body-wrapper'>
+          <h4 id='post-title'>{{post.title}}</h4>
+          <p id='post-body'>
+            {{post.description}}
+          </p>
+        </div>
+      </div>
+      <div id='post-icon-wrapper'>
+        <div id='chat-icon-wrapper'>
+          <img id='chat-icon' src='../images/comment.png' alt='' />
+          <p>{{checkCounter post.comments}}</p>
+        </div>
+        <div id='like-icon-wrapper'>
+          <img
+            data-post-id='{{post.id}}'
+            class='like-icon'
+            src='../images/like.png'
+            alt=''
+          />
+          <p>{{post.likes}}</p>
+        </div>
+      </div>
     </div>
-    <img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
-    <div id='post-body-wrapper'>
-      <h4 id='post-title'>{{post.title}}</h4>
-      <p id='post-body'>{{post.description}}</p>
-    </div>
-  </div>
   <form id='comment-form'>
     {{#if loggedIn}}
       <textarea id='comment-field' placeholder='Add comment'></textarea>
