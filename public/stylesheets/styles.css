@@ -14,8 +14,8 @@ header {
 }
 
 body {
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 30px;
+  margin-left: 30px;
 }
 
 nav a {
@@ -46,8 +46,10 @@ button:active {
   box-shadow: 0px 0px 1px 0 rgba(0, 0, 0, 0.04);
 }
 
-input {
-  color: white;
+input,
+textarea {
+  resize: none;
+  color: black;
   padding: 3px 15px;
   border: none;
   border-radius: 4px;
@@ -56,12 +58,18 @@ input {
 
 #search-post-wrapper {
   margin-top: 20px;
-  width: 40%;
+  width: 35%;
 }
-/* -------- --------- --------- Login / Signup (login.handlebars) */
 
+#addPost-form {
+  display: flex;
+  align-items: flex-end;
+}
+
+/* -------- --------- --------- Login / Signup (login.handlebars) */
 #signup-status,
-#signin-status {
+#signin-status,
+#comment-status {
   margin-top: 5px;
   font-size: 12px;
 }
@@ -76,10 +84,15 @@ input {
 #dashboard-posts,
 .post-top-likes,
 .post-top-comments,
-#page-singlepost {
+#page-singlepost,
+#single-user-wrapper,
+.user-results {
   width: 30%;
 }
 
+.user-results {
+  margin-top: 20px;
+}
 .container {
   padding: 0;
 }
@@ -96,7 +109,7 @@ select {
   cursor: pointer;
   font-size: 18px;
   color: #444;
-  padding: 12px;
+  padding: 5px 12px;
   width: 170px;
   text-align: center;
   border: 2px solid grey;
@@ -105,6 +118,17 @@ select {
   -webkit-appearance: none;
   appearance: none;
   background-color: rgb(248, 247, 247);
+  margin-right: 10px;
+}
+
+textarea {
+  margin: 0 10px;
+  width: 350px;
+}
+
+#add-post-image {
+  width: 300px;
+  margin-right: 10px;
 }
 
 /* -------- --------- --------- Home page */
@@ -114,6 +138,7 @@ select {
 
 #single-post-wrapper {
   position: relative;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 #single-post {
   position: relative;
@@ -187,6 +212,10 @@ select {
   bottom: 10px;
 }
 
+#post-icon-wrapper p {
+  margin-bottom: 0;
+}
+
 #chat-icon-wrapper,
 #like-icon-wrapper {
   display: flex;
@@ -210,7 +239,7 @@ select {
 /* -------- --------- --------- Dashboard */
 
 #dashboardHr {
-  margin: 25px 0;
+  margin: 40px 0;
 }
 
 /* ------------------------------ Featured */

@@ -34,12 +34,20 @@ router.get('/', withAuth, (req, res) => {
           'created_at',
           'user_id',
           'image_url',
+          [
+            sequelize.literal(
+              '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
+            ),
+            'category_name',
+          ],
+          [
+            sequelize.literal(
+              '(SELECT COUNT(*) FROM `like` WHERE post.id = like.post_id)'
+            ),
+            'like_count',
+          ],
         ],
         include: [
-          {
-            model: Category,
-            attributes: ['category_name'],
-          },
           {
             model: Comment,
             attributes: [
@@ -67,6 +75,7 @@ router.get('/', withAuth, (req, res) => {
         .then((dbPostData) => {
           const posts = dbPostData.map((post) => post.get({ plain: true }));
           posts.reverse();
+          console.log(posts);
           res.render('dashboard', {
             posts,
             categories: categoryArr,
