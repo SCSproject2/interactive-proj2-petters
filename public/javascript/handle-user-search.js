@@ -80,6 +80,7 @@ submitBtn.addEventListener('click', () => {
 
 // Clear the active user results and the input field as well
 clearBtn.addEventListener('click', () => {
+  clearBtn.style.display = 'none';
   postWrapper.innerHTML = '';
   searchTerm.value = '';
 });
