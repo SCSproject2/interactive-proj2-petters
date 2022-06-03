@@ -22,12 +22,16 @@ router.get('/', (req, res) => {
 
 //Add new like
 router.post('/:id', (req, res) => {
-  Like.create({
-    user_id: req.session.user_id,
-    post_id: req.params.id,
-  })
-    .then((dbLikeData) => res.json(dbLikeData))
-    .catch((err) => res.status(500).json(err));
+  // Only be able to like posts if user is logged in
+  if (req.session.user_id) {
+    Like.create({
+      user_id: req.session.user_id,
+      post_id: req.params.id,
+    })
+      .then((dbLikeData) => res.json(dbLikeData))
+      .catch((err) => res.status(500).json(err));
+  } else {
+  }
 });
 
 //delete like

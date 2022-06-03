@@ -63,11 +63,10 @@
 
   {{#each posts as |post|}}
     <div id='single-post'>
-      <div id='post-header' class='Category_name_here'>
-        <p id='post-title'>{{post.title}}</p>
-        <p id='post-date'>Posted by
+      <div id='post-header' class='{{post.category_name}}'>
+        <p id='post-date'>
           {{post.user.username}}
-          on
+          -
           {{format_date post.created_at}}</p>
       </div>
       <div id='post-icon-wrapper'>
@@ -81,9 +80,12 @@
         </div>
       </div>
       <img id='post-image' src='{{post.image_url}}' alt='{{post.title}}' />
-      <p id='post-body'>
-        {{post.body}}
-      </p>
+      <div id='post-body-wrapper'>
+        <h4 id='post-title'>{{post.title}}</h4>
+        <p id='post-body'>
+          {{post.body}}
+        </p>
+      </div>
       <div id='post-controls'>
         <button
           data-post-id='{{post.id}}'
