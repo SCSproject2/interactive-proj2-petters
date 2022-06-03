@@ -1,4 +1,5 @@
 const categoryBtns = document.querySelectorAll('.category-btns');
+const userWrapper = document.getElementById('search-user-wrapper');
 
 const format_date = (date) => {
   return `${new Date(date).getMonth() + 1}/${new Date(
@@ -7,6 +8,7 @@ const format_date = (date) => {
 };
 
 const renderPosts = (postsObject) => {
+  userWrapper.innerHTML = '';
   const postWrapper = document.getElementById('search-post-wrapper');
   postWrapper.innerHTML = '';
   postsObject.forEach((el) => {
@@ -65,6 +67,7 @@ async function returnPosts(categoryId) {
 categoryBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     const categoryId = btn.getAttribute('data-category-id');
+    clearBtn.style.display = 'unset';
     returnPosts(categoryId);
   });
 });

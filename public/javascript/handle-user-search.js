@@ -2,6 +2,7 @@ const submitBtn = document.getElementById('submit-user');
 const clearBtn = document.getElementById('clear-search');
 const searchTerm = document.getElementById('search');
 const postWrapper = document.getElementById('search-user-wrapper');
+const categoryWrapper = document.getElementById('search-post-wrapper');
 
 // On initial page load, set clear button to display off
 clearBtn.style.display = 'none';
@@ -19,6 +20,7 @@ const renderUserPosts = (postsObject) => {
     }, 2000);
   } else {
     postsObject.forEach((el) => {
+      categoryWrapper.innerHTML = '';
       clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
@@ -81,7 +83,7 @@ submitBtn.addEventListener('click', () => {
     postWrapper.appendChild(newEl);
     setTimeout(() => {
       postWrapper.innerHTML = '';
-    }, 2000);
+    }, 1250);
   } else {
     fetchText(searchTerm.value);
   }
@@ -90,6 +92,7 @@ submitBtn.addEventListener('click', () => {
 // Clear the active user results and the input field as well
 clearBtn.addEventListener('click', () => {
   clearBtn.style.display = 'none';
+  document.getElementById('search-post-wrapper').innerHTML = '';
   postWrapper.innerHTML = '';
   searchTerm.value = '';
 });

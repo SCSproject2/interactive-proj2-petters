@@ -27,11 +27,6 @@ header {
   backdrop-filter: blur(6px);
 }
 
-#header-logo {
-  color: white;
-  cursor: pointer;
-}
-
 main {
   margin-top: 30px;
   margin-left: 30px;
@@ -84,9 +79,43 @@ textarea {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* -------- --------- --------- Search page (search.handlebars) */
+
+#search-wrapper {
+  margin-bottom: 50px;
+}
+#search-controls {
+  color: white;
+  width: 60%;
+  top: 120px;
+  z-index: 2;
+  position: sticky;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(111, 22, 193, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+#search-controls input::placeholder {
+  color: white;
+}
+#search-controls input {
+  color: white;
+  background-color: rgba(104, 24, 179, 0.7);
+}
+#header-logo {
+  color: white;
+  cursor: pointer;
+}
+
 #search-post-wrapper {
   margin-top: 20px;
   width: 35%;
+}
+
+#search-post-wrapper,
+#search-user-wrapper {
+  margin-left: 20px;
 }
 
 #addPost-form {
