@@ -8,7 +8,6 @@ async function addLike(postId) {
     },
   });
   if (response.ok) {
-    console.log('test');
     document.location.reload();
   } else {
     alert(response.statusText);

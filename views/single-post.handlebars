@@ -1,11 +1,8 @@
 <div id='page-singlepost'>
   <div id='single-post'>
     <div id='post-header' class='{{post.category_name}}'>
-              <p id='post-category'>{{post.category_name}}</p>
-          <p id='post-date'>
-            {{post.user}}
-            -
-            {{format_date post.date}}</p>
+      <p id='post-category'>{{post.category_name}}</p>
+      <p id='post-date'>{{post.user}}-{{format_date post.date}}</p>
     </div>
     <img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
     <div id='post-body-wrapper'>
@@ -40,7 +37,6 @@
         </div>
         {{else}}
         <div id='single-comment'>
-  
           {{/if}}
           <div id='comment-wrapper'>
             <p id='user'>{{comment.user}}</p>

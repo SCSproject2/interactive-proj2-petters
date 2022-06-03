@@ -84,10 +84,15 @@ textarea {
 #dashboard-posts,
 .post-top-likes,
 .post-top-comments,
-#page-singlepost {
+#page-singlepost,
+#single-user-wrapper,
+.user-results {
   width: 30%;
 }
 
+.user-results {
+  margin-top: 20px;
+}
 .container {
   padding: 0;
 }

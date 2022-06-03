@@ -1,5 +1,4 @@
 <div id='homepage-posts'>
-  {{! posts.forEach(post) }}
   {{#each posts as |post|}}
     <div id='single-post-wrapper'>
       <a id='single-post' href='/post/{{post.id}}'>
@@ -23,7 +22,6 @@
           <p>{{checkCounter post.comments}}</p>
         </div>
         <div id='like-icon-wrapper'>
-
           <img
             data-post-id='{{post.id}}'
             class='like-icon'
@@ -34,6 +32,7 @@
         </div>
       </div>
     </div>
+
   {{/each}}
 </div>
 <script src='./javascript/handle-likes.js'></script>

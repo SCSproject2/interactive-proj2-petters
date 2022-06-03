@@ -1,20 +1,21 @@
 <input
-  type='search'
   id='search'
-  name='search'
-  placeholder='Search...'
+  placeholder='Search user'
   aria-label='Search through site content'
 />
+<button id='submit-user'>Submit</button>
+<div id='search-user-wrapper'></div>
+
 <hr />
 <p style='margin-bottom: 0;'>Search by existing categories</p>
 
 {{#each categoryArr as |category|}}
   <button
-    class='category-btns'
+    class='category-btns {{category.category_name}}'
     data-category-id='{{category.id}}'
   >{{category.category_name}}</button>
 {{/each}}
 <div id='search-post-wrapper'>
-
 </div>
-<script src='/javascript/handle-search.js'></script>
+<script src='/javascript/handle-category-search.js'></script>
+<script src='/javascript/handle-user-search.js'></script>
