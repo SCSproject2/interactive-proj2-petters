@@ -1,8 +1,13 @@
 const submitBtn = document.getElementById('submit-user');
+const clearBtn = document.getElementById('clear-search');
 const searchTerm = document.getElementById('search');
+const postWrapper = document.getElementById('search-user-wrapper');
+
+// On initial page load, set clear button to display off
+clearBtn.style.display = 'none';
 
 const renderUserPosts = (postsObject) => {
-  const postWrapper = document.getElementById('search-user-wrapper');
+  // Every time we render new users, clear the previous users
   postWrapper.innerHTML = '';
 
   if (typeof postsObject === 'string') {
@@ -14,6 +19,7 @@ const renderUserPosts = (postsObject) => {
     }, 2000);
   } else {
     postsObject.forEach((el) => {
+      clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
             <div id='single-post-wrapper' class='user-results'>
@@ -70,4 +76,10 @@ async function fetchText(searchTerm) {
 
 submitBtn.addEventListener('click', () => {
   fetchText(searchTerm.value);
+});
+
+// Clear the active user results and the input field as well
+clearBtn.addEventListener('click', () => {
+  postWrapper.innerHTML = '';
+  searchTerm.value = '';
 });
