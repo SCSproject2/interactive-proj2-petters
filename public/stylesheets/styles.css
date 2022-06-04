@@ -181,10 +181,13 @@ textarea {
 #dashboard-posts,
 .post-top-likes,
 .post-top-comments,
-#page-singlepost,
 #single-user-wrapper,
 .user-results {
   width: 35%;
+}
+
+#page-singlepost {
+  width: 30%;
 }
 
 .user-results {
@@ -352,6 +355,4 @@ select {
   cursor: pointer;
   margin-left: 15px;
 }
-.like-icon.true {
-  filter: invert(1);
-}
+
