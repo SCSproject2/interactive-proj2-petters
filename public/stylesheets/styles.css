@@ -383,7 +383,3 @@ select {
 .like-icon.true {
   filter: invert(1);
 }
-
-.like-icon.true {
-  filter: invert(1);
-}
