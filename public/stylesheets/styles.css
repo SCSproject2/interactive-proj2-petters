@@ -157,7 +157,6 @@ textarea {
 #post-image {
   /* Fit the full width of the post */
   width: 100%;
-  height: 56%;
 }
 
 #post-header {
@@ -165,7 +164,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   font-size: 15px;
-  height: 30px;
+  /* height: 30px; */
 }
 
 #post-category {
@@ -266,3 +265,40 @@ textarea {
   border-right: 1px solid black;
   padding-right: 50px;
 } */
+
+
+/* RESPONSIVE */
+
+
+@media screen and (max-width: 1024px) {
+  /* homepage */
+  .col-md-4 {
+    width: 30%;
+  }
+
+}
+
+@media screen and (min-width: 1025px) {
+  /* homepage */
+  .col-md-4 {
+    width: 22%;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+  /* homepage */
+  .col-md-4 {
+    width: 45%;
+  }
+  
+}
+
+@media screen and (max-width: 568px) {
+  /* homepage */
+  .col-md-4 {
+    width: 95%;
+  }
+  
+}
+
