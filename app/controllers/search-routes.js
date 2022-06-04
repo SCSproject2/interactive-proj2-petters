@@ -1,8 +1,4 @@
 const router = require('express').Router();
-<<<<<<< HEAD
-const res = require('express/lib/response');
-const { Post, User, Comment, Category, Pet } = require('../models');
-=======
 const { Post, User, Comment, Category, Pet, Like } = require('../models');
 const sequelize = require('../config/connection');
 
@@ -103,7 +99,6 @@ router.get('/user/:username', (req, res) => {
         });
     });
 });
->>>>>>> 7ced4e8c82e97f6b97d952f2b19d8246cf773363
 
 
 router.get('/', (req, res) => {
