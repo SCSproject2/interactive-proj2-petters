@@ -39,12 +39,34 @@ router.get('/', (req, res) => {
       },
       {
         model: Like,
-        attributes: ['user_id'],
+        attributes: ['post_id', 'user_id', 'liked'],
       },
     ],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      const likedArr = [];
+      posts.forEach((post) => {
+        likedArr.push(post.likes);
+      });
+
+      const usersLikes = [];
+      likedArr.forEach((like) => {
+        like.forEach((like2) => {
+          if (like2.user_id == req.session.user_id) {
+            usersLikes.push(like2);
+          }
+        });
+      });
+
+      posts.forEach((post) => {
+        usersLikes.forEach((like) => {
+          if (post.id == like.post_id) {
+            post.likes = true;
+          }
+        });
+      });
+
       posts.reverse(req.session.loggedIn);
       res.render('homepage', {
         posts,

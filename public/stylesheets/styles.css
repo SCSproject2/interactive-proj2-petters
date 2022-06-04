@@ -356,28 +356,3 @@ select {
   margin-left: 15px;
 }
 
-/* -------- --------- --------- Single post page */
-
-#page-singlepost #post-body-wrapper {
-  margin-bottom: 0;
-}
-#comment-field,
-#comment-section {
-  width: 100%;
-}
-
-#single-comment {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  height: 145px;
-  margin: 10px 0;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.04);
-  border-radius: 10px;
-}
-
-#comment {
-  font-size: 15px;
-}

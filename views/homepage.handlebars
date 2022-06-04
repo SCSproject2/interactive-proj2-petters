@@ -23,12 +23,13 @@
         </div>
         <div id='like-icon-wrapper'>
           <img
+            data-like-active='{{checkTruthy post.likes}}'
             data-post-id='{{post.id}}'
-            class='like-icon'
+            class='like-icon {{checkTruthy post.likes}}'
             src='./images/like.png'
             alt=''
           />
-          <p>{{checkCounter post.likes}}</p>
+          <p>{{post.like_count}}</p>
         </div>
       </div>
     </div>
