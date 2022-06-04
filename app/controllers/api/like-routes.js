@@ -27,24 +27,28 @@ router.post('/:id', (req, res) => {
     Like.create({
       user_id: req.session.user_id,
       post_id: req.params.id,
+      liked: true
     })
-      .then((dbLikeData) => res.json(dbLikeData))
+      .then((dbLikeData) => {
+        res.json(dbLikeData);
+      console.log(dbLikeData);
+    })
+      
       .catch((err) => res.status(500).json(err));
   } else {
     // In the plain javascript, the response would return not ok
     // So we can execute that code
     // See the code in handle-likes.js
-    res.error(400);
+    res.err(400);
   }
 });
 
 //delete like
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
   Like.destroy({
     where: {
-      // user_id: req.session.user_id,
-      user_id: req.body.user_id,
-      post_id: req.body.post_id,
+      user_id: req.session.user_id,
+      post_id: req.params.id,
     },
   })
     .then((dbLikeData) => {
