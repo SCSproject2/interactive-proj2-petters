@@ -20,20 +20,18 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-//Add new like
+// Add new like
 router.post('/:id', (req, res) => {
   // Only be able to like posts if user is logged in
   if (req.session.user_id) {
     Like.create({
       user_id: req.session.user_id,
       post_id: req.params.id,
-      liked: true
     })
       .then((dbLikeData) => {
         res.json(dbLikeData);
-      console.log(dbLikeData);
-    })
-      
+      })
+
       .catch((err) => res.status(500).json(err));
   } else {
     // In the plain javascript, the response would return not ok

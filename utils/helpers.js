@@ -5,6 +5,14 @@ module.exports = {
     ).getDate()}/${new Date(date).getFullYear()}`;
   },
 
+  checkTruthy: (obj) => {
+    if (obj == true) {
+      return `true`;
+    } else {
+      return `false`;
+    }
+  },
+
   checkCounter: (item) => {
     return item.length;
   },

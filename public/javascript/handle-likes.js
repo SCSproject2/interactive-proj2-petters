@@ -1,13 +1,13 @@
 const likesBtn = document.querySelectorAll('.like-icon');
 
-async function toggleLike(postId) {
-  
+async function addLike(postId) {
   const response = await fetch(`/api/likes/${postId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
   });
+
   if (response.ok) {
     document.location.reload();
   } else {
@@ -19,23 +19,30 @@ async function toggleLike(postId) {
   }
 }
 
-// async function deleteLike(postId) {
-//   const response = await fetch(`/api/likes/${postId}`, {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-type': 'application/json'
-//     }
-//   });
-//   if (response.ok) {
-//     document.location.reload();
-//   }
-// }
+async function deleteLike(postId) {
+  const response = await fetch(`/api/likes/${postId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    return;
+  }
+}
 
 likesBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
+    let checkClass = btn.classList[1];
     let postId = btn.getAttribute('data-post-id');
-
-      toggleLike(postId);
+    console.log(checkClass);
+    if (checkClass == 'true') {
+      deleteLike(postId);
+    } else {
+      addLike(postId);
+    }
   });
 });

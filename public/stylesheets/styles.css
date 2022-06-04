@@ -352,3 +352,6 @@ select {
   cursor: pointer;
   margin-left: 15px;
 }
+.like-icon.true {
+  filter: invert(1);
+}
