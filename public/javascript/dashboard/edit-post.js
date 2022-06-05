@@ -33,8 +33,6 @@ const handleSubmit = (btn, postId) => {
       }, 3000);
     } else {
       editPost(newTitle, newBody, postId);
-      postWrapper.style.display = 'unset';
-      postWrapper.style.flexDirection = 'unset';
     }
   });
 };
