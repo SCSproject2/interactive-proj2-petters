@@ -41,11 +41,13 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
+  console.log(req.body.image_filter);
   Post.create({
     title: req.body.title,
     body: req.body.desc,
     user_id: req.session.user_id,
     category_id: req.body.existing_categories,
+    image_filter: req.body.image_filter,
     image_url: finalPath,
   })
     .then((dbPostData) => res.redirect('/dashboard'))

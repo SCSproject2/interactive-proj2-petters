@@ -182,12 +182,9 @@ textarea {
 .post-top-likes,
 .post-top-comments,
 #single-user-wrapper,
-.user-results {
-  width: 35%;
-}
-
+.user-results,
 #page-singlepost {
-  width: 30%;
+  width: 35%;
 }
 
 .user-results {
@@ -235,6 +232,14 @@ textarea {
   width: 100%;
 }
 
+#add-desc {
+  height: 170px;
+}
+#addCategory-form {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
 #add-post-image {
   width: 64%;
   margin-right: 15px;
@@ -248,10 +253,18 @@ select {
   margin-bottom: 5px;
 }
 
-#add-post {
+#add-post,
+#add-category {
+  color: white;
+  width: 100px;
+  background-color: rgba(111, 22, 193, 0.7);
   margin-top: 5px;
 }
 
+#add-category {
+  /* Need additional margin-top spacing */
+  margin-top: 10px;
+}
 select {
   width: 35%;
   background-color: rgba(0, 0, 0, 0.1);
@@ -382,4 +395,31 @@ select {
 
 .like-icon.true {
   filter: invert(1);
+}
+
+/* -------- --------- --------- Image filters */
+.filterBtn {
+  margin: 2.5px 0;
+}
+.invert {
+  filter: invert(100%);
+}
+
+.sepia {
+  filter: sepia(60%);
+}
+.grayscale {
+  filter: grayscale(1);
+}
+.red-tint {
+  filter: hue-rotate(320deg);
+}
+.blue-tint {
+  filter: hue-rotate(120deg);
+}
+.purple-tint {
+  filter: hue-rotate(190deg);
+}
+.orange-tint {
+  filter: hue-rotate(260deg);
 }

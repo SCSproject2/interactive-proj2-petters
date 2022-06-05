@@ -5,7 +5,7 @@
           <p id='post-category'>{{post.category_name}}</p>
       <p id='post-date'>{{post.user}} - {{format_date post.date}}</p>
         </div>
-        <img id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
+        <img class='{{post.image_filter}}' id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
         <div id='post-body-wrapper'>
           <h4 id='post-title'>{{post.title}}</h4>
           <p id='post-body'>
