@@ -4,6 +4,7 @@ const postdata = [
   {
     title: 'Hammy the hamster',
     body: 'He just wants to relax',
+    image_filter: 'sepia',
     user_id: 7,
     category_id: 3,
     image_url: 'images/1654043865360.PNG',
@@ -11,6 +12,7 @@ const postdata = [
   {
     title: 'A gentle giant',
     body: 'this dog also loves animals',
+    image_filter: 'red-tint',
     user_id: 6,
     category_id: 1,
     image_url: 'images/test-image.PNG',
@@ -25,6 +27,7 @@ const postdata = [
   {
     title: 'Found Nemo',
     body: 'fish are cute too, no?',
+    image_filter: 'purple-tint',
     user_id: 3,
     category_id: 6,
     image_url: 'images/1654044757233.PNG',
@@ -39,6 +42,7 @@ const postdata = [
   {
     title: 'Here is a happy cat.',
     body: 'He looks sleepy but also very happy',
+    image_filter: 'invert',
     user_id: 10,
     category_id: 2,
     image_url: 'images/1654045031458.PNG',

@@ -15,10 +15,14 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 20]
-      }
+        len: [1, 20],
+      },
     },
     body: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image_filter: {
       type: DataTypes.STRING,
       allowNull: true,
     },

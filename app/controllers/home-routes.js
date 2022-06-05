@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
@@ -45,6 +46,7 @@ router.get('/', (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(posts);
       const likedArr = [];
       posts.forEach((post) => {
         likedArr.push(post.likes);
@@ -92,6 +94,7 @@ router.get('/post/:id', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
@@ -132,7 +135,7 @@ router.get('/post/:id', (req, res) => {
       const image = dbPostData.dataValues.image_url;
       const likes = dbPostData.dataValues.like_count;
       const category_name = dbPostData.dataValues.category_name;
-
+      const image_filter = dbPostData.dataValues.image_filter;
       const post = {
         title,
         date,
@@ -142,7 +145,9 @@ router.get('/post/:id', (req, res) => {
         comments: [],
         image,
         likes,
+        image_filter,
       };
+      console.log(true, post);
 
       // For each comment, push it to the array inside our object
       for (let i = 0; i < dbPostData.dataValues.comments.length; i++) {

@@ -13,6 +13,7 @@
       placeholder='Title  *required'
     />
     <textarea
+      id='add-desc'
       type='text'
       name='desc'
       placeholder='Description  *required'
@@ -29,6 +30,21 @@
         {{/each}}
       </select>
     </div>
+    <select id='filter-options' name='image_filter'>
+      <option value='' disabled selected>Pick a filter</option>
+      <option value='no-filter' type='button' data-chosen='false'>No Filter</option>
+      <option value='sepia' type='button' data-chosen='false'>Sepia</option>
+      <option value='invert' type='button' data-chosen='false'>Invert</option>
+      <option
+        value='grayscale'
+        type='button'
+        data-chosen='false'
+      >Grayscale</option>
+      <option value='red-tint' type='button' data-chosen='false'>Red tint</option>
+      <option value='blue-tint' type='button' data-chosen='false'>Blue tint</option>
+      <option value='purple-tint' type='button' data-chosen='false'>Purple tint</option>
+      <option value='orange-tint' type='button' data-chosen='false'>Orange tint</option>
+    </select>
     <button id='add-post' type='submit'>Post</button>
   </form>
   <h3 style='margin-top: 20px'>Add new Category</h3>
@@ -37,28 +53,7 @@
     <button id='add-category' type='submit'>Post</button>
   </form>
 </div>
-{{! // }}
-{{! Image Filters }}
-<div>
-  <h3 style='margin-top: 20px'>Image filter test</h3>
-  <img
-    id='image-test'
-    style='width: 300px;'
-    src='./images/test-image.PNG'
-    alt=''
-  />
-  <div id='filter-options'>
-    <button data-filter='sepia' class='filterBtn'>Sepia</button>
-    <button data-filter='invert' class='filterBtn'>Invert</button>
-    <button data-filter='grayscale' class='filterBtn'>Grayscale</button>
-    <button data-filter='red-tint' class='filterBtn'>Red tint</button>
-    <button data-filter='blue-tint' class='filterBtn'>Blue tint</button>
-    <button data-filter='purple-tint' class='filterBtn'>Purple tint</button>
-    <button data-filter='orange-tint' class='filterBtn'>Orange tint</button>
-  </div>
-</div>
-{{! Image Filters }}
-{{! // }}
+
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
 <div id='dashboard-posts'>
@@ -70,6 +65,7 @@
   {{#each posts as |post|}}
     <div id='single-post'>
       <div id='post-header' class='{{post.category_name}}'>
+        <p id='post-category'>{{post.category_name}}</p>
         <p id='post-date'>
           {{post.user.username}}
           -
@@ -85,7 +81,12 @@
           <p>{{checkCounter post.likes}}</p>
         </div>
       </div>
-      <img id='post-image' src='{{post.image_url}}' alt='{{post.title}}' />
+      <img
+        class='{{post.image_filter}}'
+        id='post-image'
+        src='{{post.image_url}}'
+        alt='{{post.title}}'
+      />
       <div id='post-body-wrapper'>
         <h4 id='post-title'>{{post.title}}</h4>
         <p id='post-body'>
