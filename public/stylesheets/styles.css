@@ -154,6 +154,10 @@ textarea {
   margin: 5px 5px;
 }
 
+.search-btn:nth-child(1) {
+  margin-left: 0;
+}
+
 #clear-history {
   display: none;
 }
