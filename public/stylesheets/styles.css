@@ -32,6 +32,10 @@ main {
   margin-left: 30px;
 }
 
+nav {
+  justify-content: flex-end;
+}
+
 nav a:hover {
   color: rgb(231, 231, 231);
 }
@@ -196,7 +200,7 @@ textarea {
   user-select: none;
 }
 /* -------- --------- --------- Single posts universal selectors and properties */
-#homepage-posts,
+
 #dashboard-posts,
 .post-top-likes,
 .post-top-comments,
@@ -325,7 +329,7 @@ select {
   /* Fit the full width of the post */
   width: 100%;
   height: 400px;
-  object-fit: cover;
+  object-fit: scale-down;
 }
 
 #post-header {
@@ -333,7 +337,6 @@ select {
   align-items: center;
   justify-content: space-between;
   font-size: 15px;
-  height: 30px;
   background-color: rgb(214, 255, 194);
 }
 

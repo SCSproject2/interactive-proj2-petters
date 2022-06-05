@@ -100,10 +100,6 @@ router.get('/user/:username', (req, res) => {
         });
     });
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 
 router.get('/', (req, res) => {
   Category.findAll({
