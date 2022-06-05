@@ -156,10 +156,12 @@ textarea {
 
 .post-top-likes {
   background-color: rgba(214, 110, 110, 0.1);
+  margin: 0 10px 0 10px;
 }
 
 .post-top-comments {
   background-color: rgba(214, 195, 110, 0.1);
+  margin: 0 10px 0 10px;
 }
 .container {
   padding: 0;
@@ -304,6 +306,18 @@ select {
   margin: 40px 0;
 }
 
+#post-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.confirm-post,
+#edit-post-status {
+  display: none;
+}
 /* -------- --------- --------- Home page */
 #homepage-posts a {
   margin-bottom: 100px;
@@ -321,12 +335,14 @@ select {
   position: relative;
   text-decoration: none;
   color: black;
+  margin-bottom: 10px;
 }
 
 #post-image {
   /* Fit the full width of the post */
-  width: 100%;
-  object-fit: scale-down;
+  width: 210px;
+  height: 150px;
+  object-fit: cover;
 }
 
 #post-header {
@@ -375,6 +391,11 @@ select {
   background-color: aliceblue;
   padding-left: 10px;
   padding-top: 10px;
+}
+
+.edit-title-input,
+.edit-body-input {
+  margin: 5px 0;
 }
 
 #post-body {
