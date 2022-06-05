@@ -8,8 +8,12 @@
       />
       <button id='submit-user'>Submit</button>
       <button id='clear-search'>Clear</button>
+      <button id='clear-history'>Clear History</button>
       <p id='search-status-update'></p>
     </div>
+    <p id='history-search-label' style='display: none; margin: 5px 0'>Previous
+      searches</p>
+    <div id='history-searches'></div>
     <hr />
     <p style='margin-bottom: 0;'>Search by existing categories</p>
     {{#each categoryArr as |category|}}
