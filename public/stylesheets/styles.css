@@ -156,10 +156,12 @@ textarea {
 
 .post-top-likes {
   background-color: rgba(214, 110, 110, 0.1);
+  margin: 0 10px 0 10px;
 }
 
 .post-top-comments {
   background-color: rgba(214, 195, 110, 0.1);
+  margin: 0 10px 0 10px;
 }
 .container {
   padding: 0;
@@ -323,6 +325,7 @@ select {
   position: relative;
   text-decoration: none;
   color: black;
+  margin-bottom: 10px;
 }
 
 #post-image {
