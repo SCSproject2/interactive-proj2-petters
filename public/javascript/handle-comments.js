@@ -31,6 +31,36 @@ async function handleCommentForm(event) {
       }
 }
 
+async function deleteComment(event){
+    event.preventDefault();
+    const comment_id = document.querySelector('.edit-comment').getAttribute('data-comment-id');
+    console.log(comment_id);
+
+    if(comment_id){
+    const response = await fetch('api/comments', {
+        method: 'DELETE',
+        body: JSON.stringify({
+            comment_id
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    if(response.ok){
+        document.location.reload();
+    } else {
+        alert(response.statusText);
+    }
+
+    //need to grab comment id and change comment text to textarea
+    //once there, text to show up in textarea
+    //user can edit what they wanted to write, and click confirm to update the text
+
+
+}
+}
+
 
 
 btn.addEventListener('click', handleCommentForm);
+document.querySelector('.delete-comment').addEventListener('click', deleteComment);
