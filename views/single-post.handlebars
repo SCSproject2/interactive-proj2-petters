@@ -33,7 +33,7 @@
     {{#if loggedIn}}
       <textarea id='comment-field' placeholder='Add comment'></textarea>
       <h1 id='comment-status'>Required character count above 4</h1>
-      <button type='submit'>Submit</button>
+      <button id="comment-submit" type='submit'>Submit</button>
     {{else}}
       <textarea
         id='comment-field'
@@ -69,3 +69,4 @@
     {{/if}}
   </div>
 </div>
+<script src="/javascript/handle-comments.js"></script>
