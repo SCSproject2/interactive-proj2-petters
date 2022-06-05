@@ -36,6 +36,24 @@ router.post('/', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
+// Edit a comment
+ router.put('/:id', (req, res) => {
+Comment.update(req.body,
+{
+  where: {
+    id: req.params.id
+  },
+  comment_text: req.body.comment_text
+})
+.then(dbCommentData=>{
+  if(!dbCommentData){
+    res.status(404).json({ message: 'No comment with that id'});
+  }
+  res.json(dbCommentData)
+})
+.catch(err=> res.status(500).json(err));
+ });
+
 // Delete a comment
 router.delete('/:id', (req, res) => {
   Comment.destroy({
@@ -54,8 +72,5 @@ router.delete('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
-
-// Edit a comment
-// router.put('/:id', withAuth (req, res) => {});
 
 module.exports = router;

@@ -49,7 +49,7 @@
         <div id="single-comment" class="users-comment">
         <div id="comment-control">
           <p id="new-comment-status">Make sure the comment is greater than 4 characters</p>
-          <button data-comment-id="{{comment.commentId}}" id="confirm-comment-{{comment.commentId}}" class='confirm-comment'>Confirm</button>
+          <button data-comment-id="{{comment.commentId}}" style="display: none;" id="confirm-comment-{{comment.commentId}}" class='confirm-comment' >Confirm</button>
           <button data-comment-id="{{comment.commentId}}" id="edit-comment-{{comment.commentId}}" class='edit-comment'>Edit</button>
           <button data-comment-id="{{comment.commentId}}" id="delete-comment-{{comment.commentId}}" class='delete-comment'>Delete</button>
         </div>
@@ -57,8 +57,8 @@
         <div id='single-comment'>
           {{/if}}
           <div id='comment-wrapper'>
-            <p id='user'>{{comment.user}}</p>
-            <p id='comment'>{{comment.text}}</p>
+            <p id='user-{{comment.commentId}}'>{{comment.user}}</p>
+            <p id='comment-{{comment.commentId}}'>{{comment.text}}</p>
           </div>
           <p id='comment-date'>{{format_date comment.date}}</p>
         </div>
@@ -68,6 +68,7 @@
     {{/if}}
   </div>
 </div>
+
 <script src="/javascript/handle-comments.js"></script>
 <script src="/javascript/handle-likes.js"></script>
 
