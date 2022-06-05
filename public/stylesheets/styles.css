@@ -304,6 +304,18 @@ select {
   margin: 40px 0;
 }
 
+#post-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.confirm-post,
+#edit-post-status {
+  display: none;
+}
 /* -------- --------- --------- Home page */
 #homepage-posts a {
   margin-bottom: 100px;
@@ -375,6 +387,11 @@ select {
   background-color: aliceblue;
   padding-left: 10px;
   padding-top: 10px;
+}
+
+.edit-title-input,
+.edit-body-input {
+  margin: 5px 0;
 }
 
 #post-body {
