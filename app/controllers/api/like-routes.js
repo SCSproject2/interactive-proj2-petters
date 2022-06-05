@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const withAuth = require('../../../utils/auth');
-//do we need other models?? probably not
 const { Like, Post, User } = require('../../models');
 
 //Get likes
@@ -22,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 // Add new like
-router.post('/:id', withAuth, (req, res) => {
+router.post('/:id', (req, res) => {
   // Only be able to like posts if user is logged in
   if (req.session.user_id) {
     Like.create({
@@ -43,7 +42,7 @@ router.post('/:id', withAuth, (req, res) => {
 });
 
 //delete like
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
   Like.destroy({
     where: {
       user_id: req.session.user_id,

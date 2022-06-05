@@ -10,13 +10,14 @@ async function addLike(postId) {
 
   if (response.ok) {
     document.location.reload();
-  } else {
-    return;
-    // In the likes route, we return if a user tries to like a post
-    // When they are not signed in so the response is not 'ok'
-    // In other words, redirect to login page
-    // document.location.pathname = '/login';
-  }
+  } 
+   else {
+  //   res.redirect('/login')
+  //   // In the likes route, we return if a user tries to like a post
+  //   // When they are not signed in so the response is not 'ok'
+  //   // In other words, redirect to login page
+ document.location.pathname = '/login';
+ }
 }
 
 async function deleteLike(postId) {
