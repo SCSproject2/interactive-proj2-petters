@@ -21,13 +21,15 @@
               <p>{{checkCounter post.likes}}</p>
             </div>
           </div>
-          <img
-            class='{{post.image_filter}}'
-            id='post-image'
-            class='featured-image'
-            src='/{{post.image_url}}'
-            alt='{{post.title}}'
-          />
+          <div class="image-container">
+            <img
+              class='{{post.image_filter}}'
+              id='post-image'
+              class='featured-image'
+              src='/{{post.image_url}}'
+              alt='{{post.title}}'
+            />
+          </div>
           <div id='post-body-wrapper'>
             <h4 id='post-title'>{{post.title}}</h4>
             <p id='post-body'>

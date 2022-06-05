@@ -326,11 +326,15 @@ select {
   margin-bottom: 10px;
 }
 
+.image-container {
+  justify-content: center;
+}
+
 #post-image {
   /* Fit the full width of the post */
-  width: 210px;
-  height: 150px;
-  object-fit: cover;
+  width: 100%;
+  height: 175px;
+  object-fit: scale-down;
 }
 
 #post-header {
