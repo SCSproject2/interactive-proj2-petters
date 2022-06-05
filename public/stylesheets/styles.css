@@ -328,8 +328,9 @@ select {
 
 #post-image {
   /* Fit the full width of the post */
-  width: 100%;
-  object-fit: scale-down;
+  width: 210px;
+  height: 150px;
+  object-fit: cover;
 }
 
 #post-header {
