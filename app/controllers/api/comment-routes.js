@@ -37,10 +37,10 @@ router.post('/', (req, res) => {
 });
 
 // Delete a comment
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
   Comment.destroy({
     where: {
-      id: req.body.id,
+      id: req.params.id,
     },
   })
     .then((dbCommentData) => {
