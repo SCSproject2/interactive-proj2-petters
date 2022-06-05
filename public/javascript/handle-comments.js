@@ -1,5 +1,6 @@
 const btn = document.querySelector('#comment-submit');
 const deleteBtn = document.querySelectorAll('.delete-comment');
+const editBtn = document.querySelectorAll('.edit-comment');
 
 async function handleCommentForm(event) {
     event.preventDefault();
@@ -52,12 +53,19 @@ async function deleteComment(event) {
     }
 }
 
+async function editComment(event){
+    event.preventDefault();
+
+    const comment_id = event.target.getAttribute('data-comment-id');
+    
+
+}
 //need to grab comment id and change comment text to textarea
 //once there, text to show up in textarea
 //user can edit what they wanted to write, and click confirm to update the text
 
 
 btn.addEventListener('click', handleCommentForm);
-deleteBtn.forEach(deleteBtn => deleteBtn.addEventListener('click', deleteComment)
-);
+editBtn.forEach(editBtn=> editBtn.addEventListener('click', editComment));
+deleteBtn.forEach(deleteBtn => deleteBtn.addEventListener('click', deleteComment));
 
