@@ -10,6 +10,21 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
+router.get('/:id', (req,res)=>{
+  Comment.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(dbCommentData=>{
+    if(!dbCommentData){
+      res.status(404).json({ message: 'No comment found with this id'});
+    }
+    res.json(dbCommentData);
+  })
+  .catch(err=> res.status(500).json(err));
+});
+
 // Upload a new comment
 router.post('/', (req, res) => {
   Comment.create({

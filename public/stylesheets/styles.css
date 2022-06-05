@@ -240,8 +240,6 @@ textarea {
   font-size: 15px;
 }
 
-
-
 /* -------- --------- --------- Dashboard */
 #addPost-form {
   width: 450px;
@@ -331,7 +329,6 @@ select {
 #post-image {
   /* Fit the full width of the post */
   width: 100%;
-  height: 400px;
   object-fit: scale-down;
 }
 
@@ -381,7 +378,6 @@ select {
   background-color: aliceblue;
   padding-left: 10px;
   padding-top: 10px;
-  margin-bottom: 50px;
 }
 
 #post-body {
@@ -464,16 +460,13 @@ select {
   justify-content: space-around;
 }
 
-
 /* RESPONSIVE */
-
 
 @media screen and (max-width: 1024px) {
   /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 30%;
   }
-
 }
 
 @media screen and (min-width: 1025px) {
@@ -481,7 +474,6 @@ select {
   .col-md-4 {
     width: 22%;
   }
-
 }
 
 @media screen and (max-width: 650px) {
@@ -489,7 +481,6 @@ select {
   .col-md-4 {
     width: 45%;
   }
-  
 }
 
 @media screen and (max-width: 568px) {
@@ -502,9 +493,8 @@ select {
   .post-top-likes {
     /* width: 100; */
     margin: 0 25px 0 25px;
-
   }
-  
+
   .post-top-comments {
     width: 100%;
     margin: 0 25px 0 25px;
@@ -513,6 +503,4 @@ select {
   .container {
     padding: 0;
   }
-
 }
-
