@@ -38,10 +38,12 @@ router.post('/', (req, res) => {
 
 // Edit a comment
  router.put('/:id', (req, res) => {
-Comment.update(req.body, {
+Comment.update(req.body,
+{
   where: {
     id: req.params.id
-  }
+  },
+  comment_text: req.body.comment_text
 })
 .then(dbCommentData=>{
   if(!dbCommentData){
