@@ -212,6 +212,12 @@ textarea {
   width: 35%;
 }
 
+/* #dashboard-posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+} */
+
 .user-results {
   margin-top: 20px;
 }
