@@ -84,15 +84,6 @@ textarea {
   user-select: none;
 }
 /* -------- --------- --------- Single posts universal selectors and properties */
-/* #homepage-posts, */
-#dashboard-posts,
-.post-top-likes,
-.post-top-comments,
-#page-singlepost,
-#single-user-wrapper,
-.user-results {
-  width: 30%;
-}
 
 .user-results {
   margin-top: 20px;
@@ -101,12 +92,14 @@ textarea {
   padding: 0;
 }
 .post-top-likes {
-  margin-right: 20px;
+  margin-right: 0px;
 }
-.post-top-likes,
-.post-top-comments {
-  padding: 0;
+
+.post-top-comments, .post-top-likes {
+  max-width: fit-content;
 }
+
+
 
 /* -------- --------- --------- Dashboard */
 select {
@@ -266,12 +259,16 @@ textarea {
   padding-right: 50px;
 } */
 
+.featured-posts {
+  justify-content: space-around;
+}
+
 
 /* RESPONSIVE */
 
 
 @media screen and (max-width: 1024px) {
-  /* homepage */
+  /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 30%;
   }
@@ -279,7 +276,7 @@ textarea {
 }
 
 @media screen and (min-width: 1025px) {
-  /* homepage */
+  /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 22%;
   }
@@ -287,7 +284,7 @@ textarea {
 }
 
 @media screen and (max-width: 650px) {
-  /* homepage */
+  /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 45%;
   }
@@ -295,10 +292,26 @@ textarea {
 }
 
 @media screen and (max-width: 568px) {
-  /* homepage */
+  /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 95%;
   }
+
+  /* -----------------------------------------------  featured */
+  .post-top-likes {
+    /* width: 100; */
+    margin: 0 25px 0 25px;
+
+  }
   
+  .post-top-comments {
+    width: 100%;
+    margin: 0 25px 0 25px;
+  }
+
+  .container {
+    padding: 0;
+  }
+
 }
 
