@@ -41,7 +41,6 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
-  console.log(req.body.image_filter);
   Post.create({
     title: req.body.title,
     body: req.body.desc,
@@ -228,6 +227,7 @@ router.get('/categories/:id', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'

@@ -22,7 +22,9 @@ const renderPosts = (postsObject) => {
               -
               ${format_date(el.created_at)}</p>
           </div>
-          <img id='post-image' src='${el.image_url}' alt='${el.title}' />
+          <img class=${el.image_filter} id='post-image' src='${
+      el.image_url
+    }' alt='${el.title}' />
           <div id='post-body-wrapper'>
             <h4 id='post-title'>${el.title}</h4>
             <p id='post-body'>
