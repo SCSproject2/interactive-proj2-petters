@@ -69,7 +69,7 @@ router.get('/user/:username', (req, res) => {
           },
           {
             model: Like,
-            attributes: ['user_id'],
+            attributes: ['post_id', 'user_id', 'liked'],
           },
         ],
       })

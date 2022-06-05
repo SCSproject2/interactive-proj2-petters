@@ -42,21 +42,6 @@ const renderUserPosts = (postsObject) => {
                   </p>
                 </div>
               </a>
-              <div id='post-icon-wrapper'>
-                <div id='chat-icon-wrapper'>
-                  <img id='chat-icon' src='./images/comment.png' alt='' />
-                  <p>${el.comments.length}</p>
-                </div>
-                <div id='like-icon-wrapper'>
-                  <img
-                    data-post-id='${el.id}'
-                    class='like-icon'
-                    src='./images/like.png'
-                    alt=''
-                  />
-                  <p>${el.likes.length}</p>
-                </div>
-              </div>
             </div>
             `;
       postWrapper.appendChild(newEl);

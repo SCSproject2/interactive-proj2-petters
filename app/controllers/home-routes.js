@@ -46,7 +46,6 @@ router.get('/', (req, res) => {
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      console.log(posts);
       const likedArr = [];
       posts.forEach((post) => {
         likedArr.push(post.likes);
@@ -123,20 +122,23 @@ router.get('/post/:id', (req, res) => {
       },
       {
         model: Like,
-        attributes: ['user_id'],
+        attributes: ['post_id', 'user_id', 'liked'],
       },
     ],
   })
     .then((dbPostData) => {
+      const id = dbPostData.dataValues.id;
       const title = dbPostData.dataValues.title;
       const user = dbPostData.dataValues.user.username;
       const date = dbPostData.dataValues.created_at;
       const description = dbPostData.dataValues.body;
       const image = dbPostData.dataValues.image_url;
-      const likes = dbPostData.dataValues.like_count;
+      const like_count = dbPostData.dataValues.like_count;
+      const likes = dbPostData.dataValues.likes;
       const category_name = dbPostData.dataValues.category_name;
       const image_filter = dbPostData.dataValues.image_filter;
       const post = {
+        id,
         title,
         date,
         user,
@@ -144,10 +146,10 @@ router.get('/post/:id', (req, res) => {
         category_name,
         comments: [],
         image,
+        like_count,
         likes,
         image_filter,
       };
-      console.log(true, post);
 
       // For each comment, push it to the array inside our object
       for (let i = 0; i < dbPostData.dataValues.comments.length; i++) {
@@ -168,6 +170,20 @@ router.get('/post/:id', (req, res) => {
           usersComment: username == req.session.username,
         });
       }
+
+      // Get the users likes
+      const usersLikes = [];
+      post.likes.forEach((like) => {
+        if (like.user_id == req.session.user_id) {
+          usersLikes.push(like.dataValues);
+        }
+      });
+
+      usersLikes.forEach((like) => {
+        if (post.id == like.post_id) {
+          post.likes = true;
+        }
+      });
 
       res.render('single-post', {
         post,
