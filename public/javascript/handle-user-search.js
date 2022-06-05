@@ -12,12 +12,12 @@ const renderUserPosts = (postsObject) => {
   postWrapper.innerHTML = '';
 
   if (typeof postsObject === 'string') {
-    const newEl = document.createElement('div');
-    newEl.innerHTML += `<p style='margin-top: 10px'>No users found</p>`;
-    postWrapper.appendChild(newEl);
+    const update = document.getElementById('search-status-update');
+    update.textContent = 'No Users found';
+
     setTimeout(() => {
-      postWrapper.innerHTML = '';
-    }, 2000);
+      update.textContent = '';
+    }, 1250);
   } else {
     postsObject.forEach((el) => {
       categoryWrapper.innerHTML = '';
@@ -80,12 +80,12 @@ async function fetchText(searchTerm) {
 
 submitBtn.addEventListener('click', () => {
   if (!searchTerm.value) {
-    const newEl = document.createElement('div');
-    newEl.innerHTML += `<p style='margin-top: 10px'>Please type a valid query</p>`;
-    postWrapper.appendChild(newEl);
+    const update = document.getElementById('search-status-update');
+    update.textContent = 'Please type a valid query';
+
     setTimeout(() => {
-      postWrapper.innerHTML = '';
-    }, 1250);
+      update.textContent = '';
+    }, 1500);
   } else {
     fetchText(searchTerm.value);
   }

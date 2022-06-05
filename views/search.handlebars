@@ -1,13 +1,15 @@
 <div id='search-wrapper'>
   <div id='search-controls'>
-    <input
-      id='search'
-      placeholder='Search user'
-      aria-label='Search through site content'
-    />
-    <button id='submit-user'>Submit</button>
-    <button id='clear-search'>Clear</button>
-
+    <div id='inner-search-wrapper'>
+      <input
+        id='search'
+        placeholder='Search user'
+        aria-label='Search through site content'
+      />
+      <button id='submit-user'>Submit</button>
+      <button id='clear-search'>Clear</button>
+      <p id='search-status-update'></p>
+    </div>
     <hr />
     <p style='margin-bottom: 0;'>Search by existing categories</p>
     {{#each categoryArr as |category|}}

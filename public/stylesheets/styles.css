@@ -84,6 +84,25 @@ textarea {
 #search-wrapper {
   margin-bottom: 50px;
 }
+
+#inner-search-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#inner-search-wrapper button {
+  margin: 0 10px;
+}
+
+#inner-search-wrapper button:nth-child(3) {
+  margin: 0;
+  margin-right: 5px;
+}
+
+#search-status-update {
+  margin: 0;
+}
 #search-controls {
   color: white;
   width: 60%;
