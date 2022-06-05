@@ -445,6 +445,7 @@ select {
   width: 20px;
   height: 22.5px;
 }
+
 #chat-icon {
   pointer-events: none;
 }
@@ -452,10 +453,6 @@ select {
 .like-icon {
   cursor: pointer;
   margin-left: 15px;
-}
-
-.like-icon.true {
-  filter: invert(1);
 }
 
 /* -------- --------- --------- Image filters */

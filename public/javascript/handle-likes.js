@@ -10,14 +10,13 @@ async function addLike(postId) {
 
   if (response.ok) {
     document.location.reload();
-  } 
-   else {
-  //   res.redirect('/login')
-  //   // In the likes route, we return if a user tries to like a post
-  //   // When they are not signed in so the response is not 'ok'
-  //   // In other words, redirect to login page
- document.location.pathname = '/login';
- }
+  } else {
+    //   res.redirect('/login')
+    //   // In the likes route, we return if a user tries to like a post
+    //   // When they are not signed in so the response is not 'ok'
+    //   // In other words, redirect to login page
+    document.location.pathname = '/login';
+  }
 }
 
 async function deleteLike(postId) {
@@ -36,6 +35,16 @@ async function deleteLike(postId) {
 }
 
 likesBtn.forEach((btn) => {
+  let checkClass = btn.classList[1];
+
+  if (checkClass == 'true') {
+    if (window.location.pathname.includes('post')) {
+      btn.src = '../images/like_filled.png';
+    } else {
+      btn.src = './images/like_filled.png';
+    }
+  }
+
   btn.addEventListener('click', () => {
     let checkClass = btn.classList[1];
     let postId = btn.getAttribute('data-post-id');
