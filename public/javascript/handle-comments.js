@@ -57,7 +57,10 @@ async function editComment(event){
     event.preventDefault();
 
     const comment_id = event.target.getAttribute('data-comment-id');
-    
+    console.log(comment_id);
+    let pTag = editBtn.nextElementSibling;
+    console.log(pTag);
+
 
 }
 //need to grab comment id and change comment text to textarea
