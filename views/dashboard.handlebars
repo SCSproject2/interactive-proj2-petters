@@ -71,7 +71,7 @@
           -
           {{format_date post.created_at}}</p>
       </div>
-      <div id='post-icon-wrapper'>
+      {{!-- <div id='post-icon-wrapper'>
         <div id='chat-icon-wrapper'>
           <img id='chat-icon' src='./images/comment.png' alt='' />
           <p>{{checkCounter post.comments}}</p>
@@ -80,7 +80,7 @@
           <img class='like-icon' src='./images/like.png' alt='' />
           <p>{{checkCounter post.likes}}</p>
         </div>
-      </div>
+      </div> --}}
       <img
         class='{{post.image_filter}}'
         id='post-image'
@@ -95,22 +95,22 @@
       </div>
       <div id='post-controls'>
         <button
-          data-post-id='{{post.id}}'
+          data-post-id={{post.id}}
           class='edit-post-id'
           id='edit-post-{{post.id}}'
         >Edit post</button>
         <button
-          data-post-id='{{post.id}}'
-          class='delete-post-{{post.id}}'
-          id='delete-post-1'
+          data-post-id={{post.id}}
+          class='delete-post-id'
+          id='delete-post-{{post.id}}'
         >Delete post</button>
         <button
-          data-post-id='{{post.id}}'
+          data-post-id={{post.id}}
           id='view-comments-{{post.id}}'
           class='view-comments'
         >View comments</button>
         <button
-          data-post-id='{{post.id}}'
+          data-post-id={{post.id}}
           class='confirm-post'
           id='confirm-post-{{post.id}}'
         >Confirm</button>
@@ -120,4 +120,6 @@
     </div>
   {{/each}}
 </div>
-<script src='./javascript/filters.js'></script>
+<script src='./javascript/dashboard/edit-post.js'></script>
+<script src='./javascript/dashboard/delete-post.js'></script>
+<script src='./javascript/dashboard/view-comments.js'></script>
