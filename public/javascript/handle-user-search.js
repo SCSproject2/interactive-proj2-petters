@@ -3,6 +3,112 @@ const clearBtn = document.getElementById('clear-search');
 const searchTerm = document.getElementById('search');
 const postWrapper = document.getElementById('search-user-wrapper');
 const categoryWrapper = document.getElementById('search-post-wrapper');
+var clearHistoryBtn = document.getElementById('clear-history');
+
+// All the below functions deals with generating the history buttons and...
+// storing/extracting the data to/from local storage
+var historyContainer = document.getElementById('history-searches');
+
+// Check to see if an object (for the search terms) is saved locally
+var localObject = localStorage.getItem('searchTerms');
+// If the local storage doesn't exist....
+if (localObject == null) {
+  // For this session declare an empty object
+  var searchHistory = [];
+  // Otherwise if local storage does exist...
+} else {
+  // Parse the local data and update the above empty object with the data from local
+  localObject = JSON.parse(localObject);
+  searchHistory = localObject;
+  searchHistory.forEach((item) => {
+    // This will generate the history button elements upon application load
+    var btn = document.createElement('button');
+    btn.classList.add('search-btn');
+    btn.textContent = item.searchTerm;
+    btn.type = 'button';
+    historyContainer.appendChild(btn);
+    document.getElementById('history-search-label').style.display = 'flex';
+  });
+  // Reveal the clear history button
+  clearHistoryBtn.style.display = 'unset';
+}
+
+// This function will check the buttons and ONLY generate the unique history buttons
+var checkHistoryBtns = (finalLabel) => {
+  var uniqueButton = true;
+
+  // If the object length is 0, generate the button normally
+  if (searchHistory.length == 0) {
+    clearHistoryBtn.style.display = 'unset';
+
+    // Generate the button elements
+    createButtons(finalLabel);
+    // Pushes the search term to an object then stores that object to local storage
+    storeLocally(searchHistory, finalLabel);
+    // Set to false so we don't double generate
+    uniqueButton = false;
+    // Execute this here to make sure it is working at this state as well
+    historyBtnEvent();
+  } else {
+    // Go through ALL data, if the current label matches with a label in our object,
+    // set uniqueButton to false so that we don't generate the button
+    searchHistory.forEach((item) => {
+      if (item.searchTerm == finalLabel) {
+        uniqueButton = false;
+      }
+    });
+  }
+
+  // Only generate the button if it is unique and not already existing in the object
+  if (uniqueButton) {
+    createButtons(finalLabel);
+    // Pushes the search term to an object then stores that object to local storage
+    storeLocally(searchHistory, finalLabel);
+    // Execute this here to make sure it is working at this state as well
+    historyBtnEvent();
+  }
+};
+
+// This executes the event listener for all active history buttons
+const historyBtnEvent = () => {
+  // Declare a variable to hold the active history buttons
+  var historyBtns = document.getElementById('history-searches');
+
+  // Iterate over each child and add a 'click' event listener...
+  Array.prototype.forEach.call(historyBtns.children, (child) => {
+    child.addEventListener('click', () => {
+      fetchText(child.textContent);
+    });
+  });
+};
+// Execute globally so it works right away
+historyBtnEvent();
+
+// Generate the history search buttons upon hitting search
+var createButtons = (finalLabel) => {
+  document.getElementById('history-search-label').style.display = 'flex';
+
+  // Create a button element
+  var btn = document.createElement('button');
+  // Add a 'search-btn' class to each button
+  btn.classList.add('search-btn');
+  // Then update the textcontent with the final label
+  btn.textContent = finalLabel;
+  // Add a type of 'button' so that these buttons don't submit the form
+  btn.type = 'button';
+  // Append the button(s) to the container
+  historyContainer.appendChild(btn);
+};
+
+// Stores object to local storage
+var storeLocally = (object, label) => {
+  // Push the label and a unique ID to the object
+  var id = Math.floor(Math.random() * 10000);
+  searchHistory.push({ searchTerm: label, id });
+
+  // Then store the full object locally
+  localStorage.setItem('searchTerms', JSON.stringify(object));
+};
 
 // On initial page load, set clear button to display off
 clearBtn.style.display = 'none';
@@ -73,13 +179,18 @@ submitBtn.addEventListener('click', () => {
     }, 1500);
   } else {
     fetchText(searchTerm.value);
+    checkHistoryBtns(searchTerm.value);
+    searchTerm.value = ''; // Reset value for the input field
   }
 });
 
-// Clear the active user results and the input field as well
+// Upon clicking the clear history button, clear the storage and reload the application
+var clearHistory = () => {
+  localStorage.clear();
+  location.reload();
+};
+
+clearHistoryBtn.addEventListener('click', clearHistory);
 clearBtn.addEventListener('click', () => {
-  clearBtn.style.display = 'none';
-  document.getElementById('search-post-wrapper').innerHTML = '';
-  postWrapper.innerHTML = '';
-  searchTerm.value = '';
+  location.reload();
 });
