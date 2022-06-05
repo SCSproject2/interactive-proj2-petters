@@ -38,7 +38,6 @@ likesBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
     let checkClass = btn.classList[1];
     let postId = btn.getAttribute('data-post-id');
-    console.log(checkClass);
     if (checkClass == 'true') {
       deleteLike(postId);
     } else {

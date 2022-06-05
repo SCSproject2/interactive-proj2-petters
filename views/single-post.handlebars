@@ -1,34 +1,33 @@
 <div id='page-singlepost'>
-      <div id='single-post-wrapper'>
-      <div id='single-post'>
-        <div id='post-header' class='{{post.category_name}}'>
-          <p id='post-category'>{{post.category_name}}</p>
-      <p id='post-date'>{{post.user}} - {{format_date post.date}}</p>
-        </div>
-        <img class='{{post.image_filter}}' id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
-        <div id='post-body-wrapper'>
-          <h4 id='post-title'>{{post.title}}</h4>
-          <p id='post-body'>
-            {{post.description}}
-          </p>
-        </div>
+  <div id='single-post-wrapper'>
+    <div id='single-post'>
+      <div id='post-header' class='{{post.category_name}}'>
+        <p id='post-category'>{{post.category_name}}</p>
+        <p id='post-date'>{{post.user}} - {{format_date post.date}}</p>
       </div>
-      <div id='post-icon-wrapper'>
-        <div id='chat-icon-wrapper'>
-          <img id='chat-icon' src='../images/comment.png' alt='' />
-          <p>{{checkCounter post.comments}}</p>
-        </div>
-        <div id='like-icon-wrapper'>
-          <img
+      <img class='{{post.image_filter}}' id='post-image' src='/{{post.image}}' alt='{{post.title}}' />
+      <div id='post-body-wrapper'>
+        <h4 id='post-title'>{{post.title}}</h4>
+        <p id='post-body'>{{post.description}}</p>
+      </div>
+    </div>
+    <div id='post-icon-wrapper'>
+      <div id='chat-icon-wrapper'>
+        <img id='chat-icon' src='../images/comment.png' alt='' />
+        <p>{{checkCounter post.comments}}</p>
+      </div>
+      <div id='like-icon-wrapper'>
+        <img
+            data-like-active='{{checkTruthy post.likes}}'
             data-post-id='{{post.id}}'
-            class='like-icon'
+            class='like-icon {{checkTruthy post.likes}}'
             src='../images/like.png'
             alt=''
           />
-          <p>{{post.likes}}</p>
-        </div>
+        <p>{{post.like_count}}</p>
       </div>
     </div>
+  </div>
   <form id='comment-form'>
     {{#if loggedIn}}
       <textarea id='comment-field' placeholder='Add comment'></textarea>
@@ -69,3 +68,4 @@
     {{/if}}
   </div>
 </div>
+<script src='../javascript/handle-likes.js'></script>
