@@ -23,7 +23,12 @@ Like.init(
                 model: 'post',
                 key: 'id'
             }
+        },
+        liked: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false
         }
+        
     },
     {
         sequelize,

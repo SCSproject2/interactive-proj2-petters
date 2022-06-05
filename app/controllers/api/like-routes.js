@@ -1,5 +1,5 @@
 const router = require('express').Router();
-//do we need other models?? probably not
+const withAuth = require('../../../utils/auth');
 const { Like, Post, User } = require('../../models');
 
 //Get likes
@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-//Add new like
+// Add new like
 router.post('/:id', (req, res) => {
   // Only be able to like posts if user is logged in
   if (req.session.user_id) {
@@ -28,19 +28,25 @@ router.post('/:id', (req, res) => {
       user_id: req.session.user_id,
       post_id: req.params.id,
     })
-      .then((dbLikeData) => res.json(dbLikeData))
+      .then((dbLikeData) => {
+        res.json(dbLikeData);
+      })
+
       .catch((err) => res.status(500).json(err));
   } else {
+    // In the plain javascript, the response would return not ok
+    // So we can execute that code
+    // See the code in handle-likes.js
+    res.err(400);
   }
 });
 
 //delete like
-router.delete('/', (req, res) => {
+router.delete('/:id', (req, res) => {
   Like.destroy({
     where: {
-      // user_id: req.session.user_id,
-      user_id: req.body.user_id,
-      post_id: req.body.post_id,
+      user_id: req.session.user_id,
+      post_id: req.params.id,
     },
   })
     .then((dbLikeData) => {

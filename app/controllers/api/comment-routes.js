@@ -41,6 +41,6 @@ router.delete('/:id', (req, res) => {
 });
 
 // Edit a comment
-router.put('/:id', (req, res) => {});
+// router.put('/:id', withAuth (req, res) => {});
 
 module.exports = router;

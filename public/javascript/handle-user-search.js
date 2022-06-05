@@ -2,6 +2,7 @@ const submitBtn = document.getElementById('submit-user');
 const clearBtn = document.getElementById('clear-search');
 const searchTerm = document.getElementById('search');
 const postWrapper = document.getElementById('search-user-wrapper');
+const categoryWrapper = document.getElementById('search-post-wrapper');
 
 // On initial page load, set clear button to display off
 clearBtn.style.display = 'none';
@@ -11,14 +12,15 @@ const renderUserPosts = (postsObject) => {
   postWrapper.innerHTML = '';
 
   if (typeof postsObject === 'string') {
-    const newEl = document.createElement('div');
-    newEl.innerHTML += `<p style='margin-top: 10px'>No users found</p>`;
-    postWrapper.appendChild(newEl);
+    const update = document.getElementById('search-status-update');
+    update.textContent = 'No Users found';
+
     setTimeout(() => {
-      postWrapper.innerHTML = '';
-    }, 2000);
+      update.textContent = '';
+    }, 1250);
   } else {
     postsObject.forEach((el) => {
+      categoryWrapper.innerHTML = '';
       clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
@@ -30,7 +32,9 @@ const renderUserPosts = (postsObject) => {
                     -
                     ${format_date(el.created_at)}</p>
                 </div>
-                <img id='post-image' src='${el.image_url}' alt='${el.title}' />
+                <img class='${el.image_filter}' id='post-image' src='${
+        el.image_url
+      }' alt='${el.title}' />
                 <div id='post-body-wrapper'>
                   <h4 id='post-title'>${el.title}</h4>
                   <p id='post-body'>
@@ -75,11 +79,22 @@ async function fetchText(searchTerm) {
 }
 
 submitBtn.addEventListener('click', () => {
-  fetchText(searchTerm.value);
+  if (!searchTerm.value) {
+    const update = document.getElementById('search-status-update');
+    update.textContent = 'Please type a valid query';
+
+    setTimeout(() => {
+      update.textContent = '';
+    }, 1500);
+  } else {
+    fetchText(searchTerm.value);
+  }
 });
 
 // Clear the active user results and the input field as well
 clearBtn.addEventListener('click', () => {
+  clearBtn.style.display = 'none';
+  document.getElementById('search-post-wrapper').innerHTML = '';
   postWrapper.innerHTML = '';
   searchTerm.value = '';
 });

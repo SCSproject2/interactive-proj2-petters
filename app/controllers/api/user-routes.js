@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../../../utils/auth');
 const { User, Post, Category } = require('../../models');
 
 // Get all users
@@ -71,7 +72,7 @@ router.post('/logout', (req, res) => {
 });
 
 // Update user
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -91,14 +92,23 @@ router.put('/:id', (req, res) => {
 });
 
 //delete user
-router.delete('/:id', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
+router.delete('/:id', withAuth, (req, res) => {
+  User.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No user found with this id' });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
     });
-  } else {
-    res.status(404).end();
-  }
 });
 
 module.exports = router;

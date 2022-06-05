@@ -1,27 +1,27 @@
-<input
-  id='search'
-  placeholder='Search user'
-  aria-label='Search through site content'
-/>
-<button id='submit-user'>Submit</button>
-<button id='clear-search'>Clear</button>
-
-<div id='search-user-wrapper'></div>
-
-<hr />
-<p style='margin-bottom: 0;'>Search by existing categories</p>
-
-{{#each categoryArr as |category|}}
-  <button
-    class='category-btns {{category.category_name}}'
-    data-category-id='{{category.id}}'
-  >{{category.category_name}}</button>
-{{/each}}
-<div id='search-post-wrapper'>
+<div id='search-wrapper'>
+  <div id='search-controls'>
+    <div id='inner-search-wrapper'>
+      <input
+        id='search'
+        placeholder='Search user'
+        aria-label='Search through site content'
+      />
+      <button id='submit-user'>Submit</button>
+      <button id='clear-search'>Clear</button>
+      <p id='search-status-update'></p>
+    </div>
+    <hr />
+    <p style='margin-bottom: 0;'>Search by existing categories</p>
+    {{#each categoryArr as |category|}}
+      <button
+        class='category-btns {{category.category_name}}'
+        data-category-id='{{category.id}}'
+      >{{category.category_name}}</button>
+    {{/each}}
+  </div>
+  <div id='search-user-wrapper'></div>
+  <div id='search-post-wrapper'></div>
 </div>
-<<<<<<< HEAD
-<script src='/javascript/handle-search.js'></script>
-=======
+
 <script src='/javascript/handle-category-search.js'></script>
 <script src='/javascript/handle-user-search.js'></script>
->>>>>>> 7ced4e8c82e97f6b97d952f2b19d8246cf773363

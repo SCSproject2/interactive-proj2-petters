@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Post, User, Category, Comment, Like } = require('../../models');
+const { withAuth } = require('../../../utils/auth');
 
 const path = require('path');
 const multer = require('multer');
@@ -46,6 +47,7 @@ router.post('/', upload.single('image'), (req, res) => {
     body: req.body.desc,
     user_id: req.session.user_id,
     category_id: req.body.existing_categories,
+    image_filter: req.body.image_filter,
     image_url: finalPath,
   })
     .then((dbPostData) => res.redirect('/dashboard'))
@@ -226,6 +228,7 @@ router.get('/categories/:id', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'

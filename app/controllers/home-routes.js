@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
@@ -39,12 +40,35 @@ router.get('/', (req, res) => {
       },
       {
         model: Like,
-        attributes: ['user_id'],
+        attributes: ['post_id', 'user_id', 'liked'],
       },
     ],
   })
     .then((dbPostData) => {
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+      console.log(posts);
+      const likedArr = [];
+      posts.forEach((post) => {
+        likedArr.push(post.likes);
+      });
+
+      const usersLikes = [];
+      likedArr.forEach((like) => {
+        like.forEach((like2) => {
+          if (like2.user_id == req.session.user_id) {
+            usersLikes.push(like2);
+          }
+        });
+      });
+
+      posts.forEach((post) => {
+        usersLikes.forEach((like) => {
+          if (post.id == like.post_id) {
+            post.likes = true;
+          }
+        });
+      });
+
       posts.reverse(req.session.loggedIn);
       res.render('homepage', {
         posts,
@@ -70,6 +94,7 @@ router.get('/post/:id', (req, res) => {
       'created_at',
       'user_id',
       'image_url',
+      'image_filter',
       [
         sequelize.literal(
           '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
@@ -110,7 +135,7 @@ router.get('/post/:id', (req, res) => {
       const image = dbPostData.dataValues.image_url;
       const likes = dbPostData.dataValues.like_count;
       const category_name = dbPostData.dataValues.category_name;
-
+      const image_filter = dbPostData.dataValues.image_filter;
       const post = {
         title,
         date,
@@ -120,7 +145,9 @@ router.get('/post/:id', (req, res) => {
         comments: [],
         image,
         likes,
+        image_filter,
       };
+      console.log(true, post);
 
       // For each comment, push it to the array inside our object
       for (let i = 0; i < dbPostData.dataValues.comments.length; i++) {

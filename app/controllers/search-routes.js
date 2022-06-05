@@ -34,6 +34,7 @@ router.get('/user/:username', (req, res) => {
           'created_at',
           'user_id',
           'image_url',
+          'image_filter',
           [
             sequelize.literal(
               '(SELECT category_name FROM `category` WHERE post.category_id = category.id)'
@@ -99,7 +100,10 @@ router.get('/user/:username', (req, res) => {
         });
     });
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
 
 router.get('/', (req, res) => {
   Category.findAll({
@@ -118,8 +122,5 @@ router.get('/', (req, res) => {
     });
   });
 });
-
-
-
 
 module.exports = router;

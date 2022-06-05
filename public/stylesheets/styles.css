@@ -9,13 +9,31 @@ h1 {
   color: black;
 }
 
+#empty {
+  width: 200px;
+}
 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  padding-left: 30px;
+  background-color: rgba(111, 22, 193, 0.7);
+  top: 0;
+  z-index: 2;
+  position: sticky;
   margin-bottom: 25px;
+  box-shadow: 5px 0 10px 0 rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
-body {
+main {
   margin-top: 30px;
   margin-left: 30px;
+}
+
+nav a:hover {
+  color: rgb(231, 231, 231);
 }
 
 nav a {
@@ -27,14 +45,14 @@ nav a:first-child {
 }
 
 .navItem {
+  font-size: 25px;
   cursor: pointer;
   text-decoration: none;
-  color: black;
-  border-bottom: 1px solid black;
+  color: white;
 }
 
 .navItem.active {
-  color: blue;
+  color: rgb(0, 0, 0);
 }
 
 button {
@@ -52,12 +70,61 @@ button:active {
 
 input,
 textarea {
+  font-size: 20px;
   resize: none;
   color: black;
-  padding: 3px 15px;
+  padding: 5px 10px;
   border: none;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* -------- --------- --------- Search page (search.handlebars) */
+
+#search-wrapper {
+  margin-bottom: 50px;
+}
+
+#inner-search-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#inner-search-wrapper button {
+  margin: 0 10px;
+}
+
+#inner-search-wrapper button:nth-child(3) {
+  margin: 0;
+  margin-right: 5px;
+}
+
+#search-status-update {
+  margin: 0;
+}
+#search-controls {
+  color: white;
+  width: 60%;
+  top: 120px;
+  z-index: 2;
+  position: sticky;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: rgba(111, 22, 193, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+#search-controls input::placeholder {
+  color: white;
+}
+#search-controls input {
+  color: white;
+  background-color: rgba(104, 24, 179, 0.7);
+}
+#header-logo {
+  color: white;
+  cursor: pointer;
 }
 
 #search-post-wrapper {
@@ -65,9 +132,38 @@ textarea {
   width: 35%;
 }
 
+#search-post-wrapper,
+#search-user-wrapper {
+  margin-left: 20px;
+}
+
 #addPost-form {
   display: flex;
   align-items: flex-end;
+}
+/* -------- --------- --------- Featured page (featured.handlebars) */
+
+/* Top 5 likes, Top 5 Commented */
+.container h2 {
+  font-size: 35px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.post-top-likes {
+  background-color: rgba(214, 110, 110, 0.1);
+}
+
+.post-top-comments {
+  background-color: rgba(214, 195, 110, 0.1);
+}
+.container {
+  padding: 0;
+}
+
+.post-top-likes,
+.post-top-comments {
+  padding: 50px;
 }
 
 /* -------- --------- --------- Login / Signup (login.handlebars) */
@@ -78,54 +174,132 @@ textarea {
   font-size: 12px;
 }
 
+#form-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#form-inputs input {
+  margin: 5px 0;
+  width: 350px;
+}
+
+#login-notice {
+  font-size: 18px;
+  line-height: 1.3;
+}
+
 /* -------- --------- --------- Main page CSS (main.handlebars) */
 
 #header-logo {
   user-select: none;
 }
 /* -------- --------- --------- Single posts universal selectors and properties */
+#homepage-posts,
+#dashboard-posts,
+.post-top-likes,
+.post-top-comments,
+#single-user-wrapper,
+.user-results,
+#page-singlepost {
+  width: 35%;
+}
 
 .user-results {
   margin-top: 20px;
 }
-.container {
-  padding: 0;
+
+#page-singlepost #post-body-wrapper {
+  margin-bottom: 0;
 }
-.post-top-likes {
-  margin-right: 0px;
+#comment-field,
+#comment-section {
+  width: 100%;
 }
 
-.post-top-comments, .post-top-likes {
-  max-width: fit-content;
+#single-comment {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 145px;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+}
+
+#comment {
+  font-size: 15px;
 }
 
 
 
 /* -------- --------- --------- Dashboard */
+#addPost-form {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#add-select-wrapper {
+  display: flex;
+}
+
+#addPost-form textarea,
+#add-title {
+  width: 100%;
+}
+
+#add-desc {
+  height: 170px;
+}
+#addCategory-form {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+#add-post-image {
+  width: 64%;
+  margin-right: 15px;
+}
+
+#add-post-image,
+#addPost-form textarea,
+#add-title,
 select {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#add-post,
+#add-category {
+  color: white;
+  width: 100px;
+  background-color: rgba(111, 22, 193, 0.7);
+  margin-top: 5px;
+}
+
+#add-category {
+  /* Need additional margin-top spacing */
+  margin-top: 10px;
+}
+select {
+  width: 35%;
+  background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   font-size: 18px;
   color: #444;
   padding: 5px 12px;
-  width: 170px;
-  text-align: center;
-  border: 2px solid grey;
-  border-radius: 12px;
-  -moz-appearance: none;
-  -webkit-appearance: none;
+  border-radius: 5px;
+  border: none;
   appearance: none;
-  background-color: rgb(248, 247, 247);
-  margin-right: 10px;
 }
 
-textarea {
-  margin: 0 10px;
-  width: 350px;
-}
-
-#add-post-image {
-  width: 300px;
-  margin-right: 10px;
+#dashboardHr {
+  margin: 40px 0;
 }
 
 /* -------- --------- --------- Home page */
@@ -150,6 +324,8 @@ textarea {
 #post-image {
   /* Fit the full width of the post */
   width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 
 #post-header {
@@ -157,7 +333,8 @@ textarea {
   align-items: center;
   justify-content: space-between;
   font-size: 15px;
-  /* height: 30px; */
+  height: 30px;
+  background-color: rgb(214, 255, 194);
 }
 
 #post-category {
@@ -167,23 +344,27 @@ textarea {
   opacity: 0.3;
 }
 
+.category-btns {
+  margin: 5px 0;
+}
+
 .dogs {
-  background-color: rgb(214, 82, 59);
+  background-color: rgb(214, 82, 59) !important;
 }
 .cats {
-  background-color: rgb(44, 139, 255);
+  background-color: rgb(44, 139, 255) !important;
 }
 .small-pets {
-  background-color: orange;
+  background-color: orange !important;
 }
 .reptile {
-  background-color: green;
+  background-color: green !important;
 }
 .wild {
-  background-color: plum;
+  background-color: plum !important;
 }
 .fish {
-  background-color: lightblue;
+  background-color: lightblue !important;
 }
 
 #post-header p {
@@ -237,21 +418,35 @@ textarea {
   margin-left: 15px;
 }
 
-/* -------- --------- --------- Dashboard */
-
-#dashboardHr {
-  margin: 40px 0;
+.like-icon.true {
+  filter: invert(1);
 }
 
-/* ------------------------------ Featured */
-
-.featured-title {
-  padding-bottom: 30px;
+/* -------- --------- --------- Image filters */
+.filterBtn {
+  margin: 2.5px 0;
+}
+.invert {
+  filter: invert(100%);
 }
 
-.featured-image {
-  width: 90px;
-  height: 160px;
+.sepia {
+  filter: sepia(60%);
+}
+.grayscale {
+  filter: grayscale(1);
+}
+.red-tint {
+  filter: hue-rotate(320deg);
+}
+.blue-tint {
+  filter: hue-rotate(120deg);
+}
+.purple-tint {
+  filter: hue-rotate(190deg);
+}
+.orange-tint {
+  filter: hue-rotate(260deg);
 }
 
 /* .post-top-likes {

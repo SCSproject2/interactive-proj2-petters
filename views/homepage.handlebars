@@ -10,7 +10,12 @@
             -
             {{format_date post.created_at}}</p>
         </div>
-        <img id='post-image' src='{{post.image_url}}' alt='{{post.title}}' />
+        <img
+          class='{{post.image_filter}}'
+          id='post-image'
+          src='{{post.image_url}}'
+          alt='{{post.title}}'
+        />
         <div id='post-body-wrapper'>
           <h4 id='post-title'>{{post.title}}</h4>
           <p id='post-body'>
@@ -25,12 +30,13 @@
         </div>
         <div id='like-icon-wrapper'>
           <img
+            data-like-active='{{checkTruthy post.likes}}'
             data-post-id='{{post.id}}'
-            class='like-icon'
+            class='like-icon {{checkTruthy post.likes}}'
             src='./images/like.png'
             alt=''
           />
-          <p>{{checkCounter post.likes}}</p>
+          <p>{{post.like_count}}</p>
         </div>
       </div>
     </div>
