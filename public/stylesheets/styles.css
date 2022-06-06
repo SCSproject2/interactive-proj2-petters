@@ -582,15 +582,11 @@ select {
   }
 }
 
-
-
 @media screen and (max-width: 650px) {
   /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 45%;
   }
-
-
 }
 
 @media screen and (max-width: 568px) {
@@ -634,5 +630,21 @@ select {
   .navItem {
     font-size: 20px;
   }
+}
 
+/* -------- --------- --------- Scroll to top btn */
+.scrollTop {
+  opacity: 0;
+  position: fixed;
+  right: 25px;
+  bottom: 5px;
+  transition: 0.4s all ease-in-out;
+}
+
+.scrollTop.active {
+  opacity: 1;
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  transition: 0.4s all ease-in-out;
 }
