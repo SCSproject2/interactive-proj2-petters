@@ -170,6 +170,7 @@ router.get('/post/:id', (req, res) => {
           usersComment: username == req.session.username,
         });
       }
+      post.comments.reverse();
 
       // Get the users likes
       const usersLikes = [];
