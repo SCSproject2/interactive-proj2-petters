@@ -550,6 +550,11 @@ select {
   justify-content: space-around;
 }
 
+#featured-posts #like-icon-wrapper,
+#featured-posts #chat-icon-wrapper {
+  opacity: 0.7;
+}
+
 /* RESPONSIVE */
 
 @media screen and (max-width: 1024px) {

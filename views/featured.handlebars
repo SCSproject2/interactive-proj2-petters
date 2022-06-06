@@ -1,5 +1,5 @@
 <div class='container'>
-  <div class="row featured-posts">
+  <div class='row featured-posts'>
     <div class='post-top-likes col' id='featured-posts'>
       <h2>Top 5 Liked Posts</h2>
       {{! posts.forEach(post) }}
@@ -12,10 +12,6 @@
               {{format_date post.created_at}}</p>
           </div>
           <div id='post-icon-wrapper'>
-            <div id='chat-icon-wrapper'>
-              <img id='chat-icon' src='./images/comment.png' alt='' />
-              <p>{{checkCounter post.comments}}</p>
-            </div>
             <div id='like-icon-wrapper'>
               <img class='like-icon' src='./images/like.png' alt='' />
               <p>{{checkCounter post.likes}}</p>
@@ -52,10 +48,6 @@
             <div id='chat-icon-wrapper'>
               <img id='chat-icon' src='./images/comment.png' alt='' />
               <p>{{checkCounter post.comments}}</p>
-            </div>
-            <div id='like-icon-wrapper'>
-              <img class='like-icon' src='./images/like.png' alt='' />
-              <p>{{checkCounter post.likes}}</p>
             </div>
           </div>
           <img
