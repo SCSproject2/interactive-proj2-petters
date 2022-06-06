@@ -16,4 +16,12 @@ module.exports = {
   checkCounter: (item) => {
     return item.length;
   },
+
+  checkImage: (item) => {
+    if (item.includes('https')) {
+      return '';
+    } else {
+      return '/';
+    }
+  },
 };
