@@ -109,7 +109,8 @@ textarea {
 }
 
 #search-status-update {
-  margin: 0;
+  margin-left: 10px;
+  margin-bottom: 0;
 }
 #search-controls {
   color: white;
