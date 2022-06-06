@@ -10,8 +10,9 @@ h1 {
 }
 
 #empty {
-  width: 200px;
+  width: 20px;
 }
+
 header {
   display: flex;
   align-items: center;
@@ -374,7 +375,7 @@ select {
 #post-controls {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin-bottom: 10px;
 }
 
@@ -397,10 +398,6 @@ select {
 #random-image {
   width: 260px;
   object-fit: cover;
-}
-
-.col-5 {
-  width: 0%;
 }
 
 /* -------- --------- --------- Home page */
@@ -585,6 +582,8 @@ select {
   .col-md-4 {
     width: 45%;
   }
+
+
 }
 
 @media screen and (max-width: 568px) {
@@ -607,4 +606,26 @@ select {
   .container {
     padding: 0;
   }
+
+  /* -----------------------------------------------  main */
+  #empty {
+    display: none;
+  }
+
+  header {
+    padding: 10px 15px 10px 15px;
+  }
+
+  #header-head {
+    margin-right: 10px;
+  }
+
+  header nav {
+    justify-items: center;
+  }
+
+  .navItem {
+    font-size: 20px;
+  }
+
 }
