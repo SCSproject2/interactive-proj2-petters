@@ -497,7 +497,7 @@ select {
   display: flex;
   align-items: center;
   right: 10px;
-  bottom: 10px;
+  bottom: -7px;
 }
 
 #post-icon-wrapper p {
@@ -576,6 +576,8 @@ select {
     width: 22%;
   }
 }
+
+
 
 @media screen and (max-width: 650px) {
   /* -----------------------------------------------  homepage */
