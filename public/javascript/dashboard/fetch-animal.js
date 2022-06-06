@@ -127,9 +127,9 @@ async function newPostHandler(
   if (response.ok) {
     document.location.replace('/dashboard');
   } else {
-    // Otherwise alert the user accordingly
+    // Continue to fetch until it successfully generates the post
     fetchAnimal();
-    console.log('searching...');
+    document.getElementById('generating-status').style.display = 'unset';
   }
 }
 

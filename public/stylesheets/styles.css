@@ -323,13 +323,29 @@ select {
 }
 
 #add-post,
-#add-category {
+#add-category,
+#random-post {
   color: white;
-  width: 100px;
+  width: 125px;
   background-color: rgba(111, 22, 193, 0.7);
   margin-top: 5px;
 }
 
+#random-post-title,
+#category-title {
+  margin-top: 25px;
+}
+
+#random-post-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+#generating-status {
+  display: none;
+  margin-bottom: 0;
+  margin-left: 10px;
+}
 #add-category {
   /* Need additional margin-top spacing */
   margin-top: 10px;

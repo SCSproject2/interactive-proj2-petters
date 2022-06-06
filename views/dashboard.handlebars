@@ -52,7 +52,7 @@
     </div>
     <button id='add-post' type='submit'>Post</button>
   </form>
-  <h3 style='margin-top: 20px'>Add new Category</h3>
+  <h3 id='category-title'>Add new Category</h3>
   <form id='addCategory-form' method='POST' action='/api/category'>
     <div id='category-status'>
       <input
@@ -65,8 +65,12 @@
     </div>
     <button id='add-category' type='submit'>Post</button>
   </form>
+  <h3 id='random-post-title'>Generate random post</h3>
+  <div id='random-post-wrapper'>
+    <button id='random-post'>Generate</button>
+    <p id='generating-status'>Generating...</p>
+  </div>
 </div>
-<button id='random-post'>Generator random post</button>
 
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>

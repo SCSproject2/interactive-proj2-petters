@@ -41,8 +41,6 @@ router.post('/', upload.single('image'), (req, res) => {
     finalPath = imagePath.replace('public/', '');
   }
 
-  console.log(true, req.body.image_filter);
-
   Post.create({
     title: req.body.title,
     body: req.body.desc,
