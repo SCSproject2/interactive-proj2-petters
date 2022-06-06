@@ -398,6 +398,11 @@ select {
   width: 260px;
   object-fit: cover;
 }
+
+.col-5 {
+  width: 0%;
+}
+
 /* -------- --------- --------- Home page */
 #homepage-posts a {
   margin-bottom: 100px;
