@@ -372,6 +372,11 @@ select {
   display: flex;
   flex-direction: column;
 }
+
+#random-image {
+  width: 260px;
+  object-fit: cover;
+}
 /* -------- --------- --------- Home page */
 #homepage-posts a {
   margin-bottom: 100px;

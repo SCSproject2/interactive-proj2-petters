@@ -66,6 +66,7 @@
     <button id='add-category' type='submit'>Post</button>
   </form>
 </div>
+<button id='random-post'>Generator random post</button>
 
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
@@ -107,7 +108,6 @@
           class='delete-post-id'
           id='delete-post-{{post.id}}'
         >Delete post</button>
-
         <button
           data-post-id={{post.id}}
           id='view-comments-{{post.id}}'
@@ -124,6 +124,7 @@
     </div>
   {{/each}}
 </div>
+<script src='./javascript/dashboard/fetch-animal.js'></script>
 <script src='./javascript/dashboard/check-category-form.js'></script>
 <script src='./javascript/dashboard/check-post-form.js'></script>
 <script src='./javascript/dashboard/edit-post.js'></script>
