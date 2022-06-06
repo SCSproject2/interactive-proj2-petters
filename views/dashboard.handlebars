@@ -107,6 +107,7 @@
           class='delete-post-id'
           id='delete-post-{{post.id}}'
         >Delete post</button>
+
         <button
           data-post-id={{post.id}}
           id='view-comments-{{post.id}}'
@@ -117,9 +118,9 @@
           class='confirm-post'
           id='confirm-post-{{post.id}}'
         >Confirm</button>
-        <p id='edit-post-status'>Make sure the new post title and body are
-          greater than 4 characters</p>
       </div>
+      <p id='edit-post-status'>Make sure the new post title and body are greater
+        than 4 characters</p>
     </div>
   {{/each}}
 </div>

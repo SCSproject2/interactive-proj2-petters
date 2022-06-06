@@ -229,6 +229,10 @@ textarea {
   width: 35%;
 }
 
+#dashboard-posts {
+  margin-bottom: 75px;
+}
+
 .user-results {
   margin-top: 20px;
 }
@@ -350,13 +354,18 @@ select {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-right: 10px;
   margin-bottom: 10px;
 }
 
 .confirm-post,
 #edit-post-status {
   display: none;
+}
+
+#edit-post-status {
+  font-size: 15px;
+  justify-content: flex-end;
+  color: red;
 }
 
 .db-post-wrapper {
