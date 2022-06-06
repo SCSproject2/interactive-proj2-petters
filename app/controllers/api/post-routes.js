@@ -40,9 +40,7 @@ router.post('/', upload.single('image'), (req, res) => {
   } else {
     finalPath = imagePath.replace('public/', '');
   }
-  // if (!req.body.image_filter) {
-  //   res.redirect('/dashboard', { done: false });
-  // } else {
+
   Post.create({
     title: req.body.title,
     body: req.body.desc,
@@ -55,7 +53,6 @@ router.post('/', upload.single('image'), (req, res) => {
       res.redirect('/dashboard');
     })
     .catch((err) => res.status(500).json(err));
-  // }
 });
 
 // Get all posts

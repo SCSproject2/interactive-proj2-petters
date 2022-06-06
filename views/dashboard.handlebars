@@ -54,7 +54,15 @@
   </form>
   <h3 style='margin-top: 20px'>Add new Category</h3>
   <form id='addCategory-form' method='POST' action='/api/category'>
-    <input name='category_name' type='text' placeholder='Enter new category' />
+    <div id='category-status'>
+      <input
+        id='category_name'
+        name='category_name'
+        type='text'
+        placeholder='Enter new category'
+      />
+      <p id='category-upload-status'></p>
+    </div>
     <button id='add-category' type='submit'>Post</button>
   </form>
 </div>
@@ -76,16 +84,6 @@
           -
           {{format_date post.created_at}}</p>
       </div>
-      {{!-- <div id='post-icon-wrapper'>
-        <div id='chat-icon-wrapper'>
-          <img id='chat-icon' src='./images/comment.png' alt='' />
-          <p>{{checkCounter post.comments}}</p>
-        </div>
-        <div id='like-icon-wrapper'>
-          <img class='like-icon' src='./images/like.png' alt='' />
-          <p>{{checkCounter post.likes}}</p>
-        </div>
-      </div> --}}
       <img
         class='{{post.image_filter}}'
         id='post-image'
@@ -125,7 +123,8 @@
     </div>
   {{/each}}
 </div>
-<script src='./javascript/dashboard/check-form.js'></script>
+<script src='./javascript/dashboard/check-category-form.js'></script>
+<script src='./javascript/dashboard/check-post-form.js'></script>
 <script src='./javascript/dashboard/edit-post.js'></script>
 <script src='./javascript/dashboard/delete-post.js'></script>
 <script src='./javascript/dashboard/view-comments.js'></script>

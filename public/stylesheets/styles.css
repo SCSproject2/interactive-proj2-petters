@@ -284,7 +284,14 @@ textarea {
   color: red;
 }
 
-#filter-status {
+#category-upload-status {
+  margin-left: 10px;
+  margin-bottom: 0;
+  color: red;
+}
+
+#filter-status,
+#category-status {
   display: flex;
   align-items: center;
 }
