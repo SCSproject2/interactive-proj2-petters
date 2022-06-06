@@ -1,5 +1,4 @@
 const editPosts = document.querySelectorAll('.edit-post-id');
-const postWrapper = document.getElementById('post-body-wrapper');
 
 async function editPost(newTitle, newBody, postId) {
   const response = await fetch(`/api/posts/${postId}`, {
@@ -45,9 +44,6 @@ editPosts.forEach((post) => {
       `confirm-post-${post.dataset.postId}`
     );
     confirmBtn.style.display = 'flex';
-
-    postWrapper.style.display = 'flex';
-    postWrapper.style.flexDirection = 'column';
 
     // Hide the edit, delete and view comments buttons
     document.getElementById(

@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Post, User, Category, Comment, Like } = require('../../models');
-const { withAuth } = require('../../../utils/auth');
+const { Post, User, Comment, Like } = require('../../models');
 
 const path = require('path');
 const multer = require('multer');
@@ -41,7 +40,9 @@ router.post('/', upload.single('image'), (req, res) => {
   } else {
     finalPath = imagePath.replace('public/', '');
   }
-
+  // if (!req.body.image_filter) {
+  //   res.redirect('/dashboard', { done: false });
+  // } else {
   Post.create({
     title: req.body.title,
     body: req.body.desc,
@@ -50,8 +51,11 @@ router.post('/', upload.single('image'), (req, res) => {
     image_filter: req.body.image_filter,
     image_url: finalPath,
   })
-    .then((dbPostData) => res.redirect('/dashboard'))
+    .then((dbPostData) => {
+      res.redirect('/dashboard');
+    })
     .catch((err) => res.status(500).json(err));
+  // }
 });
 
 // Get all posts

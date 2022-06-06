@@ -20,7 +20,7 @@
     ></textarea>
     <div id='add-select-wrapper'>
       <input id='add-post-image' type='file' name='image' />
-      <select name='existing_categories'>
+      <select id='category-options' name='existing_categories'>
         <option value='' disabled selected>Pick a category</option>
         {{#each categories as |category|}}
           <option
@@ -30,21 +30,26 @@
         {{/each}}
       </select>
     </div>
-    <select id='filter-options' name='image_filter'>
-      <option value='' disabled selected>Pick a filter</option>
-      <option value='no-filter' type='button' data-chosen='false'>No Filter</option>
-      <option value='sepia' type='button' data-chosen='false'>Sepia</option>
-      <option value='invert' type='button' data-chosen='false'>Invert</option>
-      <option
-        value='grayscale'
-        type='button'
-        data-chosen='false'
-      >Grayscale</option>
-      <option value='red-tint' type='button' data-chosen='false'>Red tint</option>
-      <option value='blue-tint' type='button' data-chosen='false'>Blue tint</option>
-      <option value='purple-tint' type='button' data-chosen='false'>Purple tint</option>
-      <option value='orange-tint' type='button' data-chosen='false'>Orange tint</option>
-    </select>
+    <div id='filter-status'>
+      <select id='filter-options' name='image_filter'>
+        <option value=''>Pick a filter</option>
+        <option value='no-filter' type='button' data-chosen='false'>No Filter</option>
+        <option value='sepia' type='button' data-chosen='false'>Sepia</option>
+        <option value='invert' type='button' data-chosen='false'>Invert</option>
+        <option
+          value='grayscale'
+          type='button'
+          data-chosen='false'
+        >Grayscale</option>
+        <option value='red-tint' type='button' data-chosen='false'>Red tint</option>
+        <option value='blue-tint' type='button' data-chosen='false'>Blue tint</option>
+        <option value='purple-tint' type='button' data-chosen='false'>Purple
+          tint</option>
+        <option value='orange-tint' type='button' data-chosen='false'>Orange
+          tint</option>
+      </select>
+      <p id='upload-status'></p>
+    </div>
     <button id='add-post' type='submit'>Post</button>
   </form>
   <h3 style='margin-top: 20px'>Add new Category</h3>
@@ -87,7 +92,7 @@
         src='{{post.image_url}}'
         alt='{{post.title}}'
       />
-      <div id='post-body-wrapper'>
+      <div class='db-post-wrapper' id='post-body-wrapper'>
         <h4 id='post-title'>{{post.title}}</h4>
         <p id='post-body'>
           {{post.body}}
@@ -120,6 +125,7 @@
     </div>
   {{/each}}
 </div>
+<script src='./javascript/dashboard/check-form.js'></script>
 <script src='./javascript/dashboard/edit-post.js'></script>
 <script src='./javascript/dashboard/delete-post.js'></script>
 <script src='./javascript/dashboard/view-comments.js'></script>

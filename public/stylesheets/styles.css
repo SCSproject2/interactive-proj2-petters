@@ -273,6 +273,22 @@ textarea {
   width: 100%;
 }
 
+#filter-options {
+  width: 145px;
+  height: 45px;
+  margin-right: 10px;
+}
+
+#filter-status p {
+  margin: 0;
+  color: red;
+}
+
+#filter-status {
+  display: flex;
+  align-items: center;
+}
+
 #add-desc {
   height: 170px;
 }
@@ -333,6 +349,11 @@ select {
 .confirm-post,
 #edit-post-status {
   display: none;
+}
+
+.db-post-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 /* -------- --------- --------- Home page */
 #homepage-posts a {
