@@ -15,7 +15,7 @@ const postdata = [
     image_filter: 'red-tint',
     user_id: 6,
     category_id: 1,
-    image_url: 'images/test-image.PNG',
+    image_url: 'images/1654045031458d.jpg',
   },
   {
     title: 'Save 10% or more on car insurance...',
