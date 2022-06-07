@@ -169,12 +169,6 @@ textarea {
   } 
 }
 
-@media screen and (max-width: 1024px) {
-  #single-post-wrapper {
-    width: 45%;
-  }
-}
-
 #search-post-wrapper,
 #search-user-wrapper {
   margin-left: 20px;
