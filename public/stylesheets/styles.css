@@ -193,13 +193,6 @@ textarea {
   margin-left: 30px;
 }
 
-.user-posts #single-post {
-  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2) !important;
-}
-
-.user-posts {
-  margin: 0 25px;
-}
 .search-btn {
   margin: 5px 5px;
 }
@@ -212,7 +205,12 @@ textarea {
   display: none;
 }
 /* -------- --------- --------- Featured page (featured.handlebars) */
-
+.featured-wrapper {
+  margin: 0 25px;
+}
+.featured-wrapper #post-image {
+  height: 500px;
+}
 /* Top 5 likes, Top 5 Commented */
 .container h2 {
   font-size: 35px;
@@ -238,6 +236,20 @@ textarea {
   padding: 15px;
 }
 
+.featured-wrapper #post-title {
+  font-size: 30px;
+}
+.featured-wrapper #post-body {
+  font-size: 25px;
+}
+
+.featured-wrapper #post-header {
+  height: 40px;
+}
+
+.featured-wrapper #post-header p {
+  font-size: 20px;
+}
 /* -------- --------- --------- Login / Signup (login.handlebars) */
 #signup-status,
 #signin-status,
@@ -408,7 +420,6 @@ select {
 }
 
 #generating-status {
-  display: none;
   margin-bottom: 0;
   margin-left: 10px;
 }
@@ -432,15 +443,39 @@ select {
   margin: 40px 0;
 }
 
+#dashboard-posts {
+  width: revert;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0;
+  margin-left: 0;
+}
+#dashboard-posts #single-post {
+  width: 400px;
+  margin: 15px 15px;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
 #post-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 10px;
+  justify-content: center;
+}
+
+#post-controls button:nth-child(1) {
+  margin-left: 0;
+  margin-right: 5px;
+}
+#post-controls button:nth-child(3) {
+  margin-left: 0;
+  margin-right: 0;
 }
 #post-controls button {
-  width: 175px;
   font-size: 16px;
+  margin: 5px 10px;
 }
 .confirm-post,
 #edit-post-status {
@@ -482,6 +517,7 @@ select {
 }
 
 .spacing {
+  margin: 10px;
   justify-content: space-around;
 }
 
@@ -514,8 +550,9 @@ select {
 
 #post-image {
   /* Fit the full width of the post */
+  height: 225px;
   width: 100%;
-  object-fit: scale-down;
+  object-fit: cover;
 }
 
 #post-header {
@@ -593,7 +630,7 @@ select {
 }
 
 .featured-posts #post-icon-wrapper {
-  right: -515px;
+  right: -584px;
   bottom: 62px;
 }
 #post-icon-wrapper p {
@@ -682,7 +719,7 @@ select {
 @media screen and (min-width: 1025px) {
   /* -----------------------------------------------  homepage */
   .col-md-4 {
-    width: 22%;
+    width: 24%;
   }
 }
 

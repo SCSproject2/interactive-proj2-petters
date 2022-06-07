@@ -74,66 +74,64 @@
   <h3 id='random-post-title'>Generate random post</h3>
   <div id='random-post-wrapper'>
     <button id='random-post'>Generate</button>
-    <p id='generating-status'>Generating...</p>
+    <p id='generating-status'></p>
   </div>
 </div>
 
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
-<div id='dashboard-posts container'>
-  <div class='user-posts row spacing'>
-    {{#if posts}}{{else}}
-      <p id='no-posts'>You have not uploaded any posts</p>
-    {{/if}}
+<div id='dashboard-posts'>
+  {{#if posts}}{{else}}
+    <p id='no-posts'>You have not uploaded any posts</p>
+  {{/if}}
 
-    {{#each posts as |post|}}
-      <div id='single-post' class='col-sm-12 col-md-6 col-xl-3 p-1 mb-4'>
-        <div id='post-header' class='{{post.category_name}}'>
-          <p id='post-category'>{{post.category_name}}</p>
-          <p id='post-date'>
-            {{post.user.username}}
-            -
-            {{format_date post.created_at}}</p>
-        </div>
-        <img
-          class='{{post.image_filter}}'
-          id='post-image'
-          src='{{post.image_url}}'
-          alt='{{post.title}}'
-        />
-        <div class='db-post-wrapper' id='post-body-wrapper'>
-          <h4 id='post-title'>{{post.title}}</h4>
-          <p id='post-body'>
-            {{post.body}}
-          </p>
-        </div>
-        <div id='post-controls'>
-          <button
-            data-post-id={{post.id}}
-            class='edit-post-id'
-            id='edit-post-{{post.id}}'
-          >Edit post</button>
-          <button
-            data-post-id={{post.id}}
-            class='delete-post-id'
-            id='delete-post-{{post.id}}'
-          >Delete post</button>
-          <button
-            data-post-id={{post.id}}
-            id='view-comments-{{post.id}}'
-            class='view-comments'
-          >View comments</button>
-          <button
-            data-post-id={{post.id}}
-            class='confirm-post'
-            id='confirm-post-{{post.id}}'
-          >Confirm</button>
-        </div>
-        <p id='edit-post-status'>Make sure the new post title and body are
-          greater than 4 characters</p>
+  {{#each posts as |post|}}
+    <div id='single-post'>
+      <div id='post-header' class='{{post.category_name}}'>
+        <p id='post-category'>{{post.category_name}}</p>
+        <p id='post-date'>
+          {{post.user.username}}
+          -
+          {{format_date post.created_at}}</p>
       </div>
-    {{/each}}
-  </div>
+      <img
+        class='{{post.image_filter}}'
+        id='post-image'
+        src='{{post.image_url}}'
+        alt='{{post.title}}'
+      />
+      <div class='db-post-wrapper' id='post-body-wrapper'>
+        <h4 id='post-title'>{{post.title}}</h4>
+        <p id='post-body'>
+          {{post.body}}
+        </p>
+      </div>
+      <div id='post-controls'>
+        <button
+          data-post-id={{post.id}}
+          class='edit-post-id'
+          id='edit-post-{{post.id}}'
+        >Edit post</button>
+        <button
+          data-post-id={{post.id}}
+          class='delete-post-id'
+          id='delete-post-{{post.id}}'
+        >Delete post</button>
+        <button
+          data-post-id={{post.id}}
+          id='view-comments-{{post.id}}'
+          class='view-comments'
+        >View comments</button>
+        <button
+          data-post-id={{post.id}}
+          class='confirm-post'
+          id='confirm-post-{{post.id}}'
+        >Confirm</button>
+      </div>
+      <p id='edit-post-status'>Make sure the new post title and body are greater
+        than 4 characters</p>
+    </div>
+  {{/each}}
 </div>
 <script src='./javascript/dashboard/preview-filter.js'></script>
 <script src='./javascript/dashboard/fetch-animal.js'></script>

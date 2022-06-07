@@ -1,3 +1,6 @@
+const statusEl = document.getElementById('generating-status');
+var counter = 0;
+
 const options = {
   method: 'GET',
   headers: {
@@ -93,10 +96,18 @@ async function fetchAnimal() {
   )
     .then((response) => response.json())
     .then((response) => {
-      var image_url =
-        response.response.images[genRandomNum(response.response.images)].image
-          .url;
-      fetchRandomCaptions(image_url, randomAnimal);
+      if (response.response == undefined) {
+        statusEl.textContent =
+          'No data found and or exceeded fetch limit, please try again!';
+        setTimeout(() => {
+          statusEl.textContent = '';
+        }, 3000);
+      } else {
+        var image_url =
+          response.response.images[genRandomNum(response.response.images)].image
+            .url;
+        fetchRandomCaptions(image_url, randomAnimal);
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -128,8 +139,16 @@ async function newPostHandler(
     document.location.replace('/dashboard');
   } else {
     // Continue to fetch until it successfully generates the post
-    fetchAnimal();
-    document.getElementById('generating-status').style.display = 'unset';
+    counter++;
+    if (counter == 15) {
+      statusEl.textContent = 'No data found, please try again!';
+      setTimeout(() => {
+        statusEl.textContent = '';
+      }, 2000);
+    } else {
+      fetchAnimal();
+      statusEl.textContent = 'Generating...';
+    }
   }
 }
 
