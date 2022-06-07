@@ -80,10 +80,10 @@
 
 <hr id='dashboardHr' />
 <h1 id='your-posts'>Your posts</h1>
+{{#if posts}}{{else}}
+  <p id='no-posts'>You have not uploaded any posts</p>
+{{/if}}
 <div id='dashboard-posts'>
-  {{#if posts}}{{else}}
-    <p id='no-posts'>You have not uploaded any posts</p>
-  {{/if}}
 
   {{#each posts as |post|}}
     <div id='single-post'>

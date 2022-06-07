@@ -1,6 +1,6 @@
 <div class='featured-wrapper'>
-  <div class='row featured-posts'>
-    <div class='post-top-likes col' id='featured-posts'>
+  <div class='featured-posts'>
+    <div class='post-top-likes' id='featured-posts'>
       <h2>Top 5 Liked Posts</h2>
       {{! posts.forEach(post) }}
       {{#each postsLikesObj as |post|}}
@@ -11,11 +11,9 @@
               -
               {{format_date post.created_at}}</p>
           </div>
-          <div id='post-icon-wrapper'>
-            <div id='like-icon-wrapper'>
-              <img class='like-icon' src='./images/like.png' alt='' />
-              <p>{{checkCounter post.likes}}</p>
-            </div>
+          <div id='like-icon-wrapper'>
+            <img class='like-icon' src='./images/like.png' alt='' />
+            <p>{{checkCounter post.likes}}</p>
           </div>
           <div class='image-container'>
             <img
@@ -35,7 +33,7 @@
         </a>
       {{/each}}
     </div>
-    <div class='post-top-comments col' id='featured-posts'>
+    <div class='post-top-comments' id='featured-posts'>
       <h2>Top 5 Commented On Posts</h2>
       {{! posts.forEach(post) }}
       {{#each postsCommentsObj as |post|}}
@@ -46,11 +44,9 @@
               -
               {{format_date post.created_at}}</p>
           </div>
-          <div id='post-icon-wrapper'>
-            <div id='chat-icon-wrapper'>
-              <img id='chat-icon' src='./images/comment.png' alt='' />
-              <p>{{checkCounter post.comments}}</p>
-            </div>
+          <div id='chat-icon-wrapper'>
+            <img id='chat-icon' src='./images/comment.png' alt='' />
+            <p>{{checkCounter post.comments}}</p>
           </div>
           <img
             id='post-image'
