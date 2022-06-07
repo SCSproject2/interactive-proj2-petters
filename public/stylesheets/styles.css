@@ -603,13 +603,17 @@ select {
 
 #post-body-wrapper {
   background-color: aliceblue;
-  padding-left: 10px;
-  padding-top: 10px;
+
+  padding: 10px;
 }
 
 .edit-title-input,
 .edit-body-input {
   margin: 5px 0;
+}
+
+.edit-body-input {
+  height: 140px;
 }
 
 #post-body {
