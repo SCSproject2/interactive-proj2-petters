@@ -130,7 +130,7 @@ const renderUserPosts = (postsObject) => {
       clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
-            <div id='single-post-wrapper' class='user-results'>
+      <div id='single-post-wrapper' class='user-results col-sm-12 col-md-6 col-xl-3'>
               <a id='single-post' href='/post/${el.id}'>
                 <div id='post-header' class='${el.category_name}'>
                   <p id='post-category'>${el.category_name}</p>

@@ -80,7 +80,6 @@ textarea {
 }
 
 /* -------- --------- --------- Search page (search.handlebars) */
-
 #search-wrapper {
   margin-bottom: 50px;
 }
@@ -89,7 +88,7 @@ textarea {
   margin-top: 0;
 }
 #search-wrapper #single-post-wrapper {
-  margin: 550px 0;
+  margin-bottom: 150px;
 }
 
 #inner-search-wrapper {
@@ -141,7 +140,7 @@ textarea {
 
 #hide-menu {
   position: absolute;
-  right: 10px;
+  right: -140px;
   top: 10px;
 }
 
@@ -174,10 +173,25 @@ textarea {
 
 #search-post-wrapper {
   margin-top: 20px;
-  /* width: 35%; */
+  width: 500px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+}
+
+#search-post-wrapper #post-header,
+#search-user-wrapper #post-header {
+  height: 40px;
+}
+
+#search-post-wrapper #post-image,
+#search-user-wrapper #post-image {
+  height: 70%;
+}
+
+#search-user-wrapper #single-post-wrapper,
+#search-post-wrapper #single-post-wrapper {
+  width: 450px;
+  height: 400px;
 }
 
 @media screen and (max-width: 568px) {
@@ -322,7 +336,6 @@ textarea {
 .post-top-likes,
 .post-top-comments,
 #single-user-wrapper,
-.user-results,
 #page-singlepost {
   width: 35%;
 }
@@ -333,13 +346,9 @@ textarea {
 }
 
 #page-singlepost #post-image {
-  height: 60%;
+  height: 65%;
 }
-/* #dashboard-posts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-} */
+
 #dashboard-posts {
   margin-bottom: 75px;
 }
@@ -560,7 +569,6 @@ select {
 #single-post-wrapper {
   height: 0%;
   position: relative;
-  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 #single-post {
@@ -707,7 +715,6 @@ select {
 }
 
 /* -------- --------- --------- Single Post */
-
 #page-singlepost #single-post-wrapper {
   width: 550px;
   height: revert;
