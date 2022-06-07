@@ -1,6 +1,6 @@
 <div id='search-wrapper'>
-  <div id='search-controls' class="">
-    <div id='inner-search-wrapper' class="">
+  <div id='search-controls' class='search'>
+    <div id='inner-search-wrapper'>
       <input
         id='search'
         placeholder='Search user'
@@ -11,21 +11,24 @@
       <button id='clear-history'>Clear History</button>
       <p id='search-status-update'></p>
     </div>
+    <button id='hide-menu'>Hide Menu</button>
     <p id='history-search-label' style='display: none; margin: 5px 0'>Previous
       searches</p>
     <div id='history-searches'></div>
     <hr />
-    <p style='margin-bottom: 0;'>Search by existing categories</p>
-    {{#each categoryArr as |category|}}
-      <button
-        class='category-btns {{category.category_name}}'
-        data-category-id='{{category.id}}'
-      >{{category.category_name}}</button>
-    {{/each}}
+    <div id='category-wrapper'>
+      <p style='margin-bottom: 0;'>Search by existing categories</p>
+      {{#each categoryArr as |category|}}
+        <button
+          class='category-btns {{category.category_name}}'
+          data-category-id='{{category.id}}'
+        >{{category.category_name}}</button>
+      {{/each}}
+    </div>
   </div>
   <div id='search-user-wrapper'></div>
   <div id='search-post-wrapper'></div>
 </div>
-
+<script src='/javascript/search-hide.js'></script>
 <script src='/javascript/handle-category-search.js'></script>
 <script src='/javascript/handle-user-search.js'></script>

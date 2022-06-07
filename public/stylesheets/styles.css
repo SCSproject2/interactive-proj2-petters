@@ -117,6 +117,7 @@ textarea {
   margin-bottom: 0;
 }
 #search-controls {
+  position: relative;
   color: white;
   width: 60%;
   top: 120px;
@@ -127,10 +128,36 @@ textarea {
   border-radius: 5px;
   background-color: rgba(111, 22, 193, 0.7);
   backdrop-filter: blur(10px);
+  opacity: 1;
+  transition: 0.2s all ease-in-out;
 }
 
-#search {
-  margin-bottom: 5px;
+#search-controls.inactive {
+  position: fixed;
+  backdrop-filter: revert;
+  background-color: transparent;
+  transition: 0.2s all ease-in-out;
+}
+
+#hide-menu {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+#search-controls.inactive #hide-menu {
+  right: revert;
+  top: 10px;
+}
+
+#search-controls.inactive #inner-search-wrapper,
+#search-controls.inactive #history-search-label,
+#search-controls.inactive #history-searches,
+#search-controls.inactive #category-wrapper,
+#search-controls.inactive hr {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.2s all ease-in-out;
 }
 
 #search-controls input::placeholder {
@@ -193,6 +220,9 @@ textarea {
   margin-left: 30px;
 }
 
+#no-posts {
+  margin-left: 30px;
+}
 .search-btn {
   margin: 5px 5px;
 }
@@ -449,9 +479,10 @@ select {
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  margin-left: 20px;
   margin-top: 0;
-  margin-left: 0;
 }
+
 #dashboard-posts #single-post {
   width: 400px;
   margin: 15px 15px;
