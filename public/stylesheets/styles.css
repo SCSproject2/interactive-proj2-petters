@@ -360,20 +360,67 @@ textarea {
   margin-top: 20px;
 }
 
-#page-singlepost #post-image {
-  height: 45%;
-}
-
 .user-results {
   margin-top: 20px;
 }
 
 #comment-field,
 #comment-section {
-  width: 100%;
+  width: 90%;
   height: 100px;
 }
 
+#comment-section-divider {
+  margin-top: 25px;
+  margin-left: 0;
+  margin-bottom: 25px;
+  height: 1px;
+  opacity: 0.2;
+  width: 90%;
+  background-color: black;
+}
+
+#comment-control {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.delete-comment {
+  margin-left: 5px;
+}
+
+#comment-status {
+  width: 300px;
+}
+.edit-comment-input {
+  left: 90px;
+  margin-left: 0px;
+  top: 10px;
+  position: absolute;
+  width: 80%;
+  height: 96px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  background-color: transparent;
+  resize: none;
+  font-family: inherit;
+}
+
+.confirm-comment {
+  display: none;
+  padding: 3px 24px;
+  position: relative;
+  left: 78px;
+  bottom: -3px;
+}
+#new-comment-status {
+  color: red;
+  display: none;
+  z-index: 2;
+  font-size: 15px;
+}
 #single-comment {
   position: relative;
   display: flex;
@@ -390,6 +437,29 @@ textarea {
   font-size: 15px;
 }
 
+@media screen and (max-width: 1230px) {
+  #comment-field,
+  #comment-section,
+  #comment-section-divider {
+    width: 140%;
+  }
+}
+
+@media screen and (max-width: 881px) {
+  #comment-field,
+  #comment-section,
+  #comment-section-divider {
+    width: 170%;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  #comment-field,
+  #comment-section,
+  #comment-section-divider {
+    width: 190%;
+  }
+}
 /* -------- --------- --------- Dashboard */
 #dashboard-wrapper {
   display: flex;
@@ -882,11 +952,6 @@ select {
 .orange-tint {
   filter: hue-rotate(260deg);
 }
-
-/* .post-top-likes {
-  border-right: 1px solid black;
-  padding-right: 50px;
-} */
 
 .featured-posts {
   display: flex;

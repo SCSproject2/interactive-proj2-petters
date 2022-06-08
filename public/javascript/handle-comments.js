@@ -57,12 +57,12 @@ function editComment(event) {
   event.preventDefault();
 
   const comment_id = event.target.getAttribute('data-comment-id');
-
   const oldP = document.querySelector(`#comment-${comment_id}`);
   const oldText = document.querySelector(`#comment-${comment_id}`).textContent;
   const newText = document.createElement('textarea');
   newText.value = oldText;
   oldP.parentNode.replaceChild(newText, oldP);
+  document.querySelector(`.delete-comment`).style.display = 'none';
 
   const confirmBtn = document.getElementById(`confirm-comment-${comment_id}`);
   confirmBtn.style.display = 'flex';
