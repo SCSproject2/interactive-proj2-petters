@@ -234,7 +234,7 @@ textarea {
   align-items: flex-end;
 }
 
-.addPost-container,
+#dashboard-wrapper,
 #your-posts,
 #dashboard-posts {
   margin-top: 30px;
@@ -391,9 +391,35 @@ textarea {
 }
 
 /* -------- --------- --------- Dashboard */
+#dashboard-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#dashboard-wrapper h3 {
+  font-size: 27px;
+}
+
+#addPost-wrapper,
+#category-wrapper,
+#random-post-wrapper {
+  margin: 5px 0;
+}
+
+#addPost-wrapper,
+#category-wrapper {
+  margin-right: 30px;
+}
+
+#random-post-wrapper {
+  display: flex;
+  flex-direction: column;
+}
 
 #addPost-form {
-  width: 450px;
+  width: 440px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -414,9 +440,17 @@ textarea {
   margin-right: 10px;
 }
 
+#filter-options:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
 #filter-status p {
   margin: 0;
   color: red;
+}
+
+#category-options:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 #category-upload-status {
@@ -440,8 +474,20 @@ textarea {
   flex-direction: column;
 }
 #add-post-image {
+  cursor: pointer;
   width: 64%;
   margin-right: 15px;
+}
+
+#add-post-image::file-selector-button {
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+#add-post-image::file-selector-button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 #add-post-image,
@@ -450,6 +496,10 @@ textarea {
 select {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+#add-post-image:hover {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 #add-post,
@@ -467,11 +517,6 @@ select {
 #random-post-title,
 #category-title {
   margin-top: 25px;
-}
-
-#random-post-wrapper {
-  display: flex;
-  align-items: center;
 }
 
 #generating-status {
