@@ -306,7 +306,7 @@ textarea {
 #signin-status,
 #comment-status {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 #form-inputs {
@@ -402,6 +402,11 @@ textarea {
   font-size: 25px;
 }
 
+#category-title,
+#random-post-title {
+  margin-bottom: 15px !important;
+}
+
 #addPost-wrapper,
 #category-wrapper,
 #random-post-wrapper {
@@ -490,11 +495,11 @@ textarea {
   cursor: pointer;
   border: none;
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.15);
+  background-color: rgba(0, 0, 0, 0.13);
 }
 
 #add-post-image::file-selector-button:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.18);
 }
 
 #add-post-image,
@@ -523,6 +528,18 @@ select {
   color: white;
   width: 125px;
   background-color: rgba(111, 22, 193, 0.7);
+}
+
+#random-post:hover,
+#add-post:hover,
+#add-category:hover {
+  background-color: rgba(111, 22, 193, 0.8);
+}
+
+#random-post:active,
+#add-post:active,
+#add-category:active {
+  background-color: rgba(111, 22, 193, 0.9);
 }
 
 #post-title {
