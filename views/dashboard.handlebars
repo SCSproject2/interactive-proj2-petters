@@ -83,8 +83,8 @@
 {{#if posts}}{{else}}
   <p id='no-posts'>You have not uploaded any posts</p>
 {{/if}}
+<div>
 <div id='dashboard-posts'>
-
   {{#each posts as |post|}}
     <div id='single-post'>
       <div id='post-header' class='{{post.category_name}}'>
@@ -133,6 +133,7 @@
     </div>
   {{/each}}
 </div>
+
 <script src='./javascript/dashboard/preview-filter.js'></script>
 <script src='./javascript/dashboard/fetch-animal.js'></script>
 <script src='./javascript/dashboard/check-category-form.js'></script>

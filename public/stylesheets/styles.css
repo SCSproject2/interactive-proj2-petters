@@ -10,7 +10,7 @@ h1 {
 }
 
 #empty {
-  width: 20px;
+  width: 100px;
 }
 
 header {
@@ -194,6 +194,10 @@ textarea {
   height: 400px;
 }
 
+#search-user-wrapper {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 568px) {
   #single-post-wrapper {
     width: 100%;
@@ -335,9 +339,12 @@ textarea {
 #dashboard-posts,
 .post-top-likes,
 .post-top-comments,
-#single-user-wrapper,
-#page-singlepost {
+#single-user-wrapper {
   width: 35%;
+}
+
+#page-singlepost {
+  width: 45%;
 }
 
 #page-singlepost {
@@ -347,10 +354,6 @@ textarea {
 
 #page-singlepost #post-image {
   height: 65%;
-}
-
-#dashboard-posts {
-  margin-bottom: 75px;
 }
 
 .user-results {
@@ -380,6 +383,7 @@ textarea {
 }
 
 /* -------- --------- --------- Dashboard */
+
 #addPost-form {
   width: 450px;
   display: flex;
@@ -483,24 +487,29 @@ select {
 }
 
 #dashboardHr {
-  margin: 40px 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 #dashboard-posts {
   width: revert;
-  height: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   margin-left: 20px;
   margin-top: 0;
+  margin-bottom: 50px;
 }
 
 #dashboard-posts #single-post {
   width: 400px;
-  margin: 15px 15px;
-  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2) !important;
+  margin: 10px 10px;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#dashboard-posts #post-header {
+  height: 35px;
 }
 
 #post-controls {
@@ -569,6 +578,11 @@ select {
 #single-post-wrapper {
   height: 0%;
   position: relative;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2) !important;
+}
+
+#search-wrapper #single-post-wrapper {
+  box-shadow: revert !important;
 }
 
 #single-post {
@@ -581,9 +595,18 @@ select {
   padding-top: 5px;
 }
 
-#page-singlepost #post-body-wrapper p {
+#page-singlepost #post-header {
+  height: 40px;
+}
+
+#page-singlepost #post-header p {
+  font-size: 20px;
   margin-bottom: 0;
 }
+#page-singlepost #post-body {
+  font-size: 22px;
+}
+
 #homepage-posts #single-post {
   padding: revert;
 }
@@ -647,7 +670,6 @@ select {
 
 #post-body-wrapper {
   background-color: aliceblue;
-
   padding: 10px;
 }
 
