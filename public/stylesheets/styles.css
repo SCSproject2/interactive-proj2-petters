@@ -203,7 +203,7 @@ textarea {
 
 @media screen and (max-width: 568px) {
   #single-post-wrapper {
-    width: 100%;
+    width: 90%;
   }
 
   #search-controls {
@@ -1045,10 +1045,10 @@ select {
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 705px) {
   /* -----------------------------------------------  homepage */
   .col-md-4 {
-    width: 45%;
+    width: 95%;
   }
 
   /* -----------------------------------------------  search */
@@ -1060,7 +1060,7 @@ select {
 @media screen and (max-width: 568px) {
   /* -----------------------------------------------  homepage */
   .col-md-4 {
-    width: 95%;
+    width: 90%;
   }
 
   /* -----------------------------------------------  featured */
