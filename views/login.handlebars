@@ -1,35 +1,48 @@
-<h1>Login</h1>>
-<body>
-    <class="container h-screen m-auto flex justify-center">
-        <form id="login" class="form">
-            <h1 class="form-title text-m">Login</h1>
-            <div class="form_message">Email or Username</div>
-            <div class="form__input-group">
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Email or Username">
-            </div>
-            <div class="form-input-group">
-                <div class="form_message">Password</div>
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Password">
-            </div>
-            <button>Submit</button>
-        </form>
-    
-
-
-
-        <form id="signup" class="sign-up-form">
-            <h1 class="form-title text-m">Sign Up</h1>
-            <div class="form_message">Email or Username</div>
-            <div class="form__input-group">
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Email or Username">
-            </div>
-            <div class="form-input-group">
-                <div class="form_message">Enter Password</div>
-                <input type="text" class="form__input px-8 py-4" autofocus placeholder="Password">
-                <div class="form__input-group"></div>
-            </div>
-            <button>Submit</button>
-        </form>
+<p id='login-notice'>You must
+  <strong>Sign up</strong>
+  or be
+  <strong>logged in</strong>
+  <br />to access the full features of Petters.</p>
+<div class='login-container'>
+  <h1>Login</h1>
+  <form id='login-form'>
+    <div id='form-inputs'>
+      <input
+        type='username'
+        id='username-login'
+        placeholder='Username  *required'
+      />
+      <input
+        type='password'
+        id='pass-login'
+        placeholder='Password  *required'
+      />
     </div>
-</body>
-</html>
+    <h1 id='signin-status'>Fill in required inputs</h1>
+    <button id='login-btn' type='submit'>Login</button>
+  </form>
+</div>
+<hr id='loginHr' />
+<div class='signup-container'>
+  <h1>Sign up</h1>
+  <form id='signup-form'>
+    <div id='form-inputs'>
+      <input
+        type='text'
+        id='signup-username'
+        placeholder='Username  *required'
+      />
+      <input type='email' id='signup-email' placeholder='Email  *required' />
+      <input
+        type='password'
+        id='signup-pass'
+        placeholder='Password  *required'
+      />
+    </div>
+    <h1 id='signup-status'>Fill in all required inputs with character count
+      above 4</h1>
+    <button id='submit-btn' type='submit'>Signup</button>
+  </form>
+</div>
+
+<script src='/javascript/login.js'></script>

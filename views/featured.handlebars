@@ -1,1 +1,67 @@
-<h1>Featured</h1>
+<div class='featured-wrapper container'>
+  <div class='featured-posts row'>
+    <div class='post-top-likes col-sm-12 col-md-6' id='featured-posts'>
+      <h2>Top 5 Liked Posts</h2>
+      {{! posts.forEach(post) }}
+      {{#each postsLikesObj as |post|}}
+        <a id='single-post' href='/post/{{post.id}}'>
+          <div id='post-header' class='{{post.category_name}}'>
+            <p id='post-category'>{{post.category_name}}</p>
+            <p id='post-date'>{{post.user.username}}
+              -
+              {{format_date post.created_at}}</p>
+          </div>
+          <div id='like-icon-wrapper'>
+            <img class='like-icon' src='./images/like.png' alt='' />
+            <p>{{checkCounter post.likes}}</p>
+          </div>
+          <div class='image-container'>
+            <img
+              class='{{post.image_filter}}'
+              id='post-image'
+              class='featured-image'
+              src='{{checkImage post.image_url}}{{post.image_url}}'
+              alt='{{post.title}}'
+            />
+          </div>
+          <div id='post-body-wrapper'>
+            <h4 id='post-title'>{{post.title}}</h4>
+            <p id='post-body'>
+              {{post.body}}
+            </p>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+    <div class='post-top-comments col-sm-12 col-md-6' id='featured-posts'>
+      <h2>Top 5 Commented On Posts</h2>
+      {{! posts.forEach(post) }}
+      {{#each postsCommentsObj as |post|}}
+        <a id='single-post' href='/post/{{post.id}}'>
+          <div id='post-header' class='{{post.category_name}}'>
+            <p id='post-category'>{{post.category_name}}</p>
+            <p id='post-date'>{{post.user.username}}
+              -
+              {{format_date post.created_at}}</p>
+          </div>
+          <div id='chat-icon-wrapper'>
+            <img id='chat-icon' src='./images/comment.png' alt='' />
+            <p>{{checkCounter post.comments}}</p>
+          </div>
+          <img
+            id='post-image'
+            class='featured-image'
+            src='{{checkImage post.image_url}}{{post.image_url}}'
+            alt='{{post.title}}'
+          />
+          <div id='post-body-wrapper'>
+            <h4 id='post-title'>{{post.title}}</h4>
+            <p id='post-body'>
+              {{post.body}}
+            </p>
+          </div>
+        </a>
+      {{/each}}
+    </div>
+  </div>
+</div>
