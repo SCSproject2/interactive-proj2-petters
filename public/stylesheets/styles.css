@@ -853,7 +853,7 @@ select {
 /* -------- --------- --------- Single Post */
 #page-singlepost #single-post-wrapper {
   width: 550px;
-  height: revert;
+  height: fit-content;
   margin-bottom: 0;
 }
 /* -------- --------- --------- Image filters */
