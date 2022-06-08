@@ -74,14 +74,14 @@ textarea {
   resize: none;
   color: black;
   padding-left: 8px;
-  padding-top: 8px;
-
   border: none;
   border-radius: 4px;
-
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+textarea {
+  padding-top: 8px;
+}
 /* -------- --------- --------- Search page (search.handlebars) */
 #search-wrapper {
   margin-bottom: 50px;
@@ -294,9 +294,8 @@ textarea {
 
 @media screen and (max-width: 450px) {
   .post-top-likes {
-    width: 100%
-  }  
-  
+    width: 100%;
+  }
 }
 
 .featured-wrapper #post-title {
