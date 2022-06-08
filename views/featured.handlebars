@@ -1,6 +1,6 @@
-<div class='featured-wrapper'>
-  <div class='featured-posts'>
-    <div class='post-top-likes' id='featured-posts'>
+<div class='featured-wrapper container'>
+  <div class='featured-posts row'>
+    <div class='post-top-likes col-sm-12 col-md-6' id='featured-posts'>
       <h2>Top 5 Liked Posts</h2>
       {{! posts.forEach(post) }}
       {{#each postsLikesObj as |post|}}
@@ -33,7 +33,7 @@
         </a>
       {{/each}}
     </div>
-    <div class='post-top-comments' id='featured-posts'>
+    <div class='post-top-comments col-sm-12 col-md-6' id='featured-posts'>
       <h2>Top 5 Commented On Posts</h2>
       {{! posts.forEach(post) }}
       {{#each postsCommentsObj as |post|}}

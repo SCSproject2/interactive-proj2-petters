@@ -251,6 +251,7 @@ textarea {
 /* -------- --------- --------- Featured page (featured.handlebars) */
 .featured-wrapper {
   margin: 0 25px;
+  width: 100%;
 }
 .featured-wrapper #post-image {
   height: 300px;
@@ -278,6 +279,7 @@ textarea {
 .post-top-likes,
 .post-top-comments {
   padding: 15px;
+  width: 45%;
 }
 
 .featured-wrapper #post-title {
@@ -333,8 +335,8 @@ textarea {
 /* -------- --------- --------- Single posts universal selectors and properties */
 
 #dashboard-posts,
-.post-top-likes,
-.post-top-comments,
+/* .post-top-likes,
+.post-top-comments, */
 #single-user-wrapper,
 #page-singlepost {
   width: 35%;
@@ -756,6 +758,7 @@ select {
   display: flex;
   margin-top: 50px;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 #featured-posts #like-icon-wrapper,
