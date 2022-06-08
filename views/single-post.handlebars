@@ -60,7 +60,7 @@
             <p id='user-{{comment.commentId}}'>{{comment.user}}</p>
             <p id='comment-{{comment.commentId}}'>{{comment.text}}</p>
           </div>
-          <p id='comment-date'>{{format_date comment.date}}</p>
+          <p id='comment-date' class="comment-date-{{commentId}}">{{format_date comment.date}}</p>
         </div>
       {{/each}}
     {{else}}

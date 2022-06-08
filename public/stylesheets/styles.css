@@ -73,9 +73,12 @@ textarea {
   font-size: 20px;
   resize: none;
   color: black;
-  padding-left: 5px;
+  padding-left: 8px;
+  padding-top: 8px;
+
   border: none;
   border-radius: 4px;
+
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -318,6 +321,7 @@ textarea {
 #form-inputs input {
   margin: 5px 0;
   width: 350px;
+  height: 40;
 }
 
 #login-notice {
@@ -332,6 +336,20 @@ textarea {
   margin-left: 25px;
 }
 
+@media screen and (max-width: 568px) {
+  #login-notice,
+  .login-container,
+  .signup-container {
+    margin-left: 15px;
+  }
+  #signup-status {
+    width: 240px;
+  }
+
+  #signup-form {
+    margin-bottom: 25px;
+  }
+}
 /* -------- --------- --------- Main page CSS (main.handlebars) */
 
 #header-logo {
@@ -367,9 +385,14 @@ textarea {
 #comment-field,
 #comment-section {
   width: 100%;
-  height: 100px;
 }
 
+#comment-field {
+  height: 150px;
+}
+#comment-section {
+  margin-bottom: 50px;
+}
 #comment-section-divider {
   margin-top: 25px;
   margin-left: 0;
@@ -395,11 +418,11 @@ textarea {
   width: 300px;
 }
 .edit-comment-input {
-  left: 105px;
+  left: 10px;
   margin-left: 0px;
-  top: 8px;
+  top: 6px;
   position: absolute;
-  width: 75%;
+  width: 95%;
   height: 96px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.7);
@@ -412,8 +435,8 @@ textarea {
   display: none;
   padding: 3px 24px;
   position: relative;
-  left: 94px;
-  bottom: -6px;
+  left: -1px;
+  bottom: -4px;
 }
 .comment-status {
   display: none;
@@ -422,8 +445,8 @@ textarea {
   position: absolute;
   color: red;
   font-size: 15px;
-  left: 222px;
-  bottom: -21px;
+  left: 129px;
+  bottom: -20px;
 }
 #single-comment {
   position: relative;
@@ -447,12 +470,6 @@ textarea {
 
 #comment-wrapper p:nth-child(1) {
   margin-right: 15px;
-}
-
-@media screen and (max-width: 1833px) {
-  .edit-comment-input {
-    width: 64%;
-  }
 }
 
 @media screen and (max-width: 1230px) {
@@ -482,10 +499,18 @@ textarea {
   }
 
   .edit-comment-input {
-    width: 65%;
-    left: 105px;
-    top: 7px;
-    height: 206px;
+    width: 90%;
+    left: 10px;
+    top: 8px;
+    height: 195px;
+  }
+
+  .confirm-comment {
+    bottom: 0;
+  }
+
+  .comment-status {
+    bottom: -14px;
   }
 }
 
@@ -497,8 +522,8 @@ textarea {
   }
 
   .comment-status {
-    left: 105px;
-    bottom: 29px;
+    left: 127px;
+    bottom: -15px;
   }
 }
 /* -------- --------- --------- Dashboard */
@@ -1115,4 +1140,10 @@ select {
   right: 25px;
   bottom: 25px;
   transition: 0.4s all ease-in-out;
+}
+@media screen and (max-width: 568px) {
+  .scrollTop {
+    width: 100px;
+    line-height: 1;
+  }
 }
