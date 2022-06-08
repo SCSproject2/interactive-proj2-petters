@@ -399,7 +399,7 @@ textarea {
 }
 
 #dashboard-wrapper h3 {
-  font-size: 27px;
+  font-size: 25px;
 }
 
 #addPost-wrapper,
@@ -410,16 +410,23 @@ textarea {
 
 #addPost-wrapper,
 #category-wrapper {
-  margin-right: 30px;
+  margin-bottom: 30px;
 }
 
+#addPost-wrapper {
+  margin-right: 40px;
+}
+
+#category-wrapper {
+  margin-right: 30px;
+}
 #random-post-wrapper {
   display: flex;
   flex-direction: column;
 }
 
 #addPost-form {
-  width: 440px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -435,8 +442,8 @@ textarea {
 }
 
 #filter-options {
-  width: 145px;
-  height: 45px;
+  width: 170px;
+  height: 40px;
   margin-right: 10px;
 }
 
@@ -503,20 +510,23 @@ select {
 }
 
 #add-post,
-#add-category,
-#random-post {
+#add-category {
+  height: 40px;
   color: white;
   width: 125px;
   background-color: rgba(111, 22, 193, 0.7);
   margin-top: 5px;
 }
 
+#random-post {
+  height: 40px;
+  color: white;
+  width: 125px;
+  background-color: rgba(111, 22, 193, 0.7);
+}
+
 #post-title {
   font-size: 24px;
-}
-#random-post-title,
-#category-title {
-  margin-top: 25px;
 }
 
 #generating-status {
@@ -540,6 +550,9 @@ select {
 }
 
 #dashboardHr {
+  opacity: 0.2;
+  width: 90%;
+  margin-left: 30px;
   margin-top: 40px;
   margin-bottom: 20px;
 }
@@ -618,6 +631,30 @@ select {
   object-fit: cover;
 }
 
+@media screen and (max-width: 550px) {
+  #dashboard-posts {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 502px) {
+  #add-select-wrapper {
+    flex-wrap: wrap;
+  }
+
+  #add-post-image {
+    cursor: pointer;
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  #filter-options,
+  #category-options {
+    width: 155px;
+  }
+}
+
 /* -------- --------- --------- Home page */
 #homepage-posts #post-header {
   height: 30px;
@@ -649,6 +686,10 @@ select {
   padding: 0 5px;
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+#dashboard-posts #single-post {
+  padding-bottom: 0;
 }
 
 #page-singlepost #post-header {
