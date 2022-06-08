@@ -73,7 +73,7 @@ textarea {
   font-size: 20px;
   resize: none;
   color: black;
-  padding: 5px 10px;
+  padding-left: 5px;
   border: none;
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -366,7 +366,7 @@ textarea {
 
 #comment-field,
 #comment-section {
-  width: 90%;
+  width: 100%;
   height: 100px;
 }
 
@@ -395,11 +395,11 @@ textarea {
   width: 300px;
 }
 .edit-comment-input {
-  left: 90px;
+  left: 105px;
   margin-left: 0px;
-  top: 10px;
+  top: 8px;
   position: absolute;
-  width: 80%;
+  width: 75%;
   height: 96px;
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.7);
@@ -412,21 +412,25 @@ textarea {
   display: none;
   padding: 3px 24px;
   position: relative;
-  left: 78px;
-  bottom: -3px;
+  left: 94px;
+  bottom: -6px;
 }
-#new-comment-status {
-  color: red;
+.comment-status {
   display: none;
-  z-index: 2;
+  line-height: 1;
+  width: 200px;
+  position: absolute;
+  color: red;
   font-size: 15px;
+  left: 222px;
+  bottom: -21px;
 }
 #single-comment {
   position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  height: 145px;
+  height: 150px;
   margin: 10px 0;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.04);
@@ -435,6 +439,20 @@ textarea {
 
 #comment {
   font-size: 15px;
+}
+
+#comment-wrapper {
+  display: flex;
+}
+
+#comment-wrapper p:nth-child(1) {
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 1833px) {
+  .edit-comment-input {
+    width: 64%;
+  }
 }
 
 @media screen and (max-width: 1230px) {
@@ -453,11 +471,34 @@ textarea {
   }
 }
 
+@media screen and (max-width: 737px) {
+  #comment-date {
+    top: 42px;
+    position: absolute;
+  }
+
+  #single-comment {
+    height: 260px;
+  }
+
+  .edit-comment-input {
+    width: 65%;
+    left: 105px;
+    top: 7px;
+    height: 206px;
+  }
+}
+
 @media screen and (max-width: 590px) {
   #comment-field,
   #comment-section,
   #comment-section-divider {
     width: 190%;
+  }
+
+  .comment-status {
+    left: 105px;
+    bottom: 29px;
   }
 }
 /* -------- --------- --------- Dashboard */
@@ -922,9 +963,26 @@ select {
 
 /* -------- --------- --------- Single Post */
 #page-singlepost #single-post-wrapper {
-  width: 550px;
+  width: 60%;
   height: fit-content;
   margin-bottom: 0;
+}
+@media screen and (max-width: 1266px) {
+  #page-singlepost #single-post-wrapper {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 826px) {
+  #page-singlepost #single-post-wrapper {
+    width: 140%;
+  }
+}
+
+@media screen and (max-width: 502px) {
+  #page-singlepost #single-post-wrapper {
+    width: 180%;
+  }
 }
 /* -------- --------- --------- Image filters */
 .filterBtn {
