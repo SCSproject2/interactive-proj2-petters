@@ -215,6 +215,7 @@ textarea {
   background-color: rgba(104, 24, 179, 0.7);
 }
 #header-logo {
+  cursor: pointer;
   width: 182.26px;
   object-fit: cover;
 }
