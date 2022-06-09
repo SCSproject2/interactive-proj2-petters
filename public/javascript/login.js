@@ -51,7 +51,7 @@ async function signupFormHandler(event) {
         document.location.replace('/dashboard');
       }, 1250);
     } else {
-      alert(response.statusText);
+      statusUpdate('Username or Email already exists!', 3000);
     }
   }
 }
@@ -59,6 +59,14 @@ async function signupFormHandler(event) {
 const loginForm = document.getElementById('login-form');
 const loginStatusEl = document.getElementById('signin-status');
 
+const loginStatusUpdate = (text) => {
+  loginStatusEl.textContent = text;
+  loginStatusEl.style.color = 'red';
+  setTimeout(() => {
+    loginStatusEl.textContent = 'Fill in required inputs';
+    loginStatusEl.style.color = 'black';
+  }, 2500);
+};
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -77,20 +85,10 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      loginStatusEl.textContent = 'Email or Password is incorrect';
-      loginStatusEl.style.color = 'red';
-      setTimeout(() => {
-        loginStatusEl.textContent = 'Fill in required inputs';
-        loginStatusEl.style.color = 'black';
-      }, 2500);
+      loginStatusUpdate('Email or Password is incorrect');
     }
   } else {
-    loginStatusEl.textContent = 'Please fill in all inputs';
-    loginStatusEl.style.color = 'red';
-    setTimeout(() => {
-      loginStatusEl.textContent = 'Fill in required inputs';
-      loginStatusEl.style.color = 'black';
-    }, 2500);
+    loginStatusUpdate('Please fill in all inputs');
   }
 }
 document
