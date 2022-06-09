@@ -633,6 +633,11 @@ textarea {
 #category-wrapper {
   margin-right: 30px;
 }
+
+#random-post-wrapper {
+  margin-right: 10px;
+}
+
 #random-post-wrapper {
   display: flex;
   flex-direction: column;
