@@ -74,7 +74,7 @@ From there, you are ready to use the application!
 
 ## Links
 
-[Link to live application](google.com)
+[Link to live application](https://fullstack-petters-social.herokuapp.com/)
 
 ## Built With
 
@@ -92,3 +92,7 @@ From there, you are ready to use the application!
 ## License
 
 This project is covered under the MIT License.
+
+![Preview-image](https://user-images.githubusercontent.com/91699101/172945491-44f1739d-4660-407d-95f4-b1d436a964ca.png)
+
+

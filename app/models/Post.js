@@ -14,10 +14,24 @@ Post.init(
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 20],
+      },
     },
     body: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    image_filter: {
+      type: DataTypes.STRING,
       allowNull: true,
+    },
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id',
+      },
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -26,9 +40,10 @@ Post.init(
         key: 'id',
       },
     },
-    // image_url: {
-
-    // }
+    image_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
