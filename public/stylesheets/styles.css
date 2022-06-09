@@ -95,6 +95,20 @@ textarea {
   padding-top: 8px;
 }
 
+@media screen and (max-width: 1030px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  #loggedIn-as {
+    margin: 10px 0;
+  }
+}
+
 @media screen and (max-width: 568px) {
   header {
     padding: 10px 15px 10px 15px;
@@ -111,11 +125,6 @@ textarea {
   .navItem {
     font-size: 20px;
   }
-}
-
-/* -------- --------- --------- Main page CSS (main.handlebars) */
-#header-logo {
-  user-select: none;
 }
 
 /* -------- --------- --------- Search page (search.handlebars) */
@@ -206,8 +215,8 @@ textarea {
   background-color: rgba(104, 24, 179, 0.7);
 }
 #header-logo {
-  color: white;
-  cursor: pointer;
+  width: 182.26px;
+  object-fit: cover;
 }
 
 #search-post-wrapper {
@@ -238,29 +247,6 @@ textarea {
 }
 #search-user-wrapper {
   margin-top: 20px;
-}
-
-@media screen and (max-width: 568px) {
-  #single-post-wrapper {
-    width: 90%;
-  }
-
-  #search-controls {
-    position: static;
-    z-index: auto;
-  }
-
-  #search {
-    font-size: 15px;
-  }
-
-  #submit-user,
-  #clear-search,
-  #clear-history,
-  #history-searches,
-  .category-btns {
-    font-size: 10px;
-  }
 }
 
 #search-post-wrapper,
@@ -298,6 +284,29 @@ textarea {
 @media screen and (max-width: 705px) {
   #search-controls {
     width: 95%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  #single-post-wrapper {
+    width: 90%;
+  }
+
+  #search-controls {
+    position: static;
+    z-index: auto;
+  }
+
+  #search {
+    font-size: 15px;
+  }
+
+  #submit-user,
+  #clear-search,
+  #clear-history,
+  #history-searches,
+  .category-btns {
+    font-size: 10px;
   }
 }
 /* -------- --------- --------- Featured page (featured.handlebars) */
