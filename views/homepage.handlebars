@@ -1,10 +1,9 @@
-<div id='homepage-posts' class='container-fluid'>
+<div id='homepage-posts'>
   {{! <div class="row"> }}
-  <div class='row spacing'>
     {{#each posts as |post|}}
       <div
         id='single-post-wrapper'
-        class='col-sm-12 col-md-4 col-xl-3 p-1 mb-4'
+        class="homepage-post-wrapper"
       >
         <a id='single-post' href='/post/{{post.id}}'>
           <div id='post-header' class='{{post.category_name}}'>
@@ -44,6 +43,5 @@
         </a>
       </div>
     {{/each}}
-  </div>
 </div>
 <script src='./javascript/handle-likes.js'></script>

@@ -87,6 +87,12 @@ textarea {
 }
 
 /* -------- --------- --------- Search page (search.handlebars) */
+
+#search {
+  width: 90%;
+  margin-bottom: 5px;
+}
+
 #search-wrapper {
   margin-bottom: 50px;
 }
@@ -146,9 +152,45 @@ textarea {
 }
 
 #hide-menu {
+  /* originally: */
   position: absolute;
   right: -140px;
   top: 10px;
+  z-index: 999;
+  /* position: relative;
+  width: 35%;
+  float: right; */
+  margin: 5px;
+}
+
+#category-wrapper {
+  margin-bottom: 30px;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 600px) {
+  #hide-menu {
+    font-size: 10px;
+    padding: 2px;
+    right: -90px;
+    position: absolute;
+    z-index: 9999;
+  }
+
+  #inner-search-wrapper button {
+    margin: 0 5px;
+    padding: 2px;
+  }
+
+  .search-category-btns {
+    margin: 0 5px;
+    padding: 2px 6px;
+  }
+
+  #category-wrapper {
+    margin: 0;
+  }
+  
 }
 
 #search-controls.inactive #hide-menu {
@@ -180,9 +222,10 @@ textarea {
 
 #search-post-wrapper {
   margin-top: 20px;
-  width: 500px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 #search-post-wrapper #post-header,
@@ -195,43 +238,14 @@ textarea {
   height: 85%;
 }
 
-#search-post-wrapper #single-post-wrapper {
-  width: 100%;
-  height: 400px;
-}
-
 #search-user-wrapper #single-post-wrapper {
-  width: 500px;
   height: 400px;
 }
 #search-user-wrapper {
   margin-top: 20px;
 }
 
-@media screen and (max-width: 568px) {
-  #single-post-wrapper {
-    width: 90%;
-  }
-
-  #search-controls {
-    position: static;
-    z-index: auto;
-  }
-
-  #search {
-    font-size: 15px;
-  }
-
-  #submit-user,
-  #clear-search,
-  #clear-history,
-  #history-searches,
-  .category-btns {
-    font-size: 10px;
-  }
-}
-
-#search-post-wrapper,
+/* #search-post-wrapper, */
 #search-user-wrapper {
   margin-left: 30px;
 }
@@ -262,6 +276,115 @@ textarea {
 #clear-history {
   display: none;
 }
+
+#single-post-wrapper {
+  width: 480px;
+  margin: 10px 10px;
+}
+
+#search-post-wrapper #single-post-wrapper {
+  height: 390px;
+}
+
+@media screen and (max-width: 1500px) {
+  #single-post-wrapper {
+    width: 430px;
+    margin: 10px 10px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  #single-post-wrapper {
+    width: 380px;
+  }
+
+  #search-post-wrapper #single-post-wrapper {
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #single-post-wrapper {
+    width: 491px;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  #single-post-wrapper {
+    width: 430px;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  #single-post-wrapper {
+    width: 430px;
+  }
+
+  #search-post-wrapper #single-post-wrapper {
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #single-post-wrapper {
+    width: 370px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  #single-post-wrapper {
+    width: 325px;
+    margin: 5px 5px;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  #single-post-wrapper {
+    width: 274px;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  #single-post-wrapper {
+    width: 445px;
+  }
+
+  #search-controls {
+    position: static;
+    z-index: auto;
+  }
+
+  #search {
+    font-size: 15px;
+  }
+
+  #submit-user,
+  #clear-search,
+  #clear-history,
+  #history-searches,
+  .category-btns {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #single-post-wrapper {
+    width: 360px;
+    margin: 0 5px;
+  }
+
+  #search-post-wrapper #single-post-wrapper {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  #single-post-wrapper {
+    width: 310px;
+    margin: 0 5px;
+  }
+}
+
 /* -------- --------- --------- Featured page (featured.handlebars) */
 .featured-wrapper {
   width: 100%;
@@ -695,8 +818,7 @@ textarea {
   margin: 5px 0;
 }
 
-#addPost-wrapper,
-#category-wrapper {
+#addPost-wrapper {
   margin-bottom: 30px;
 }
 
@@ -704,9 +826,6 @@ textarea {
   margin-right: 40px;
 }
 
-#category-wrapper {
-  margin-right: 30px;
-}
 #random-post-wrapper {
   display: flex;
   flex-direction: column;
@@ -856,17 +975,77 @@ select {
   width: revert;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-around;
   align-items: flex-start;
-  margin-left: 20px;
+  margin-left: 0;
   margin-top: 0;
   margin-bottom: 50px;
 }
 
 #dashboard-posts #single-post {
-  width: 400px;
+  width: 480px;
   margin: 10px 10px;
   box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 1500px) {
+  #dashboard-posts {
+    margin-left: 0;
+    justify-content: space-around;
+  }
+
+  #dashboard-posts #single-post {
+    width: 430px;
+  }
+}
+
+@media screen and (max-width: 1350px) {
+  #dashboard-posts #single-post {
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #dashboard-posts #single-post {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 1020px) {
+  #dashboard-posts #single-post {
+    width: 430px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #dashboard-posts #single-post {
+    width: 365px;
+  }
+}
+
+
+@media screen and (max-width: 770px) {
+  #dashboard-posts #single-post {
+    width: 305px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #dashboard-posts #single-post {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  #dashboard-posts #single-post {
+    width: 600px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #dashboard-posts {
+    justify-content: center;
+  }
 }
 
 #dashboard-posts #post-header {
@@ -926,13 +1105,6 @@ select {
   object-fit: cover;
 }
 
-@media screen and (max-width: 550px) {
-  #dashboard-posts {
-    margin-left: 0;
-    justify-content: center;
-  }
-}
-
 @media screen and (max-width: 502px) {
   #add-select-wrapper {
     flex-wrap: wrap;
@@ -951,6 +1123,12 @@ select {
 }
 
 /* -------- --------- --------- Home page */
+#homepage-posts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 #homepage-posts #post-header {
   height: 30px;
 }
@@ -1213,18 +1391,6 @@ select {
   /* -----------------------------------------------  homepage */
   .col-md-4 {
     width: 30%;
-  }
-}
-
-@media screen and (max-width: 705px) {
-  /* -----------------------------------------------  homepage */
-  .col-md-4 {
-    width: 95%;
-  }
-
-  /* -----------------------------------------------  search */
-  #search-controls {
-    width: 95%;
   }
 }
 

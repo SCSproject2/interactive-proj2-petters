@@ -20,7 +20,7 @@
       <p style='margin-bottom: 0;'>Search by existing categories</p>
       {{#each categoryArr as |category|}}
         <button
-          class='category-btns {{category.category_name}}'
+          class='category-btns {{category.category_name}} search-category-btns'
           data-category-id='{{category.id}}'
         >{{category.category_name}}</button>
       {{/each}}
