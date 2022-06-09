@@ -1,21 +1,35 @@
 const signupStatusEl = document.getElementById('signup-status');
+
+const statusUpdate = (text, time) => {
+  signupStatusEl.textContent = text;
+
+  signupStatusEl.style.color = 'red';
+
+  setTimeout(() => {
+    signupStatusEl.textContent =
+      'Fill in all required inputs with character count above 4';
+    signupStatusEl.style.color = 'black';
+  }, time);
+};
 async function signupFormHandler(event) {
   event.preventDefault();
 
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-pass').value.trim();
+
+  if (username.length > 15) {
+    statusUpdate('Usernames are maximum 15 characters', 2500);
+    return;
+  }
+
   if (username.length <= 4 || email.length <= 4 || password.length <= 4) {
     // If any signup input value is under 4 character length restrict submission
-    signupStatusEl.textContent =
-      'Please make all inputs are filled with character count above 4';
-    signupStatusEl.style.color = 'red';
-
-    setTimeout(() => {
-      signupStatusEl.textContent =
-        'Fill in all required inputs with character count above 4';
-      signupStatusEl.style.color = 'black';
-    }, 4000);
+    statusUpdate(
+      'Please make all inputs are filled with character count above 4',
+      3000
+    );
+    return;
   } else {
     // Execute the fetch using above values and insert them into the body (to be extracted in the route i.e. req.body.post_title)
     const response = await fetch(`/api/users`, {
