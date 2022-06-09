@@ -1,21 +1,35 @@
 const signupStatusEl = document.getElementById('signup-status');
+
+const statusUpdate = (text, time) => {
+  signupStatusEl.textContent = text;
+
+  signupStatusEl.style.color = 'red';
+
+  setTimeout(() => {
+    signupStatusEl.textContent =
+      'Fill in all required inputs with character count above 4';
+    signupStatusEl.style.color = 'black';
+  }, time);
+};
 async function signupFormHandler(event) {
   event.preventDefault();
 
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('#signup-pass').value.trim();
+
+  if (username.length > 15) {
+    statusUpdate('Usernames are maximum 15 characters', 2500);
+    return;
+  }
+
   if (username.length <= 4 || email.length <= 4 || password.length <= 4) {
     // If any signup input value is under 4 character length restrict submission
-    signupStatusEl.textContent =
-      'Please make all inputs are filled with character count above 4';
-    signupStatusEl.style.color = 'red';
-
-    setTimeout(() => {
-      signupStatusEl.textContent =
-        'Fill in all required inputs with character count above 4';
-      signupStatusEl.style.color = 'black';
-    }, 4000);
+    statusUpdate(
+      'Please make all inputs are filled with character count above 4',
+      3000
+    );
+    return;
   } else {
     // Execute the fetch using above values and insert them into the body (to be extracted in the route i.e. req.body.post_title)
     const response = await fetch(`/api/users`, {
@@ -37,7 +51,7 @@ async function signupFormHandler(event) {
         document.location.replace('/dashboard');
       }, 1250);
     } else {
-      alert(response.statusText);
+      statusUpdate('Username or Email already exists!', 3000);
     }
   }
 }
@@ -45,6 +59,14 @@ async function signupFormHandler(event) {
 const loginForm = document.getElementById('login-form');
 const loginStatusEl = document.getElementById('signin-status');
 
+const loginStatusUpdate = (text) => {
+  loginStatusEl.textContent = text;
+  loginStatusEl.style.color = 'red';
+  setTimeout(() => {
+    loginStatusEl.textContent = 'Fill in required inputs';
+    loginStatusEl.style.color = 'black';
+  }, 2500);
+};
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -63,20 +85,10 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      loginStatusEl.textContent = 'Email or Password is incorrect';
-      loginStatusEl.style.color = 'red';
-      setTimeout(() => {
-        loginStatusEl.textContent = 'Fill in required inputs';
-        loginStatusEl.style.color = 'black';
-      }, 2500);
+      loginStatusUpdate('Email or Password is incorrect');
     }
   } else {
-    loginStatusEl.textContent = 'Please fill in all inputs';
-    loginStatusEl.style.color = 'red';
-    setTimeout(() => {
-      loginStatusEl.textContent = 'Fill in required inputs';
-      loginStatusEl.style.color = 'black';
-    }, 2500);
+    loginStatusUpdate('Please fill in all inputs');
   }
 }
 document

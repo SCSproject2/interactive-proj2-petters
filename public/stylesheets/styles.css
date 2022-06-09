@@ -1,4 +1,5 @@
 /* -------- --------- --------- Root properties */
+
 * {
   margin: 0;
   padding: 0;
@@ -9,16 +10,13 @@ h1 {
   color: black;
 }
 
-#empty {
-  width: 100px;
-}
-
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
   padding-left: 30px;
+  padding-right: 30px;
   background-color: rgba(111, 22, 193, 0.7);
   top: 0;
   z-index: 2;
@@ -28,6 +26,20 @@ header {
   backdrop-filter: blur(10px);
 }
 
+#loggedIn-as {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+#loggedIn-as span {
+  font-weight: 700;
+  font-style: italic;
+}
+
+#empty {
+  width: 182.26px;
+}
 nav {
   justify-content: flex-end;
 }
@@ -74,16 +86,49 @@ textarea {
   resize: none;
   color: black;
   padding-left: 8px;
-  padding-top: 8px;
-
   border: none;
   border-radius: 4px;
-
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 #input {
   margin-bottom: 5px;
+}
+
+textarea {
+  padding-top: 8px;
+}
+
+@media screen and (max-width: 1030px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav {
+    text-align: center;
+  }
+
+  #loggedIn-as {
+    margin: 10px 0;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  header {
+    padding: 10px 15px 10px 15px;
+  }
+
+  #header-head {
+    margin-right: 10px;
+  }
+
+  header nav {
+    justify-items: center;
+  }
+
+  .navItem {
+    font-size: 20px;
+  }
 }
 
 /* -------- --------- --------- Search page (search.handlebars) */
@@ -216,8 +261,9 @@ textarea {
   background-color: rgba(104, 24, 179, 0.7);
 }
 #header-logo {
-  color: white;
   cursor: pointer;
+  width: 182.26px;
+  object-fit: cover;
 }
 
 #search-post-wrapper {
@@ -341,6 +387,12 @@ textarea {
 @media screen and (max-width: 670px) {
   #single-post-wrapper {
     width: 274px;
+  }
+}
+
+@media screen and (max-width: 705px) {
+  #search-controls {
+    width: 95%;
   }
 }
 
@@ -621,11 +673,7 @@ textarea {
     margin-bottom: 25px;
   }
 }
-/* -------- --------- --------- Main page CSS (main.handlebars) */
 
-#header-logo {
-  user-select: none;
-}
 /* -------- --------- --------- Single posts universal selectors and properties */
 
 #dashboard-posts,
@@ -643,8 +691,8 @@ textarea {
 }
 
 #page-singlepost {
-  margin-left: 25px;
-  margin-top: 20px;
+  margin-left: 30px;
+  margin-top: 25px;
 }
 
 .user-results {
@@ -824,6 +872,14 @@ textarea {
 
 #addPost-wrapper {
   margin-right: 40px;
+}
+
+#category-wrapper {
+  margin-right: 30px;
+}
+
+#random-post-wrapper {
+  margin-right: 10px;
 }
 
 #random-post-wrapper {
@@ -1301,12 +1357,43 @@ select {
   margin-left: 15px;
 }
 
+@media screen and (min-width: 1025px) {
+  .col-md-4 {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .col-md-4 {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .col-md-4 {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 705px) {
+  .col-md-4 {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .col-md-4 {
+    width: 90%;
+  }
+}
+
 /* -------- --------- --------- Single Post */
 #page-singlepost #single-post-wrapper {
   width: 60%;
   height: fit-content;
   margin-bottom: 0;
 }
+
 @media screen and (max-width: 1266px) {
   #page-singlepost #single-post-wrapper {
     width: 90%;
@@ -1332,6 +1419,7 @@ select {
     font-size: 15px;
   }
 }
+
 /* -------- --------- --------- Image filters */
 .filterBtn {
   margin: 2.5px 0;
@@ -1438,6 +1526,7 @@ select {
   bottom: 25px;
   transition: 0.4s all ease-in-out;
 }
+
 @media screen and (max-width: 568px) {
   .scrollTop {
     width: 100px;

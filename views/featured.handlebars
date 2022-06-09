@@ -2,7 +2,6 @@
   <div class='featured-posts '>
     <div class='post-top-likes' id='featured-posts'>
       <h2>Top 5 Liked Posts</h2>
-      {{! posts.forEach(post) }}
       {{#each postsLikesObj as |post|}}
         <a id='single-post' href='/post/{{post.id}}'>
           <div id='post-header' class='{{post.category_name}}'>

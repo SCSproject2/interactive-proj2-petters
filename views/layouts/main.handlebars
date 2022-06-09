@@ -9,12 +9,17 @@
       crossorigin='anonymous'
     />
     <link rel='stylesheet' href='../stylesheets/styles.css' type='text/css' />
-    <title>Petters</title>
+    <link rel='icon' type='image/x-icon' href='/images/favicon.ico' />
+    <title>Petters - Home</title>
   </head>
   <body>
     <header>
       <div id='header-head'>
-        <h1 id='header-logo'>Petters</h1>
+        <img
+          id='header-logo'
+          src='./images/Header-logo.png'
+          alt='header logo'
+        />
       </div>
       <nav>
         <a class='navItem' href='/'>Home</a>
@@ -27,9 +32,12 @@
         <a class='navItem' href='/featured'>Featured</a>
         <a class='navItem' href='/search'>Search</a>
       </nav>
-      {{! Empty div below works in tandem with space-between }}
-      <div id='empty'></div>
-
+      {{#if loggedIn}}
+        <h5 id='loggedIn-as'>Logged in as <span>{{username}}</span></h5>
+      {{else}}
+        {{! Empty div below works in tandem with space-between }}
+        <div id='empty'></div>
+      {{/if}}
     </header>
     <main>
       {{{body}}}
