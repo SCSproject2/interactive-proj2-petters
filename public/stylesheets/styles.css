@@ -390,12 +390,6 @@ textarea {
   }
 }
 
-@media screen and (max-width: 705px) {
-  #search-controls {
-    width: 95%;
-  }
-}
-
 @media screen and (max-width: 568px) {
   #single-post-wrapper {
     width: 445px;
