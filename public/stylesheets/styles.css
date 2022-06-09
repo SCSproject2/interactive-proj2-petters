@@ -1,4 +1,5 @@
 /* -------- --------- --------- Root properties */
+
 * {
   margin: 0;
   padding: 0;
@@ -9,16 +10,13 @@ h1 {
   color: black;
 }
 
-#empty {
-  width: 100px;
-}
-
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 0;
   padding-left: 30px;
+  padding-right: 30px;
   background-color: rgba(111, 22, 193, 0.7);
   top: 0;
   z-index: 2;
@@ -28,6 +26,20 @@ header {
   backdrop-filter: blur(10px);
 }
 
+#loggedIn-as {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+
+#loggedIn-as span {
+  font-weight: 700;
+  font-style: italic;
+}
+
+#empty {
+  width: 182.26px;
+}
 nav {
   justify-content: flex-end;
 }
@@ -82,6 +94,30 @@ textarea {
 textarea {
   padding-top: 8px;
 }
+
+@media screen and (max-width: 568px) {
+  header {
+    padding: 10px 15px 10px 15px;
+  }
+
+  #header-head {
+    margin-right: 10px;
+  }
+
+  header nav {
+    justify-items: center;
+  }
+
+  .navItem {
+    font-size: 20px;
+  }
+}
+
+/* -------- --------- --------- Main page CSS (main.handlebars) */
+#header-logo {
+  user-select: none;
+}
+
 /* -------- --------- --------- Search page (search.handlebars) */
 #search-wrapper {
   margin-bottom: 50px;
@@ -258,6 +294,12 @@ textarea {
 #clear-history {
   display: none;
 }
+
+@media screen and (max-width: 705px) {
+  #search-controls {
+    width: 95%;
+  }
+}
 /* -------- --------- --------- Featured page (featured.handlebars) */
 .featured-wrapper {
   margin: 0 25px;
@@ -292,12 +334,6 @@ textarea {
   width: 45%;
 }
 
-@media screen and (max-width: 450px) {
-  .post-top-likes {
-    width: 100%;
-  }
-}
-
 .featured-wrapper #post-title {
   font-size: 30px;
 }
@@ -311,6 +347,28 @@ textarea {
 
 .featured-wrapper #post-header p {
   font-size: 20px;
+}
+
+@media screen and (max-width: 450px) {
+  .post-top-likes {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .post-top-likes {
+    /* width: 100; */
+    margin: 0 25px 0 25px;
+  }
+
+  .post-top-comments {
+    width: 100%;
+    margin: 0 25px 0 25px;
+  }
+
+  .container {
+    padding: 0;
+  }
 }
 /* -------- --------- --------- Login / Signup (login.handlebars) */
 #signup-status,
@@ -358,11 +416,7 @@ textarea {
     margin-bottom: 25px;
   }
 }
-/* -------- --------- --------- Main page CSS (main.handlebars) */
 
-#header-logo {
-  user-select: none;
-}
 /* -------- --------- --------- Single posts universal selectors and properties */
 
 #dashboard-posts,
@@ -994,12 +1048,43 @@ select {
   margin-left: 15px;
 }
 
+@media screen and (min-width: 1025px) {
+  .col-md-4 {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .col-md-4 {
+    width: 45%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .col-md-4 {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 705px) {
+  .col-md-4 {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  .col-md-4 {
+    width: 90%;
+  }
+}
+
 /* -------- --------- --------- Single Post */
 #page-singlepost #single-post-wrapper {
   width: 60%;
   height: fit-content;
   margin-bottom: 0;
 }
+
 @media screen and (max-width: 1266px) {
   #page-singlepost #single-post-wrapper {
     width: 90%;
@@ -1017,6 +1102,7 @@ select {
     width: 180%;
   }
 }
+
 /* -------- --------- --------- Image filters */
 .filterBtn {
   margin: 2.5px 0;
@@ -1056,84 +1142,6 @@ select {
   opacity: 0.7;
 }
 
-/* RESPONSIVE */
-
-@media screen and (min-width: 1025px) {
-  /* -----------------------------------------------  homepage */
-  .col-md-4 {
-    width: 30%;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  /* -----------------------------------------------  homepage */
-  .col-md-4 {
-    width: 45%;
-  }
-}
-
-@media screen and (min-width: 1025px) {
-  /* -----------------------------------------------  homepage */
-  .col-md-4 {
-    width: 30%;
-  }
-}
-
-@media screen and (max-width: 705px) {
-  /* -----------------------------------------------  homepage */
-  .col-md-4 {
-    width: 95%;
-  }
-
-  /* -----------------------------------------------  search */
-  #search-controls {
-    width: 95%;
-  }
-}
-
-@media screen and (max-width: 568px) {
-  /* -----------------------------------------------  homepage */
-  .col-md-4 {
-    width: 90%;
-  }
-
-  /* -----------------------------------------------  featured */
-  .post-top-likes {
-    /* width: 100; */
-    margin: 0 25px 0 25px;
-  }
-
-  .post-top-comments {
-    width: 100%;
-    margin: 0 25px 0 25px;
-  }
-
-  .container {
-    padding: 0;
-  }
-
-  /* -----------------------------------------------  main */
-  #empty {
-    display: none;
-  }
-
-  header {
-    padding: 10px 15px 10px 15px;
-  }
-
-  #header-head {
-    margin-right: 10px;
-  }
-
-  header nav {
-    justify-items: center;
-  }
-
-  .navItem {
-    font-size: 20px;
-  }
-}
-
 /* -------- --------- --------- Scroll to top btn */
 .scrollTop {
   opacity: 0;
@@ -1150,6 +1158,7 @@ select {
   bottom: 25px;
   transition: 0.4s all ease-in-out;
 }
+
 @media screen and (max-width: 568px) {
   .scrollTop {
     width: 100px;
