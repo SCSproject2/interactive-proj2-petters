@@ -23,18 +23,20 @@ const renderPosts = (postsObject) => {
       clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
-        <div id='single-post-wrapper'>
+      <div id='homepage-posts'>
           <a id='single-post' href='/post/${el.id}'>
-            <div id='post-header' class='${el.category_name}'>
-              <p id='post-category'>${el.category_name}</p>
-              <p id='post-date'>${el.user.username}
-                -
-                ${format_date(el.created_at)}</p>
-            </div>
             <img class=${el.image_filter} id='post-image' src='${
         el.image_url
       }' alt='${el.title}' />
             <div id='post-body-wrapper'>
+                      <div id='title-wrapper'>
+                  <p id='post-date'>${el.user.username}
+                  -
+                  ${format_date(el.created_at)}</p>
+                  <p class='${el.category_name}'id='post-category'>${
+        el.category_name
+      }</p>
+                </div>
               <h4 id='post-title'>${el.title}</h4>
               <p id='post-body'>
                 ${el.body}

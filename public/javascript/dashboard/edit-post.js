@@ -20,11 +20,12 @@ async function editPost(newTitle, newBody, postId) {
 }
 
 // Handle the confirm button event, return the new data and update the existing post
-const handleSubmit = (btn, postId) => {
+const handleSubmit = (btn, postId, post) => {
   btn.addEventListener('click', (e) => {
-    const newTitle = e.path[2].childNodes[5].children[0].value;
-    const newBody = e.path[2].childNodes[5].children[1].value;
-
+    const newTitle = post.parentNode.parentNode.childNodes[5].children[0].value;
+    const newBody =
+      post.parentNode.parentNode.childNodes[5].childNodes[3].value;
+    console.log(newTitle);
     if (newTitle.length <= 4 || newBody.length <= 4) {
       document.getElementById('edit-post-status').style.display = 'flex';
       setTimeout(() => {
@@ -60,23 +61,22 @@ editPosts.forEach((post) => {
     const editTitle = document.createElement('input');
     editTitle.classList.add(`edit-title-input`);
     // Extract the postHeader title input
-    const postHeader = e.path[2].childNodes[5].children[0];
-
+    const postHeader = post.parentNode.parentNode.childNodes[5].children[0];
     // For the input element we created, add the value of the current title
-    editTitle.value = postHeader.innerHTML;
+    editTitle.value = postHeader.innerText;
     // Then replace the current headerTitle with this
     postHeader.parentNode.replaceChild(editTitle, postHeader);
 
     // ------------ BODY HANDLING
     const editBody = document.createElement('textarea');
     editBody.classList.add(`edit-body-input`);
-    const postBody = e.path[2].childNodes[5].children[1];
+    const postBody = post.parentNode.parentNode.childNodes[5].childNodes[3];
 
-    editBody.value = postBody.innerHTML.trim();
+    editBody.value = postBody.innerText.trim();
     postBody.parentNode.replaceChild(editBody, postBody);
 
     // ------------ SUBMIT NEW DATA
     // Handle the confirm event (extract the new values)
-    handleSubmit(confirmBtn, post.dataset.postId);
+    handleSubmit(confirmBtn, post.dataset.postId, post);
   });
 });

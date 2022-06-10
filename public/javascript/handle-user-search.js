@@ -113,7 +113,7 @@ var storeLocally = (object, label) => {
 // On initial page load, set clear button to display off
 clearBtn.style.display = 'none';
 
-const renderUserPosts = (postsObject) => {
+const renderUserPosts = (postsObject, searchTerm) => {
   // Every time we render new users, clear the previous users
   postWrapper.innerHTML = '';
 
@@ -130,28 +130,31 @@ const renderUserPosts = (postsObject) => {
       clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
-      <div id='single-post-wrapper' class='user-results col-sm-12 col-md-6 col-xl-3'>
+      <div id='homepage-posts' class='user-results'>
               <a id='single-post' href='/post/${el.id}'>
-                <div id='post-header' class='${el.category_name}'>
-                  <p id='post-category'>${el.category_name}</p>
-                  <p id='post-date'>${el.user.username}
-                    -
-                    ${format_date(el.created_at)}</p>
-                </div>
                 <img class='${el.image_filter}' id='post-image' src='${
         el.image_url
       }' alt='${el.title}' />
                 <div id='post-body-wrapper'>
-                  <h4 id='post-title'>${el.title}</h4>
-                  <p id='post-body'>
-                    ${el.body}
-                  </p>
+                <div id='title-wrapper'>
+                  <p id='post-date'>${el.user.username}
+                  -
+                  ${format_date(el.created_at)}</p>
+                  <p class='${el.category_name}'id='post-category'>${
+        el.category_name
+      }</p>
+                </div>
+                <h4 id='post-title'>${el.title}</h4>
+                <p id='post-body'>
+                  ${el.body}
+                </p>
                 </div>
               </a>
             </div>
             `;
       postWrapper.appendChild(newEl);
     });
+    checkHistoryBtns(searchTerm);
   }
 };
 
@@ -165,7 +168,7 @@ async function fetchText(searchTerm) {
 
   if (response.ok) {
     var data = await response.json();
-    renderUserPosts(data);
+    renderUserPosts(data, searchTerm);
   }
 }
 
@@ -179,7 +182,6 @@ submitBtn.addEventListener('click', () => {
     }, 1500);
   } else {
     fetchText(searchTerm.value);
-    checkHistoryBtns(searchTerm.value);
     searchTerm.value = ''; // Reset value for the input field
   }
 });
