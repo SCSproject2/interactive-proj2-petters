@@ -12,7 +12,7 @@
 
 ## Description
 
-Petters is a social media application dedicated to pets. Pet owners can congregate on this app and put their pets on their well-deserved pedestal, as well as exploring the lives of other, equally awesome pets. Petters is set up as a traditional social media structure where users can freely explore other user uploaded content as well as be able to create accounts and share their own content. 
+Petters is a social media application dedicated to pets. Pet owners can congregate on this app and put their pets on their well-deserved pedestal while also exploring the lives of other, equally awesome pets. Petters is set up as a traditional social media structure where users can freely explore other user uploaded content as well as be able to create accounts and share their own content. 
 
 Petters uses complex algorithms to allow users to search other active users or to search by category. Additionally, users can also view a featured section where posts are dynamically rendered and displayed according to their specific interactions, which includes the top 5 posts of the day and the top 5 commented posts.
 
