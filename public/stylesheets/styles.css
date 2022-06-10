@@ -1102,6 +1102,7 @@ select {
 
   #filter-options,
   #category-options {
+    height: 50px;
     width: 225px;
   }
 }
