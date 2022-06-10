@@ -5,27 +5,21 @@ headerLogoEl.addEventListener('click', () => {
 });
 
 // Highlights the active nav item
-const navItems = document.querySelectorAll('.navItem');
-
 if (window.location.pathname == '/') {
-  navItems[0].classList.add('active');
+  document.getElementById('home-nav-btn').classList.add('active');
 }
 if (window.location.pathname == '/dashboard') {
-  navItems[1].classList.add('active');
+  document.getElementById('dash-nav-btn').classList.add('active');
 }
 if (window.location.pathname == '/login') {
-  navItems[2].classList.add('active');
-}
-
-if (window.location.pathname == '/logout') {
-  navItems[2].classList.add('active');
+  document.getElementById('login-nav-btn').classList.add('active');
 }
 
 if (window.location.pathname == '/featured') {
-  navItems[3].classList.add('active');
+  document.getElementById('featured-nav-btn').classList.add('active');
 }
 if (window.location.pathname == '/search') {
-  navItems[4].classList.add('active');
+  document.getElementById('search-nav-btn').classList.add('active');
 }
 
 // On initial app load, scroll to top

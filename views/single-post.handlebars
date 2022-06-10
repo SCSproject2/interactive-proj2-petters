@@ -1,12 +1,17 @@
 <div id='page-singlepost'>
   <div id='single-post-wrapper'>
     <div id='single-post'>
-      <div id='post-header' class='{{post.category_name}}'>
-        <p id='post-category'>{{post.category_name}}</p>
-        <p id='post-date'>{{post.user}} - {{format_date post.date}}</p>
-      </div>
       <img class='{{post.image_filter}}' id='post-image' src='{{checkImage post.image}}{{post.image}}' alt='{{post.title}}' />
       <div id='post-body-wrapper'>
+        <div id='title-wrapper'>
+          <p id='post-date'>{{post.user}}
+            -
+            {{format_date post.date}}</p>
+          <p
+            class='{{post.category_name}}'
+            id='post-category'
+          >{{post.category_name}}</p>
+        </div>
         <h4 id='post-title'>{{post.title}}</h4>
         <p id='post-body'>{{post.description}}</p>
       </div>
@@ -32,7 +37,7 @@
     {{#if loggedIn}}
       <textarea id='comment-field' placeholder='Add comment'></textarea>
       <h1 id='comment-status'>Required character count above 4</h1>
-      <button id="comment-submit" type='submit'>Submit</button>
+      <button id="comment-submit" type='submit'>Post</button>
     {{else}}
       <textarea
         id='comment-field'

@@ -92,13 +92,6 @@
 <div id='dashboard-posts'>
   {{#each posts as |post|}}
     <div id='single-post'>
-      <div id='post-header' class='{{post.category_name}}'>
-        <p id='post-category'>{{post.category_name}}</p>
-        <p id='post-date'>
-          {{post.user.username}}
-          -
-          {{format_date post.created_at}}</p>
-      </div>
       <img
         class='{{post.image_filter}}'
         id='post-image'
@@ -106,6 +99,15 @@
         alt='{{post.title}}'
       />
       <div class='db-post-wrapper' id='post-body-wrapper'>
+               <div id='title-wrapper'>
+          <p id='post-date'>{{post.user.username}}
+            -
+            {{format_date post.created_at}}</p>
+          <p
+            class='{{post.category_name}}'
+            id='post-category'
+          >{{post.category_name}}</p>
+        </div>
         <h4 id='post-title'>{{post.title}}</h4>
         <p id='post-body'>
           {{post.body}}
@@ -116,7 +118,7 @@
           data-post-id={{post.id}}
           class='edit-post-id'
           id='edit-post-{{post.id}}'
-        >Edit post</button>
+        >Edit</button>
         <button
           data-post-id={{post.id}}
           class='delete-post-id'

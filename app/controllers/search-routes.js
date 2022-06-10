@@ -115,6 +115,8 @@ router.get('/', (req, res) => {
     });
     res.render('search', {
       categoryArr,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
     });
   });
 });
