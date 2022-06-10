@@ -61,7 +61,7 @@ editPosts.forEach((post) => {
     const editTitle = document.createElement('input');
     editTitle.classList.add(`edit-title-input`);
     // Extract the postHeader title input
-    const postHeader = post.parentNode.parentNode.childNodes[5].children[0];
+    const postHeader = post.parentNode.parentNode.childNodes[3].children[1];
     // For the input element we created, add the value of the current title
     editTitle.value = postHeader.innerText;
     // Then replace the current headerTitle with this
@@ -70,7 +70,7 @@ editPosts.forEach((post) => {
     // ------------ BODY HANDLING
     const editBody = document.createElement('textarea');
     editBody.classList.add(`edit-body-input`);
-    const postBody = post.parentNode.parentNode.childNodes[5].childNodes[3];
+    const postBody = post.parentNode.parentNode.childNodes[3].childNodes[5];
 
     editBody.value = postBody.innerText.trim();
     postBody.parentNode.replaceChild(editBody, postBody);
