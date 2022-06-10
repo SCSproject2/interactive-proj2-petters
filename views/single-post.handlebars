@@ -1,5 +1,4 @@
 <div id='page-singlepost'>
-  <div id='single-post-wrapper'>
     <div id='single-post'>
       <img class='{{post.image_filter}}' id='post-image' src='{{checkImage post.image}}{{post.image}}' alt='{{post.title}}' />
       <div id='post-body-wrapper'>
@@ -15,7 +14,6 @@
         <h4 id='post-title'>{{post.title}}</h4>
         <p id='post-body'>{{post.description}}</p>
       </div>
-    </div>
     <div id='post-icon-wrapper'>
       <div id='chat-icon-wrapper'>
         <img id='chat-icon' src='../images/comment.png' alt='' />
@@ -31,8 +29,8 @@
           />
         <p>{{post.like_count}}</p>
       </div>
-    </div>
   </div>
+    </div>
   <form id='comment-form'>
     {{#if loggedIn}}
       <textarea id='comment-field' placeholder='Add comment'></textarea>
