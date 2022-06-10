@@ -1020,6 +1020,9 @@ select {
 }
 
 @media screen and (max-width: 580px) {
+  #category_name {
+    width: 275px;
+  }
   #dashboard-posts {
     justify-content: center;
     margin-left: 0;
