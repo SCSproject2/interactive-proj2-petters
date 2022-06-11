@@ -119,6 +119,10 @@ button {
   box-shadow: 2px 2px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
+button:disabled {
+  opacity: 0.5;
+}
+
 button:hover {
   background-color: rgba(111, 22, 193, 0.8);
 }
@@ -579,6 +583,23 @@ textarea {
   font-size: 15px;
 }
 
+#signup-status,
+#signin-status {
+  margin-bottom: 0px;
+  color: red;
+}
+#login-btn,
+#submit-btn {
+  margin-top: 5px;
+}
+
+.pass-status {
+  display: none;
+}
+.pass-stat-labels {
+  font-size: 16px;
+}
+
 #form-inputs {
   display: flex;
   flex-direction: column;
@@ -603,18 +624,134 @@ textarea {
   margin-left: 25px;
 }
 
+.signup-container {
+  margin-bottom: 50px;
+}
+
+.pass-bar {
+  overflow: hidden;
+  width: 182px;
+  margin-top: 10px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: rgb(189, 189, 189);
+}
+
+.pass-fill {
+  width: 0;
+  transition: 0.5s all ease-in-out;
+}
+.pass-fill.mild {
+  width: 25%;
+  height: 6px;
+  background-color: rgba(111, 22, 193, 0.7);
+  transition: 0.5s width ease-in-out;
+}
+
+.pass-fill.medium {
+  width: 50%;
+  height: 6px;
+  background-color: rgba(111, 22, 193, 0.7);
+  transition: 0.5s width ease-in-out;
+}
+
+.pass-fill.stronger {
+  width: 75%;
+  height: 6px;
+  background-color: rgba(111, 22, 193, 0.7);
+  transition: 0.5s width ease-in-out;
+}
+
+.pass-fill.strongest {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(111, 22, 193, 0.7);
+  transition: 0.5s width ease-in-out;
+}
+
+#pass-wrapper {
+  position: relative;
+}
+
+#reveal-pass {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 25px;
+  transform: translateY(-50%);
+}
+
+#pass-bar {
+  overflow: hidden;
+  width: 350px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  height: 5px;
+  border-radius: 10px;
+  background-color: rgb(189, 189, 189);
+}
+
+.single-stat {
+  margin: 5px 0;
+  display: flex;
+  align-items: center;
+}
+
+.single-stat p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.passCircle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+}
+.passCircle.default {
+  background-color: red;
+}
+.passCircle.active {
+  background-color: green;
+}
+.passStat {
+  color: rgb(0, 0, 0);
+}
+.passStat.mild {
+  color: red;
+}
+.passStat.medium {
+  color: rgb(255, 136, 0);
+}
+.passStat.strong {
+  color: green;
+}
+
 @media screen and (max-width: 568px) {
+  #form-inputs input,
+  #pass-bar {
+    width: 340px;
+  }
+
   #login-notice,
   .login-container,
   .signup-container {
     margin-left: 15px;
   }
   #signup-status {
-    width: 240px;
+    width: 350px;
   }
 
   #signup-form {
-    margin-bottom: 25px;
+    margin-bottom: 100px;
+  }
+
+  #signup-status,
+  #signin-status,
+  #comment-status {
+    margin-top: 5px;
+    font-size: 14px;
   }
 }
 

@@ -7,18 +7,18 @@
   <h1>Login</h1>
   <form id='login-form'>
     <div id='form-inputs'>
-      <input
-        type='username'
-        id='username-login'
-        placeholder='Username  *required'
-      />
-      <input
-        type='password'
-        id='pass-login'
-        placeholder='Password  *required'
-      />
+      <input type='username' id='username-login' placeholder='Username' />
+      <div id='pass-wrapper'>
+        <input type='password' id='pass-login' placeholder='Password' />
+        <img
+          id='reveal-pass'
+          class='reveal-signin'
+          src='images/reveal-pass.png'
+          alt=''
+        />
+      </div>
+      <p id='signin-status'></p>
     </div>
-    <h1 id='signin-status'>Fill in required inputs</h1>
     <button id='login-btn' type='submit'>Login</button>
   </form>
 </div>
@@ -27,22 +27,52 @@
   <h1>Sign up</h1>
   <form id='signup-form'>
     <div id='form-inputs'>
-      <input
-        type='text'
-        id='signup-username'
-        placeholder='Username  *required'
-      />
-      <input type='email' id='signup-email' placeholder='Email  *required' />
+      <input type='text' id='signup-username' placeholder='Username' />
+      <input type='email' id='signup-email' placeholder='Email' />
+      <div id='pass-wrapper'>
+        <input
+          type='password'
+          id='signup-pass'
+          class='pass1'
+          placeholder='Password'
+        />
+        <img
+          id='reveal-pass'
+          class='reveal-signup'
+          src='images/reveal-pass.png'
+          alt=''
+        />
+      </div>
       <input
         type='password'
         id='signup-pass'
-        placeholder='Password  *required'
+        class='pass2'
+        placeholder='Confirm password'
       />
+      <div class='pass-status'>
+        <div id='pass-bar'>
+          <div class='pass-fill'></div>
+        </div>
+        <p id='signup-status'>All requirements met - Passwords must match</p>
+        <div class='single-stat'>
+          <div class='passCircle len-status default'></div>
+          <p>8 Characters required</p>
+        </div>
+        <div class='single-stat'>
+          <div class='passCircle num-status default'></div>
+          <p>1 Number required</p>
+        </div>
+        <div class='single-stat'>
+          <div class='passCircle sym-status default'></div>
+          <p>1 Symbol required</p>
+        </div>
+        <div class='single-stat'>
+          <div class='passCircle cap-status default'></div>
+          <p>1 Capital letter required</p>
+        </div>
+      </div>
     </div>
-    <h1 id='signup-status'>Fill in all required inputs with character count
-      above 4</h1>
     <button id='submit-btn' type='submit'>Signup</button>
   </form>
 </div>
-
 <script src='/javascript/login.js'></script>
