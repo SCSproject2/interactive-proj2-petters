@@ -14,7 +14,7 @@ const postdata = [
     body: 'this dog also loves animals',
     image_filter: 'red-tint',
     user_id: 6,
-    category_id: 1,
+    category_id: 4,
     image_url: 'images/1654045031458d.jpg',
   },
   {
