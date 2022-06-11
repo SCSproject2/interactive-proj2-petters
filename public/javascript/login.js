@@ -85,7 +85,7 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      loginStatusUpdate('Email or Password is incorrect');
+      loginStatusUpdate('Username or Password is incorrect');
     }
   }
 }
