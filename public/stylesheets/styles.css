@@ -30,6 +30,11 @@ textarea::placeholder {
   color: #333;
 }
 
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.5;
+}
+
 h1,
 h2,
 h3 {
@@ -674,6 +679,7 @@ textarea {
 }
 
 #reveal-pass {
+  cursor: pointer;
   position: absolute;
   top: 50%;
   right: 10px;
@@ -714,18 +720,6 @@ textarea {
 }
 .passCircle.active {
   background-color: green;
-}
-.passStat {
-  color: rgb(0, 0, 0);
-}
-.passStat.mild {
-  color: red;
-}
-.passStat.medium {
-  color: rgb(255, 136, 0);
-}
-.passStat.strong {
-  color: green;
 }
 
 @media screen and (max-width: 568px) {

@@ -1,35 +1,36 @@
 const signupStatusEl = document.getElementById('signup-status');
 
 const statusUpdate = (text, time) => {
+  var checkStat = false;
+  if (signupStatusEl.style.color == 'green') {
+    checkStat = true;
+  }
   revealStatus.style.display = 'unset';
+  signupStatusEl.style.color = 'red';
   signupStatusEl.textContent = text;
 
   setTimeout(() => {
-    signupStatusEl.textContent = 'All requirements met - Passwords must match';
+    if (checkStat) {
+      signupStatusEl.style.color = 'green';
+    }
+    signupStatusEl.textContent = 'All criteria met - Passwords must match';
   }, time);
 };
+
 async function signupFormHandler(event) {
   event.preventDefault();
-
   const username = document.querySelector('#signup-username').value.trim();
   const email = document.querySelector('#signup-email').value.trim();
   const password = document.querySelector('.pass1').value.trim();
   const password2 = document.querySelector('.pass2').value.trim();
 
   if (username.length > 15) {
-    statusUpdate('Usernames are maximum 15 characters', 2500);
+    statusUpdate('Usernames are maximum 15 characters', 2000);
     return;
   }
 
-  if (
-    username.length < 1 ||
-    email.length < 1 ||
-    password.length < 1 ||
-    password2.length < 1
-  ) {
-    // If any signup input value is under 4 character length restrict submission
-    statusUpdate('Please make sure all inputs are filled', 3000);
-    return;
+  if (password !== password2) {
+    statusUpdate('Passwords must match!', 2000);
   } else {
     // Execute the fetch using above values and insert them into the body (to be extracted in the route i.e. req.body.post_title)
     const response = await fetch(`/api/users`, {
@@ -45,13 +46,13 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      signupStatusEl.textContent = 'Sign up successful, refreshing...';
+      signupStatusEl.textContent = 'Sign up successful, reloading...';
       signupStatusEl.style.color = 'green';
       setTimeout(() => {
         document.location.replace('/dashboard');
-      }, 1250);
+      }, 750);
     } else {
-      statusUpdate('Username or Email already exists!', 3000);
+      statusUpdate('Username or Email already exists!', 2000);
     }
   }
 }
@@ -63,8 +64,9 @@ const loginStatusUpdate = (text) => {
   loginStatusEl.textContent = text;
   setTimeout(() => {
     loginStatusEl.textContent = '';
-  }, 2500);
+  }, 2000);
 };
+
 async function loginFormHandler(event) {
   event.preventDefault();
 
@@ -85,8 +87,6 @@ async function loginFormHandler(event) {
     } else {
       loginStatusUpdate('Email or Password is incorrect');
     }
-  } else {
-    loginStatusUpdate('Please fill in all inputs');
   }
 }
 document
@@ -102,24 +102,30 @@ const toggleLoginPass = document.getElementById('pass-login');
 const toggleSignupPass1 = document.querySelector('.pass1');
 const toggleSignupPass2 = document.querySelector('.pass2');
 
-document.querySelector('.reveal-signup').addEventListener('click', () => {
+const viewPasswordSignup = document.querySelector('.reveal-signup');
+viewPasswordSignup.addEventListener('click', () => {
   if (
     toggleSignupPass1.type == 'password' &&
     toggleSignupPass2.type == 'password'
   ) {
+    viewPasswordSignup.style.opacity = '0.6';
     toggleSignupPass1.type = 'text';
     toggleSignupPass2.type = 'text';
   } else {
+    viewPasswordSignup.style.opacity = '1';
     toggleSignupPass1.type = 'password';
     toggleSignupPass2.type = 'password';
   }
 });
 
-document.querySelector('.reveal-signin').addEventListener('click', () => {
+const viewPasswordSignin = document.querySelector('.reveal-signin');
+viewPasswordSignin.addEventListener('click', () => {
   if (document.getElementById('pass-login').type == 'password') {
+    viewPasswordSignin.style.opacity = '0.6';
     toggleLoginPass.type = 'text';
   } else {
     toggleLoginPass.type = 'password';
+    viewPasswordSignin.style.opacity = '1';
   }
 });
 
@@ -165,14 +171,14 @@ const checkPass = (pass1, pass2) => {
   const barEl = document.querySelector('.pass-fill');
   if (tempReqs[0] && tempReqs[1] && tempReqs[2] && tempReqs[3]) {
     // Check process of password and assign class accordingly
-    barEl.classList.add('strongest'); // This means we meet all the requirement so fill the bar
+    barEl.className = 'pass-fill strongest'; // This means we meet all the requirement so fill the bar
   } else if (
     (tempReqs[0] && tempReqs[1] && tempReqs[2]) ||
     (tempReqs[1] && tempReqs[2] && tempReqs[3]) ||
     (tempReqs[2] && tempReqs[3] && tempReqs[0]) ||
     (tempReqs[3] && tempReqs[0] && tempReqs[1])
   ) {
-    barEl.classList.add('stronger');
+    barEl.className = 'pass-fill stronger';
   } else if (
     (tempReqs[0] && tempReqs[1]) ||
     (tempReqs[0] && tempReqs[2]) ||
@@ -181,9 +187,9 @@ const checkPass = (pass1, pass2) => {
     (tempReqs[1] && tempReqs[3]) ||
     (tempReqs[2] && tempReqs[3])
   ) {
-    barEl.classList.add('medium');
+    barEl.className = 'pass-fill medium';
   } else if (tempReqs[0] || tempReqs[1] || tempReqs[2] || tempReqs[3]) {
-    barEl.classList.add('mild');
+    barEl.className = 'pass-fill mild';
   } else {
     barEl.className = 'pass-fill';
   }
@@ -197,17 +203,52 @@ const checkPass = (pass1, pass2) => {
   }
 };
 
-const pass1 = document.querySelector('.pass1');
-const pass2 = document.querySelector('.pass2');
+var runOnce = true;
 
-pass1.addEventListener('keyup', (password1) => {
-  checkPass(password1.target.value, '');
-  revealStatus.style.display = 'unset';
-
-  pass2.addEventListener('keyup', (password2) => {
-    checkPass(password1.target.value, password2.target.value);
+const pass = document.querySelectorAll('.pass');
+for (let i = 0; i < pass.length; i++) {
+  pass[i].addEventListener('keyup', (e) => {
+    if (runOnce) {
+      revealStatus.style.display = 'unset';
+    }
+    runOnce = false;
+    let pass1 = pass[0].value;
+    let pass2 = pass[1].value;
+    checkPass(pass1, pass2);
   });
+}
+
+// The entire event listener below handles the submit button (disable) property
+const allSignupInputs = document.querySelectorAll('.signup-input');
+// Pull all inputs wth values in an array
+document.getElementById('signup-form').addEventListener('change', (input) => {
+  const validInputs = Array.from(allSignupInputs).filter(
+    (input) => input.value !== ''
+  );
+  // If both all inputs are filled (length of 4 means filled) and the password checker is colored green
+  // (green meaning passwords match) and passBar containing 'strongest' class meaning all criteria is met...
+  // then enable submission
+  const passBar = document.querySelector('.pass-fill');
+  const passMatch = document.getElementById('signup-status');
+  if (
+    validInputs.length == 4 &&
+    passMatch.style.color == 'green' &&
+    passBar.classList[1] == 'strongest'
+  ) {
+    document.getElementById('submit-btn').disabled = false;
+  } else {
+    document.getElementById('submit-btn').disabled = true;
+  }
 });
-pass2.addEventListener('keyup', (password2) => {
-  revealStatus.style.display = 'unset';
+
+const allSigninInputs = document.querySelectorAll('.signin-input');
+document.getElementById('login-form').addEventListener('change', (input) => {
+  const validInputs = Array.from(allSigninInputs).filter(
+    (input) => input.value !== ''
+  );
+  if (validInputs.length == 2) {
+    document.getElementById('login-btn').disabled = false;
+  } else {
+    document.getElementById('login-btn').disabled = true;
+  }
 });

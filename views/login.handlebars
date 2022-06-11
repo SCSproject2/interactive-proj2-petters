@@ -7,9 +7,19 @@
   <h1>Login</h1>
   <form id='login-form'>
     <div id='form-inputs'>
-      <input type='username' id='username-login' placeholder='Username' />
+      <input
+        type='username'
+        id='username-login'
+        class='signin-input'
+        placeholder='Username'
+      />
       <div id='pass-wrapper'>
-        <input type='password' id='pass-login' placeholder='Password' />
+        <input
+          type='password'
+          id='pass-login'
+          class='signin-input'
+          placeholder='Password'
+        />
         <img
           id='reveal-pass'
           class='reveal-signin'
@@ -19,7 +29,7 @@
       </div>
       <p id='signin-status'></p>
     </div>
-    <button id='login-btn' type='submit'>Login</button>
+    <button disabled='true' id='login-btn' type='submit'>Login</button>
   </form>
 </div>
 <hr id='loginHr' />
@@ -27,13 +37,23 @@
   <h1>Sign up</h1>
   <form id='signup-form'>
     <div id='form-inputs'>
-      <input type='text' id='signup-username' placeholder='Username' />
-      <input type='email' id='signup-email' placeholder='Email' />
+      <input
+        type='text'
+        id='signup-username'
+        class='signup-input'
+        placeholder='Username'
+      />
+      <input
+        type='email'
+        id='signup-email'
+        class='signup-input'
+        placeholder='Email'
+      />
       <div id='pass-wrapper'>
         <input
           type='password'
           id='signup-pass'
-          class='pass1'
+          class='pass1 pass signup-input'
           placeholder='Password'
         />
         <img
@@ -46,7 +66,7 @@
       <input
         type='password'
         id='signup-pass'
-        class='pass2'
+        class='pass2 pass signup-input'
         placeholder='Confirm password'
       />
       <div class='pass-status'>
@@ -72,7 +92,7 @@
         </div>
       </div>
     </div>
-    <button id='submit-btn' type='submit'>Signup</button>
+    <button disabled='true' id='submit-btn' type='submit'>Signup</button>
   </form>
 </div>
 <script src='/javascript/login.js'></script>
