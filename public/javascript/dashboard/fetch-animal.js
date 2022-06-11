@@ -75,15 +75,20 @@ async function fetchRandomCaptions(image_url, randomAnimal) {
 
   fetch('https://hargrimm-wikihow-v1.p.rapidapi.com/steps?count=2', options)
     .then((response) => response.json())
-    .then((response) =>
-      newPostHandler(
-        post.url,
-        post.categoryId,
-        response[1],
-        response[2],
-        post.image_filter
-      )
-    )
+    .then((response) => {
+      if (response[1].length < 18 && response[2].length < 60) {
+        newPostHandler(
+          post.url,
+          post.categoryId,
+          response[1],
+          response[2],
+          post.image_filter
+        );
+      } else {
+        statusEl.textContent = 'Generating...';
+        fetchAnimal();
+      }
+    })
     .catch((err) => console.error(err));
 }
 

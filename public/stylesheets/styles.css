@@ -979,7 +979,7 @@ select {
 
 #dashboard-posts #single-post {
   width: 480px;
-  margin: 10px 10px;
+  margin: 20px 10px;
 }
 
 @media screen and (max-width: 900px) {
