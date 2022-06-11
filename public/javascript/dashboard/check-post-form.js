@@ -20,6 +20,20 @@ confirmBtn.addEventListener('submit', (e) => {
     }, 1750);
     e.preventDefault();
     e.stopPropagation();
+  } else if (titleInput.value.length > 15) {
+    uploadStatus.textContent = 'Post title must be under 15 characters';
+    setTimeout(() => {
+      uploadStatus.textContent = '';
+    }, 1750);
+    e.preventDefault();
+    e.stopPropagation();
+  } else if (bodyInput.value.length > 50) {
+    uploadStatus.textContent = 'Post body must be under 50 characters';
+    setTimeout(() => {
+      uploadStatus.textContent = '';
+    }, 1750);
+    e.preventDefault();
+    e.stopPropagation();
   } else {
     console.log('Posting...');
   }
