@@ -37,10 +37,10 @@ const handleSubmit = (btn, postId, post) => {
         'New post title & body must be greater than 4 characters',
         postId
       );
-    } else if (newTitle.length > 18) {
-      displayStatus('New post title must be under 18 characters', postId);
-    } else if (newBody.length > 60) {
-      displayStatus('New post body must be under 60 characters', postId);
+    } else if (newTitle.length > 40) {
+      displayStatus('New post title must be under 40 characters', postId);
+    } else if (newBody.length > 80) {
+      displayStatus('New post body must be under 80 characters', postId);
     } else {
       editPost(newTitle, newBody, postId);
     }

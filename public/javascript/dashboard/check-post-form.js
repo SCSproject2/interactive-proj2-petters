@@ -20,15 +20,15 @@ confirmBtn.addEventListener('submit', (e) => {
     }, 1750);
     e.preventDefault();
     e.stopPropagation();
-  } else if (titleInput.value.length > 18) {
-    uploadStatus.textContent = 'Post title must be under 18 characters';
+  } else if (titleInput.value.length > 40) {
+    uploadStatus.textContent = 'Post title must be under 40 characters';
     setTimeout(() => {
       uploadStatus.textContent = '';
     }, 1750);
     e.preventDefault();
     e.stopPropagation();
-  } else if (bodyInput.value.length > 60) {
-    uploadStatus.textContent = 'Post body must be under 60 characters';
+  } else if (bodyInput.value.length > 80) {
+    uploadStatus.textContent = 'Post body must be under 80 characters';
     setTimeout(() => {
       uploadStatus.textContent = '';
     }, 1750);

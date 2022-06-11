@@ -330,9 +330,9 @@ textarea {
 
 #search-post-wrapper,
 #search-user-wrapper {
-  margin-top: 25px;
+  margin-top: 40px;
+  margin-left: 60px;
   width: 100%;
-  margin-left: 10px;
 }
 
 #search-post-wrapper #single-post,
@@ -374,18 +374,9 @@ textarea {
   #search {
     width: 50%;
   }
-
-  #search-post-wrapper,
-  #search-user-wrapper {
-    margin-top: -15px;
-  }
 }
 
 @media screen and (max-width: 670px) {
-  #search-post-wrapper #homepage-posts,
-  #search-user-wrapper #homepage-posts {
-    margin-left: 0;
-  }
 }
 
 @media screen and (max-width: 705px) {
@@ -410,6 +401,11 @@ textarea {
 }
 
 @media screen and (max-width: 568px) {
+  #search-post-wrapper,
+  #search-user-wrapper {
+    margin-left: 0;
+  }
+
   #search-controls {
     position: static;
     z-index: auto;
@@ -442,7 +438,6 @@ textarea {
   #search-user-wrapper {
     margin-top: 10px;
     width: 100%;
-    margin-left: 0;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -541,9 +536,6 @@ textarea {
   }
 }
 
-@media screen and (max-width: 1050px) {
-}
-
 @media screen and (max-width: 950px) {
   .post-top-likes,
   .post-top-comments {
@@ -561,30 +553,22 @@ textarea {
 
 @media screen and (max-width: 770px) {
   #post-title {
-    font-size: 21px;
+    font-size: 18px;
   }
 
   #post-body {
-    font-size: 17px;
+    font-size: 15px;
   }
-}
 
-@media screen and (max-width: 690px) {
+  #post-date {
+    font-size: 13px !important;
+  }
 }
 
 @media screen and (max-width: 650px) {
   #page-singlepost #post-body {
     font-size: 15px;
   }
-}
-
-@media screen and (max-width: 619px) {
-}
-
-@media screen and (max-width: 579px) {
-}
-
-@media screen and (max-width: 539px) {
 }
 
 /* -------- --------- --------- Login / Signup (login.handlebars) */
@@ -1018,14 +1002,14 @@ select {
     width: 275px;
   }
   #dashboard-posts {
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-left: 0;
   }
 
   #dashboard-posts #single-post {
-    width: 340px;
-    margin-left: 20px;
-    height: fit-content;
+    width: 300px;
   }
 }
 
@@ -1354,5 +1338,10 @@ select {
   .scrollTop {
     width: 100px;
     line-height: 1;
+  }
+
+  #homepage-posts {
+    margin-left: 0;
+    align-items: center;
   }
 }
