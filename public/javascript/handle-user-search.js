@@ -130,7 +130,7 @@ const renderUserPosts = (postsObject, searchTerm) => {
       clearBtn.style.display = 'unset';
       const newEl = document.createElement('div');
       newEl.innerHTML += `
-      <div id='homepage-posts' class='user-results'>
+      <div id='homepage-posts' >
               <a id='single-post' href='/post/${el.id}'>
                 <img class='${el.image_filter}' id='post-image' src='${
         el.image_url

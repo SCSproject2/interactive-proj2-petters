@@ -19,18 +19,28 @@ async function editPost(newTitle, newBody, postId) {
   }
 }
 
+const displayStatus = (msg, postId) => {
+  document.getElementById(`edit-post-status-${postId}`).textContent = msg;
+  setTimeout(() => {
+    document.getElementById(`edit-post-status-${postId}`).textContent = '';
+  }, 3000);
+};
 // Handle the confirm button event, return the new data and update the existing post
 const handleSubmit = (btn, postId, post) => {
   btn.addEventListener('click', (e) => {
-    const newTitle = post.parentNode.parentNode.childNodes[5].children[0].value;
+    const newTitle =
+      post.parentNode.parentNode.childNodes[3].children[1].value.trim();
     const newBody =
-      post.parentNode.parentNode.childNodes[5].childNodes[3].value;
-    console.log(newTitle);
+      post.parentNode.parentNode.childNodes[3].childNodes[5].value.trim();
     if (newTitle.length <= 4 || newBody.length <= 4) {
-      document.getElementById('edit-post-status').style.display = 'flex';
-      setTimeout(() => {
-        document.getElementById('edit-post-status').style.display = 'none';
-      }, 3000);
+      displayStatus(
+        'New post title & body must be greater than 4 characters',
+        postId
+      );
+    } else if (newTitle.length > 18) {
+      displayStatus('New post title must be under 18 characters', postId);
+    } else if (newBody.length > 60) {
+      displayStatus('New post body must be under 60 characters', postId);
     } else {
       editPost(newTitle, newBody, postId);
     }

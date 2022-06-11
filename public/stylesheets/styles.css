@@ -367,6 +367,9 @@ textarea {
   display: none;
 }
 
+#search-wrapper #homepage-posts {
+  margin-bottom: 10px;
+}
 @media screen and (max-width: 900px) {
   #search {
     width: 50%;
@@ -437,7 +440,7 @@ textarea {
 
   #search-post-wrapper,
   #search-user-wrapper {
-    margin-top: -5px;
+    margin-top: 10px;
     width: 100%;
     margin-left: 0;
     align-items: center;
@@ -517,6 +520,7 @@ textarea {
 
 .featured-wrapper {
   padding: 0 20px;
+  margin-bottom: 90px;
 }
 
 @media screen and (max-width: 1300px) {
@@ -644,10 +648,6 @@ textarea {
 #page-singlepost {
   margin-left: 30px;
   margin-top: 25px;
-}
-
-.user-results {
-  margin-top: 20px;
 }
 
 #comment-field,
@@ -974,7 +974,7 @@ select {
   width: revert;
   margin-left: 25px;
   margin-top: 0;
-  margin-bottom: 50px;
+  margin-bottom: 90px;
 }
 
 #dashboard-posts #single-post {
@@ -982,6 +982,13 @@ select {
   margin: 20px 10px;
 }
 
+.edit-post-status {
+  color: red;
+  position: relative;
+  left: 11px;
+  bottom: 9px;
+  font-size: 20px;
+}
 @media screen and (max-width: 900px) {
   #dashboard-posts #single-post {
     width: 450px;
@@ -997,6 +1004,12 @@ select {
 @media screen and (max-width: 650px) {
   #dashboard-posts #single-post {
     width: 390px;
+  }
+
+  .edit-post-status {
+    left: 8px;
+    bottom: 8px;
+    font-size: 17px;
   }
 }
 
@@ -1033,7 +1046,7 @@ select {
   margin-right: 0;
 }
 #post-controls button {
-  font-size: 16px;
+  font-size: 18px;
   margin: 5px 10px;
 }
 .confirm-post,
@@ -1093,6 +1106,7 @@ select {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
+  margin-bottom: 90px;
 }
 
 #single-post {
@@ -1185,6 +1199,10 @@ select {
 .edit-title-input,
 .edit-body-input {
   margin: 5px 0;
+}
+
+.edit-title-input {
+  height: 40px;
 }
 
 .edit-body-input {
