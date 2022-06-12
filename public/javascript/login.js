@@ -283,7 +283,7 @@ for (let i = 0; i < allSignupInputs.length; i++) {
     // As the user enter new info, check if it already exists
     usersPromise.then((users) => {
       users.forEach((user) => {
-        if (username == user.username) {
+        if (username.toLowerCase() == user.username.toLowerCase()) {
           document.getElementById('submit-btn').disabled = true;
           document.getElementById('check-user').textContent = '';
           document.getElementById('check-user').textContent =
@@ -291,7 +291,7 @@ for (let i = 0; i < allSignupInputs.length; i++) {
           document.getElementById('check-user').style.color = 'red';
         }
 
-        if (email == user.email) {
+        if (email.toLowerCase() == user.email.toLowerCase()) {
           document.getElementById('submit-btn').disabled = true;
           document.getElementById('check-email').textContent = '';
           document.getElementById('check-email').textContent =
