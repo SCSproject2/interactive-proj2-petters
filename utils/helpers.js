@@ -18,7 +18,7 @@ module.exports = {
   },
 
   checkImage: (item) => {
-    if (item.includes('https')) {
+    if (item.includes('https') || item.includes('http')) {
       return '';
     } else {
       return '/';

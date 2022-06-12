@@ -743,11 +743,9 @@ textarea {
 }
 
 #page-singlepost {
-  width: 45%;
-}
-
-#page-singlepost {
-  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 30px;
   margin-bottom: 125px;
 }
