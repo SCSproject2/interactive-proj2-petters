@@ -152,6 +152,8 @@ const renderUserPosts = (postsObject, searchTerm) => {
               </a>
             </div>
             `;
+      document.getElementById('search-user-wrapper').style.display = 'unset';
+      document.getElementById('search-user-wrapper').style.display = 'unset';
       postWrapper.appendChild(newEl);
     });
     checkHistoryBtns(searchTerm);

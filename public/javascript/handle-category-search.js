@@ -46,6 +46,8 @@ const renderPosts = (postsObject) => {
           </div>
         </div>
         `;
+      document.getElementById('search-post-wrapper').style.display = 'unset';
+      document.getElementById('search-user-wrapper').style.display = 'none';
       postWrapper.appendChild(newEl);
     });
   }

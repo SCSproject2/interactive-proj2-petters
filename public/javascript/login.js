@@ -277,7 +277,8 @@ for (let i = 0; i < allSignupInputs.length; i++) {
       document.getElementById('check-email').textContent = 'Email available!';
       document.getElementById('check-email').style.color = 'green';
     } else {
-      document.getElementById('check-email').textContent = '';
+      document.getElementById('check-email').textContent = 'Email not valid';
+      document.getElementById('check-email').style.color = 'red';
     }
 
     // As the user enter new info, check if it already exists

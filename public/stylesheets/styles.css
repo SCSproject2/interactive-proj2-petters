@@ -225,7 +225,9 @@ textarea {
 }
 
 #search-wrapper {
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #inner-search-wrapper button {
@@ -246,7 +248,9 @@ textarea {
 #search-controls {
   position: relative;
   color: white;
-  width: 70%;
+  width: 85%;
+  max-width: 1000px;
+  min-width: 340px;
   top: 10px;
   padding: 20px;
   margin-left: 30px;
@@ -270,6 +274,7 @@ textarea {
 #category-wrapper {
   margin-bottom: 30px;
   margin-right: 30px;
+  padding-right: 30px;
 }
 
 @media screen and (max-width: 600px) {
@@ -280,10 +285,21 @@ textarea {
 
   #category-wrapper {
     margin: 0;
+    border-radius: 0;
   }
 
   #search-controls {
     margin-bottom: 0;
+    margin-left: 0;
+    border-radius: 0;
+    width: 100%;
+  }
+
+  #inner-search-wrapper button {
+    margin: 0;
+  }
+  #clear-history {
+    margin-top: 5px !important;
   }
 }
 
@@ -317,8 +333,8 @@ textarea {
 
 #search-post-wrapper,
 #search-user-wrapper {
-  margin-top: 40px;
-  margin-left: 60px;
+  display: none;
+  margin-top: 30px;
   width: 100%;
 }
 
@@ -356,32 +372,12 @@ textarea {
 
 #search-wrapper #homepage-posts {
   margin-bottom: 10px;
+  margin-top: 0 !important;
 }
 
 @media screen and (max-width: 900px) {
   #search {
     width: 50%;
-  }
-}
-
-@media screen and (max-width: 705px) {
-  #search {
-    width: 60%;
-  }
-
-  #hide-menu {
-    right: 10px;
-    top: 295px;
-  }
-
-  #search-controls {
-    width: 90%;
-  }
-}
-
-@media screen and (max-width: 631px) {
-  #hide-menu {
-    display: none;
   }
 }
 
@@ -395,16 +391,13 @@ textarea {
     position: static;
     z-index: auto;
     margin-left: 0;
+    margin-bottom: 30px;
   }
 
   #search-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  #hide-menu {
-    display: none;
   }
 
   #search {
@@ -513,7 +506,7 @@ textarea {
   .post-top-likes,
   .post-top-comments {
     margin: 0;
-    width: 340px;
+    width: 390px;
     padding: 14px;
   }
 }
@@ -547,7 +540,8 @@ textarea {
 @media screen and (max-width: 540px) {
   .post-top-likes,
   .post-top-comments {
-    width: 90vw;
+    width: 100vw;
+    border-radius: 0;
     padding: 10px 10px;
     display: flex;
     align-items: center;
@@ -555,7 +549,7 @@ textarea {
 
   .post-top-likes #single-post,
   .post-top-comments #single-post {
-    width: 80vw !important;
+    width: 90vw !important;
   }
 }
 
@@ -739,7 +733,7 @@ textarea {
 
 #dashboard-posts,
 #single-user-wrapper {
-  width: 50%;
+  width: 60%;
 }
 
 #page-singlepost {
@@ -750,9 +744,25 @@ textarea {
   margin-bottom: 125px;
 }
 
-#comment-field,
-#comment-section {
+#comment-form,
+#comment-section,
+#comment-section-divider {
+  width: 90%;
+  min-width: 340px;
+  max-width: 1000px;
+}
+
+#comment-field {
   width: 100%;
+}
+
+#comment-section-divider {
+  margin-top: 25px;
+  margin-left: 0;
+  margin-bottom: 25px;
+  height: 1px;
+  opacity: 0.2;
+  background-color: black;
 }
 
 #comment-field {
@@ -760,15 +770,6 @@ textarea {
 }
 #comment-section {
   margin-bottom: 50px;
-}
-#comment-section-divider {
-  margin-top: 25px;
-  margin-left: 0;
-  margin-bottom: 25px;
-  height: 1px;
-  opacity: 0.2;
-  width: 90%;
-  background-color: black;
 }
 
 #comment-control {
@@ -837,29 +838,20 @@ textarea {
 }
 
 #comment-wrapper p:nth-child(1) {
-  margin-right: 52px;
+  font-size: 17px;
+  margin-right: 40px;
 }
 
-@media screen and (max-width: 1230px) {
-  #comment-field,
-  #comment-section,
-  #comment-section-divider {
-    width: 140%;
-  }
-}
-
-@media screen and (max-width: 881px) {
-  #comment-field,
-  #comment-section,
-  #comment-section-divider {
-    width: 170%;
-  }
+#comment-form {
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 737px) {
   #comment-date {
-    top: 42px;
+    top: 37px;
+    opacity: 0.8;
     position: absolute;
+    font-size: 15px;
   }
 
   #single-comment {
@@ -883,12 +875,6 @@ textarea {
 }
 
 @media screen and (max-width: 590px) {
-  #comment-field,
-  #comment-section,
-  #comment-section-divider {
-    width: 90vw;
-  }
-
   .comment-status {
     left: 127px;
     bottom: -15px;
@@ -935,7 +921,6 @@ textarea {
 
 #category-wrapper {
   margin-right: 30px;
-  margin-bottom: 25px;
 }
 
 #random-post-wrapper {
@@ -1117,7 +1102,7 @@ select {
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 540px) {
   #add-desc {
     height: 260px;
   }
@@ -1133,7 +1118,15 @@ select {
   }
 
   #dashboard-posts #single-post {
-    width: 85vw;
+    width: 100vw;
+    border-radius: 0 !important;
+  }
+
+  #homepage-posts #post-image,
+  #page-singlepost #post-image,
+  #dashboard-posts #post-image,
+  #search-wrapper #post-image {
+    border-radius: 0 !important;
   }
 }
 
@@ -1222,7 +1215,7 @@ select {
 #homepage-posts {
   display: flex;
   flex-direction: column;
-  margin-left: 25px;
+  align-items: center;
   margin-top: 30px;
   margin-bottom: 125px;
 }
@@ -1373,25 +1366,13 @@ select {
 /* -------- --------- --------- Single Post */
 
 #single-post {
-  width: 410px;
-  margin-bottom: 20px;
-}
-
-@media screen and (max-width: 1080px) {
-  #single-post {
-    width: 380px;
-  }
+  width: 60%;
+  min-width: 340px;
+  max-width: 420px;
+  margin-bottom: 25px;
 }
 
 @media screen and (max-width: 990px) {
-  #single-post {
-    width: 340px;
-  }
-
-  .featured-wrapper #single-post {
-    width: 300px;
-  }
-
   #page-singlepost #post-header p {
     font-size: 15px;
   }
@@ -1401,6 +1382,7 @@ select {
   .featured-posts {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .post-top-comments {
@@ -1410,7 +1392,11 @@ select {
 
 @media screen and (max-width: 540px) {
   #single-post {
-    width: 90vw;
+    width: 100vw;
+    border-radius: 0;
+  }
+  .featured-wrapper #single-post {
+    border-radius: 15px;
   }
 }
 
