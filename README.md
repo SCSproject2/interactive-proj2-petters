@@ -95,8 +95,8 @@ From there, you are ready to use the application!
 
 ## License
 
-This project is covered under the MIT License.
+This project is covered under the MIT License
 
-![Preview-image](https://user-images.githubusercontent.com/91699101/172945491-44f1739d-4660-407d-95f4-b1d436a964ca.png)
+![Preview-image](https://user-images.githubusercontent.com/91699101/173210609-3b002d7a-fcf3-40f7-b989-209b89947217.png)
 
 
