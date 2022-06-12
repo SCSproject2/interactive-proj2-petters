@@ -1,15 +1,17 @@
 <div id='search-wrapper'>
   <div id='search-controls' class='search'>
     <div id='inner-search-wrapper'>
+      <p id='search-status-update'></p>
       <input
         id='search'
         placeholder='Search user'
         aria-label='Search through site content'
       />
-      <button id='submit-user'>Search</button>
-      <button id='clear-search'>Clear</button>
-      <button id='clear-history'>Clear History</button>
-      <p id='search-status-update'></p>
+      <div id='post-control-wrapper'>
+        <button id='submit-user'>Search</button>
+        <button id='clear-search'>Clear</button>
+        <button id='clear-history'>Clear History</button>
+      </div>
     </div>
     <p id='history-search-label' style='display: none; margin: 5px 0'>Previous
       searches</p>

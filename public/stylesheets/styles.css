@@ -140,10 +140,10 @@ button:active {
 
 input,
 textarea {
-  font-size: 20px;
+  font-size: 18px;
   resize: none;
   color: black;
-  padding-left: 8px;
+  padding-left: 10px;
   border: none;
   border-radius: 8px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -210,6 +210,11 @@ textarea {
   .navItem {
     font-size: 18px;
   }
+
+  input,
+  textarea {
+    font-size: 16px;
+  }
 }
 
 /* -------- --------- --------- Search page (search.handlebars) */
@@ -220,7 +225,7 @@ textarea {
 }
 
 #search-wrapper {
-  margin-bottom: 50px;
+  margin-bottom: 100px;
 }
 
 #inner-search-wrapper {
@@ -230,17 +235,18 @@ textarea {
   align-items: center;
 }
 
+#post-control-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+}
+
 #inner-search-wrapper button {
-  margin: 5px 10px;
+  margin: 5px 5px;
 }
-
-#inner-search-wrapper button:nth-child(3) {
-  margin: 0;
-  margin-right: 10px;
-}
-
-#inner-search-wrapper button:nth-child(4) {
-  margin: 0;
+#inner-search-wrapper button:nth-child(1) {
+  margin-left: 0;
 }
 
 #search-status-update {
@@ -250,11 +256,11 @@ textarea {
 #search-controls {
   position: relative;
   color: white;
-  width: 60%;
+  width: 65%;
   top: 10px;
   padding: 20px;
   margin-left: 30px;
-  border-radius: 5px;
+  border-radius: 10px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   background-color: rgba(104, 24, 179, 0.7);
@@ -299,6 +305,10 @@ textarea {
   #category-wrapper {
     margin: 0;
   }
+
+  #search-controls {
+    margin-bottom: 0;
+  }
 }
 
 #search-controls.inactive #hide-menu {
@@ -326,8 +336,11 @@ textarea {
 
 #search-controls p {
   color: white;
+  margin-left: 0;
 }
 #search-controls input {
+  margin-right: 10px;
+  margin-bottom: 4px;
   color: white;
   background-color: rgba(222, 222, 222, 0.5);
 }
@@ -379,13 +392,16 @@ textarea {
 #search-wrapper #homepage-posts {
   margin-bottom: 10px;
 }
+@media screen and (max-width: 950px) {
+  #inner-search-wrapper button:nth-child(4),
+  #inner-search-wrapper button:nth-child(3) {
+    margin-top: 5px;
+  }
+}
 @media screen and (max-width: 900px) {
   #search {
     width: 50%;
   }
-}
-
-@media screen and (max-width: 670px) {
 }
 
 @media screen and (max-width: 705px) {
@@ -445,7 +461,7 @@ textarea {
 
   #search-post-wrapper,
   #search-user-wrapper {
-    margin-top: 10px;
+    margin-top: 0;
     width: 100%;
     align-items: center;
     display: flex;
@@ -454,16 +470,14 @@ textarea {
 }
 
 @media screen and (max-width: 545px) {
-  #inner-search-wrapper button:nth-child(4) {
+  #inner-search-wrapper button:nth-child(4),
+  #inner-search-wrapper button:nth-child(3) {
     margin-top: 10px;
   }
 }
 
 @media screen and (max-width: 450px) {
-  #inner-search-wrapper button:nth-child(3) {
-    margin-top: 10px;
-  }
-
+  #inner-search-wrapper button:nth-child(3),
   #inner-search-wrapper button:nth-child(4) {
     margin-top: 10px;
   }
@@ -490,11 +504,11 @@ textarea {
 }
 
 .post-top-likes {
-  background-color: rgba(214, 110, 110, 0.1);
+  background-color: rgba(214, 110, 110, 0.2);
 }
 
 .post-top-comments {
-  background-color: rgba(110, 205, 214, 0.1);
+  background-color: rgba(110, 205, 214, 0.2);
 }
 
 .post-top-likes #single-post,
@@ -577,6 +591,21 @@ textarea {
 @media screen and (max-width: 650px) {
   #page-singlepost #post-body {
     font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .post-top-likes,
+  .post-top-comments {
+    width: 90vw;
+    padding: 10px 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .post-top-likes #single-post,
+  .post-top-comments #single-post {
+    width: 80vw !important;
   }
 }
 
@@ -752,7 +781,7 @@ textarea {
   #signin-status,
   #comment-status {
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
@@ -768,8 +797,9 @@ textarea {
 }
 
 #page-singlepost {
-  margin-left: 30px;
-  margin-top: 25px;
+  margin-left: 25px;
+  margin-top: 30px;
+  margin-bottom: 125px;
 }
 
 #comment-field,
@@ -908,7 +938,7 @@ textarea {
   #comment-field,
   #comment-section,
   #comment-section-divider {
-    width: 190%;
+    width: 90vw;
   }
 
   .comment-status {
@@ -935,7 +965,11 @@ textarea {
 
 #dashboard-wrapper input {
   padding: 5px 0;
-  padding-left: 10px;
+  padding-left: 10px !important;
+}
+
+#add-post-image {
+  padding: 10px 0 !important;
 }
 #addPost-wrapper,
 #category-wrapper,
@@ -1013,7 +1047,7 @@ textarea {
 }
 
 #add-desc {
-  height: 200px;
+  height: 220px;
 }
 #addCategory-form {
   display: flex;
@@ -1100,7 +1134,7 @@ select {
 }
 
 #dashboard-posts #single-post {
-  width: 480px;
+  width: 410px;
   margin: 20px 10px;
 }
 
@@ -1109,17 +1143,17 @@ select {
   position: relative;
   left: 11px;
   bottom: 9px;
-  font-size: 20px;
+  font-size: 16px;
 }
 @media screen and (max-width: 900px) {
   #dashboard-posts #single-post {
-    width: 450px;
+    width: 380px;
   }
 }
 
 @media screen and (max-width: 770px) {
   #dashboard-posts #single-post {
-    width: 430px;
+    width: 340px;
   }
 }
 
@@ -1136,6 +1170,10 @@ select {
 }
 
 @media screen and (max-width: 580px) {
+  #add-desc {
+    height: 260px;
+  }
+
   #category_name {
     width: 275px;
   }
@@ -1147,7 +1185,7 @@ select {
   }
 
   #dashboard-posts #single-post {
-    width: 300px;
+    width: 85vw;
   }
 }
 
@@ -1205,21 +1243,30 @@ select {
   object-fit: cover;
 }
 
-@media screen and (max-width: 502px) {
+@media screen and (max-width: 480px) {
   #add-select-wrapper {
     flex-wrap: wrap;
   }
 
+  #add-desc,
+  #add-title {
+    width: 85vw !important;
+  }
+
   #add-post-image {
     cursor: pointer;
-    width: 100%;
+    width: 85vw;
     margin-right: 0px;
   }
 
   #filter-options,
   #category-options {
     height: 50px;
-    width: 225px;
+    width: 85vw;
+  }
+
+  #category_name {
+    width: 85vw;
   }
 }
 
@@ -1227,8 +1274,9 @@ select {
 #homepage-posts {
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
-  margin-bottom: 90px;
+  margin-left: 25px;
+  margin-top: 30px;
+  margin-bottom: 125px;
 }
 
 #single-post {
@@ -1256,7 +1304,6 @@ select {
   /* Fit the full width of the post */
   width: 100%;
   object-fit: cover;
-  padding: 5px;
 }
 
 #title-wrapper {
@@ -1378,18 +1425,22 @@ select {
 /* -------- --------- --------- Single Post */
 
 #single-post {
-  width: 450px;
+  width: 410px;
   margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1080px) {
   #single-post {
-    width: 400px;
+    width: 380px;
   }
 }
 
 @media screen and (max-width: 990px) {
   #single-post {
+    width: 340px;
+  }
+
+  .featured-wrapper #single-post {
     width: 300px;
   }
 
@@ -1405,15 +1456,13 @@ select {
   }
 
   .post-top-comments {
-    margin-top: 25px;
+    margin-top: 45px;
   }
 }
 
-@media screen and (max-width: 905px) {
-  #post-category {
-    width: 100px;
-    font-size: 12px;
-    padding: 5px 15px;
+@media screen and (max-width: 540px) {
+  #single-post {
+    width: 90vw;
   }
 }
 
