@@ -152,7 +152,7 @@ const renderUserPosts = (postsObject, searchTerm) => {
               </a>
             </div>
             `;
-      document.getElementById('search-user-wrapper').style.display = 'unset';
+      document.getElementById('search-post-wrapper').style.display = 'none';
       document.getElementById('search-user-wrapper').style.display = 'unset';
       postWrapper.appendChild(newEl);
     });
