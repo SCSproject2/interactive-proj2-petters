@@ -76,7 +76,7 @@ async function fetchRandomCaptions(image_url, randomAnimal) {
   fetch('https://hargrimm-wikihow-v1.p.rapidapi.com/steps?count=2', options)
     .then((response) => response.json())
     .then((response) => {
-      if (response[1].length < 40 && response[2].length < 80) {
+      if (response[1].length < 40 && response[2].length < 100) {
         newPostHandler(
           post.url,
           post.categoryId,

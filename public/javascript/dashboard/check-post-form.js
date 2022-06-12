@@ -27,8 +27,8 @@ confirmBtn.addEventListener('submit', (e) => {
     }, 1750);
     e.preventDefault();
     e.stopPropagation();
-  } else if (bodyInput.value.length > 80) {
-    uploadStatus.textContent = 'Post body must be under 80 characters';
+  } else if (bodyInput.value.length > 100) {
+    uploadStatus.textContent = 'Post body must be under 100 characters';
     setTimeout(() => {
       uploadStatus.textContent = '';
     }, 1750);
