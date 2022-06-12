@@ -43,12 +43,14 @@
         class='signup-input'
         placeholder='Username'
       />
+      <p id='check-user'></p>
       <input
         type='email'
         id='signup-email'
         class='signup-input'
         placeholder='Email'
       />
+      <p id='check-email'></p>
       <div id='pass-wrapper'>
         <input
           type='password'
@@ -73,7 +75,10 @@
         <div id='pass-bar'>
           <div class='pass-fill'></div>
         </div>
-        <p id='signup-status'>All requirements met - Passwords must match</p>
+        <p id='signup-status'><span id='signup-criteria-status'></span>
+          <span style='color: black'>-</span>
+          <span id='signup-pass-status'></span>
+        </p>
         <div class='single-stat'>
           <div class='passCircle len-status default'></div>
           <p>8 Characters required</p>

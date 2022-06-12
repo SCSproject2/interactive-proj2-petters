@@ -633,6 +633,13 @@ textarea {
   margin-bottom: 50px;
 }
 
+#check-user,
+#check-email {
+  margin: 0;
+  color: red;
+  font-size: 18px;
+}
+
 .pass-bar {
   overflow: hidden;
   width: 182px;
