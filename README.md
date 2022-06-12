@@ -78,7 +78,7 @@ From there, you are ready to use the application!
 
 ## Links
 
-[Link to live application](https://fullstack-petters-social.herokuapp.com/)
+[Link to live application](https://mvc-petters-social.herokuapp.com/)
 
 ## Built With
 
