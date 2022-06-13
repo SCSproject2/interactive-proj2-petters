@@ -190,7 +190,7 @@ const checkPass = (pass1, pass2) => {
     barEl.className = 'pass-fill';
   }
 
-  if (pass1.length > 8 && pass2.length > 8) {
+  if (pass1.length >= 8 && pass2.length >= 8) {
     if (pass1 == pass2) {
       document.getElementById('signup-pass-status').textContent =
         'Passwords match';
