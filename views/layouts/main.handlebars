@@ -62,7 +62,7 @@
           <a class='navItem' id='search-nav-btn' href='/search'>Search</a>
           <div id='mobile-inner-wrapper'>
             {{#if loggedIn}}
-              <a class='navItem' id='logout'>Logout</a>
+              <a class='navItem' id='logout-mobile'>Logout</a>
             {{/if}}
             {{#if loggedIn}}
               <h5 id='loggedIn-as'>Logged in as
@@ -79,6 +79,7 @@
   </body>
 </html>
 {{#if loggedIn}}
+
   <script src='/javascript/logout.js'></script>
 {{/if}}
 <script src='/javascript/main.js'></script>

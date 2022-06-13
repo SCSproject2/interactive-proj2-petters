@@ -1,4 +1,6 @@
 const logoutBtn = document.getElementById('logout');
+const mobileLogoutBtn = document.getElementById('logout-mobile');
+
 async function logout() {
   const response = await fetch('/api/users/logout', {
     method: 'post',
@@ -13,3 +15,4 @@ async function logout() {
 }
 
 logoutBtn.addEventListener('click', logout);
+mobileLogoutBtn.addEventListener('click', logout);
