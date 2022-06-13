@@ -157,18 +157,20 @@ textarea {
   padding-top: 8px;
 }
 
-body {
+main,
+header {
   position: relative;
   right: 0;
   transition: 0.3s all ease-in-out;
 }
 
-body.active {
+main.active,
+header.active {
   right: 200px;
   transition: 0.3s all ease-in-out;
 }
 
-body.active .scrollTop {
+main.active .scrollTop {
   display: none;
 }
 

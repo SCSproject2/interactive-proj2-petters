@@ -51,12 +51,22 @@ scrollBtn.addEventListener('click', () => {
 
 const burgerStack = document.getElementById('burger-stack');
 burgerStack.addEventListener('click', () => {
-  document.body.classList.toggle('active');
+  if (document.querySelector('header').className == 'active') {
+    document.querySelector('header').classList.toggle('active');
+    setTimeout(() => {
+      document.querySelector('main').classList.toggle('active');
+    }, 100);
+  } else {
+    document.querySelector('main').classList.toggle('active');
+    setTimeout(() => {
+      document.querySelector('header').classList.toggle('active');
+    }, 100);
+  }
 });
 
 window.addEventListener('resize', () => {
   if (window.innerWidth > 568) {
-    document.body.classList.remove('active');
-    return;
+    document.querySelector('main').classList.remove('active');
+    document.querySelector('header').classList.remove('active');
   }
 });
