@@ -56,12 +56,12 @@ burgerStack.addEventListener('click', () => {
     document.querySelector('header').classList.toggle('active');
     setTimeout(() => {
       document.querySelector('main').classList.toggle('active');
-    }, 75);
+    }, 100);
   } else {
     document.querySelector('main').classList.toggle('active');
     setTimeout(() => {
       document.querySelector('header').classList.toggle('active');
-    }, 75);
+    }, 100);
   }
 
   if (document.getElementById('mobile-nav-items').style.display == 'flex') {
