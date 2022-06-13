@@ -49,18 +49,25 @@ scrollBtn.addEventListener('click', () => {
   topFunction();
 });
 
+document.getElementById('mobile-nav-items').style.display = 'none';
 const burgerStack = document.getElementById('burger-stack');
 burgerStack.addEventListener('click', () => {
   if (document.querySelector('header').className == 'active') {
     document.querySelector('header').classList.toggle('active');
     setTimeout(() => {
       document.querySelector('main').classList.toggle('active');
-    }, 100);
+    }, 75);
   } else {
     document.querySelector('main').classList.toggle('active');
     setTimeout(() => {
       document.querySelector('header').classList.toggle('active');
-    }, 100);
+    }, 75);
+  }
+
+  if (document.getElementById('mobile-nav-items').style.display == 'flex') {
+    document.getElementById('mobile-nav-items').style.display = 'none';
+  } else {
+    document.getElementById('mobile-nav-items').style.display = 'flex';
   }
 });
 
