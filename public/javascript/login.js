@@ -190,10 +190,17 @@ const checkPass = (pass1, pass2) => {
     barEl.className = 'pass-fill';
   }
 
-  if (pass1 == pass2) {
-    document.getElementById('signup-pass-status').textContent =
-      'Passwords match';
-    document.getElementById('signup-pass-status').style.color = 'green';
+  if (pass1.length > 8 && pass2.length > 8) {
+    if (pass1 == pass2) {
+      document.getElementById('signup-pass-status').textContent =
+        'Passwords match';
+      document.getElementById('signup-pass-status').style.color = 'green';
+    } else {
+      document.getElementById(
+        'signup-pass-status'
+      ).textContent = `Passwords don't match`;
+      document.getElementById('signup-pass-status').style.color = 'red';
+    }
   } else {
     document.getElementById(
       'signup-pass-status'
@@ -279,6 +286,8 @@ for (let i = 0; i < allSignupInputs.length; i++) {
     } else if (email) {
       document.getElementById('check-email').textContent = 'Email not valid';
       document.getElementById('check-email').style.color = 'red';
+    } else {
+      document.getElementById('check-email').textContent = '';
     }
 
     // As the user enter new info, check if it already exists
