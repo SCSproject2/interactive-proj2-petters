@@ -276,7 +276,7 @@ for (let i = 0; i < allSignupInputs.length; i++) {
     if (checkEmail(email)) {
       document.getElementById('check-email').textContent = 'Email available!';
       document.getElementById('check-email').style.color = 'green';
-    } else {
+    } else if (email) {
       document.getElementById('check-email').textContent = 'Email not valid';
       document.getElementById('check-email').style.color = 'red';
     }

@@ -47,6 +47,27 @@
           <div id='empty'></div>
         {{/if}}
       </div>
+      <div id='mobile-nav'>
+        <img id='burger-stack' src='./images/nav-stack.png' alt='' />
+        <div id='mobile-nav-items'>
+          <a class='navItem' id='home-nav-btn' href='/'>Home</a>
+          <a class='navItem' id='dash-nav-btn' href='/dashboard'>Dashboard</a>
+          {{#if loggedIn}}{{else}}
+            <a class='navItem' id='login-nav-btn' href='/login'>Login</a>
+          {{/if}}
+          <a class='navItem' id='featured-nav-btn' href='/featured'>Featured</a>
+          <a class='navItem' id='search-nav-btn' href='/search'>Search</a>
+          <div id='mobile-inner-wrapper'>
+            {{#if loggedIn}}
+              <a class='navItem' id='logout'>Logout</a>
+            {{/if}}
+            {{#if loggedIn}}
+              <h5 id='loggedIn-as'>Logged in as
+                <br /><span>{{username}}</span></h5>
+            {{/if}}
+          </div>
+        </div>
+      </div>
     </header>
     <main>
       {{{body}}}

@@ -48,3 +48,15 @@ function topFunction() {
 scrollBtn.addEventListener('click', () => {
   topFunction();
 });
+
+const burgerStack = document.getElementById('burger-stack');
+burgerStack.addEventListener('click', () => {
+  document.body.classList.toggle('active');
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 568) {
+    document.body.classList.remove('active');
+    return;
+  }
+});

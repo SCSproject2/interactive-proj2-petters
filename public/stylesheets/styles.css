@@ -52,14 +52,14 @@ header {
   padding: 10px 0;
   padding-left: 30px;
   padding-right: 30px;
-  background-color: rgba(111, 22, 193, 0.7);
+  background-color: rgba(111, 22, 193, 0.8);
   top: 0;
   z-index: 2;
   position: sticky;
   margin-bottom: 15px;
   box-shadow: 5px 0 10px 0 rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(20px);
   font-family: 'PoppinsBody', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
@@ -157,6 +157,31 @@ textarea {
   padding-top: 8px;
 }
 
+body {
+  position: relative;
+  right: 0;
+  transition: 0.3s all ease-in-out;
+}
+
+body.active {
+  right: 200px;
+  transition: 0.3s all ease-in-out;
+}
+
+body.active .scrollTop {
+  display: none;
+}
+
+/* ---- ---- Mobile nav */
+#mobile-nav {
+  display: none;
+}
+
+#burger-stack {
+  width: 45px;
+  filter: invert(1);
+}
+
 @media screen and (max-width: 940px) {
   header {
     flex-direction: column;
@@ -179,8 +204,63 @@ textarea {
 }
 
 @media screen and (max-width: 568px) {
+  nav,
+  #user-wrapper {
+    display: none;
+  }
+
+  #mobile-nav {
+    display: unset;
+  }
+
+  #mobile-nav-items {
+    position: absolute;
+    right: -175px;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  #mobile-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
   #loggedIn-as {
-    font-size: 16px;
+    margin-top: -10px;
+    color: #333;
+    text-align: right;
+  }
+  .navItem {
+    font-family: 'PoppinsHeader', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+      sans-serif;
+    font-weight: 800;
+    font-size: 25px;
+    border-bottom: 2px solid #333;
+    color: #333;
+    margin: 20px 0;
+  }
+
+  #mobile-inner-wrapper .navItem {
+    margin-top: 20px !important;
+  }
+  #mobile-nav-items .navItem:nth-child(1) {
+    margin-top: 20px;
+  }
+  #mobile-nav #loggedIn-as {
+    margin-right: 0;
+  }
+
+  header {
+    padding: 12px;
+    flex-direction: row;
+  }
+
+  #loggedIn-as {
+    font-size: 22px;
   }
 
   #header-logo {
@@ -191,24 +271,12 @@ textarea {
     padding: 3px 12px;
   }
 
-  #empty {
-    display: none;
-  }
-
-  header {
-    padding: 5px;
-  }
-
   #header-head {
     margin-right: 10px;
   }
 
   header nav {
     justify-items: center;
-  }
-
-  .navItem {
-    font-size: 18px;
   }
 
   input,
@@ -274,7 +342,6 @@ textarea {
 #category-wrapper {
   margin-bottom: 30px;
   margin-right: 30px;
-  padding-right: 30px;
 }
 
 @media screen and (max-width: 600px) {
@@ -439,7 +506,7 @@ textarea {
 .post-top-comments {
   display: flex;
   flex-direction: column;
-  margin: 0 10px 0 10px;
+  align-items: center;
   width: 570px;
   margin: 0 5px;
   padding: 15px;
@@ -1078,23 +1145,8 @@ select {
   bottom: 9px;
   font-size: 16px;
 }
-@media screen and (max-width: 900px) {
-  #dashboard-posts #single-post {
-    width: 380px;
-  }
-}
-
-@media screen and (max-width: 770px) {
-  #dashboard-posts #single-post {
-    width: 340px;
-  }
-}
 
 @media screen and (max-width: 650px) {
-  #dashboard-posts #single-post {
-    width: 390px;
-  }
-
   .edit-post-status {
     left: 8px;
     bottom: 8px;
@@ -1118,7 +1170,6 @@ select {
   }
 
   #dashboard-posts #single-post {
-    width: 100vw;
     border-radius: 0 !important;
   }
 
@@ -1218,16 +1269,6 @@ select {
   align-items: center;
   margin-top: 30px;
   margin-bottom: 125px;
-}
-
-#single-post {
-  border-radius: 15px;
-  position: relative;
-  text-decoration: none;
-  height: fit-content;
-  color: black;
-  margin-bottom: 15px;
-  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25) !important;
 }
 
 #post-image {
@@ -1370,6 +1411,13 @@ select {
   min-width: 340px;
   max-width: 420px;
   margin-bottom: 25px;
+  border-radius: 15px;
+  position: relative;
+  text-decoration: none;
+  height: fit-content;
+  color: black;
+  margin-bottom: 15px;
+  box-shadow: 2px 2px 10px 0 rgba(0, 0, 0, 0.25) !important;
 }
 
 @media screen and (max-width: 990px) {
@@ -1392,11 +1440,12 @@ select {
 
 @media screen and (max-width: 540px) {
   #single-post {
-    width: 100vw;
-    border-radius: 0;
+    width: 100vw !important;
+    border-radius: 0 !important;
   }
+
   .featured-wrapper #single-post {
-    border-radius: 15px;
+    border-radius: 15px !important;
   }
 }
 
