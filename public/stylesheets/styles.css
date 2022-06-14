@@ -1175,6 +1175,11 @@ select {
     font-size: 17px;
   }
 }
+@media screen and (max-width: 600px) {
+  #random-post-wrapper {
+    margin-top: 25px;
+  }
+}
 
 @media screen and (max-width: 540px) {
   #add-desc {
